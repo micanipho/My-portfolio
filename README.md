@@ -19,27 +19,40 @@ A modern, high-performance portfolio website built with [Next.js](https://nextjs
 - **Analytics**: [Vercel Analytics](https://vercel.com/analytics)  
 
 ## 📦 Installation
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/your-username/portfolio.git
-   ```
-2. Install dependencies:
-   ```bash
-   cd portfolio && npm install
-   ```
-3. Run locally:
-   ```bash
-   npm run dev
-   ```
 
-## 🔧 Configuration
+```bash
+# Clone the repository
+$ git clone https://github.com/your-username/My-portfolio.git
+
+# Navigate to the project directory
+$ cd My-portfolio
+
+# Install dependencies
+$ npm install
+```
+
+## ▶️ How to Run
+
+```bash
+# Start the development server
+npm run dev
+
+# Open your browser and navigate to http://localhost:3000
+```
+
+## 📦 Deployment
+
+```bash
+# Build the project for production
+$ npm run build
+
+# Start the production server
+$ npm start
+```
+
+## ���� Configuration
 - Edit `app/config.ts` to update your personal info (name, bio, social links).  
 - For Sanity CMS, set up your project and update `sanity.config.ts`.  
-
-## 🚀 Deployment
-1. Push to GitHub/GitLab.  
-2. Import the repo into [Vercel](https://vercel.com/new).  
-3. Enjoy your live portfolio at `https://your-domain.vercel.app`!  
 
 ## 📝 License
 MIT © [Your Name](https://your-portfolio-url.com)  
@@ -48,10 +61,4 @@ MIT © [Your Name](https://your-portfolio-url.com)
 
 💡 **Pro Tip**:  
 - Use `next/image` for optimized images.  
-- Add a `sitemap.xml` and `robots.txt` for SEO.  
-```
-
-### 🎨 Customization Tips:
-1. Replace `your-username`, `screenshot.png`, and placeholder links.  
-2. Add/remove features based on your stack (e.g., delete Sanity section if unused).  
-3. For **Astro/SvelteKit**, swap the framework details accordingly.  
+- Add a `sitemap.xml` and `robots.txt` for SEO.
