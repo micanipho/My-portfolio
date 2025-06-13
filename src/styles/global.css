@@ -5,17 +5,17 @@
 
 /* Custom global styles */
 :root {
-  --kaiju-yellow: #f5d800;
-  --kaiju-green: #3cc698;
-  --kaiju-dark: #15142b;
-  --kaiju-gray: #4a4b5e;
-  --kaiju-light: #f4f4f6;
+  --nhlaka-cyan: #00FFFF;
+  --nhlaka-green: #C4FF00;
+  --nhlaka-dark: #15142b;
+  --nhlaka-gray: #4a4b5e;
+  --nhlaka-light: #f4f4f6;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--kaiju-dark);
-  color: var(--kaiju-light);
+  background-color: var(--nhlaka-dark);
+  color: var(--nhlaka-light);
   margin: 0;
   padding: 0;
 }
@@ -29,16 +29,105 @@ a {
   box-sizing: border-box;
 }
 
+/* Animation classes */
+.animate-glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-scan-line {
+  animation: scanLine 2s linear infinite;
+}
+
+.animate-energy-flow {
+  animation: energyFlow 4s ease infinite;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.7s ease-in-out;
+}
+
+/* Keyframes */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes energyFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom utility classes */
 @layer components {
-  .kaiju-gradient {
+  .nhlaka-gradient {
     @apply bg-gradient-to-r from-[#15142b] via-[#232244] to-[#2e2c56];
   }
 
-  .kaiju-accent {
-    @apply text-[#f5d800] hover:text-[#f7e652] transition-colors;
+  .nhlaka-accent {
+    @apply text-[#00FFFF] hover:text-[#33FFFF] transition-colors;
   }
 
-  .kaiju-button {
-    @apply bg-[#3cc698] hover:bg-[#4fdba9] text-[#15142b] font-bold py-2 px-6 rounded-md transition-all;
+  .nhlaka-button {
+    @apply bg-[#C4FF00] hover:bg-[#D0FF33] text-[#15142b] font-bold py-2 px-6 rounded-md transition-all;
+  }
+
+  .nhlaka-card {
+    @apply bg-[#191F3A] border border-[#00FFFF]/20 rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-[#00FFFF]/10 hover:border-[#00FFFF]/40;
+  }
+
+  .nhlaka-heading {
+    @apply font-heading font-bold text-[#B2BABB] mb-4;
+  }
+
+  .nhlaka-subheading {
+    @apply font-heading font-medium text-[#00FFFF] mb-2;
+  }
+
+  .nhlaka-text {
+    @apply text-[#B2BABB] leading-relaxed;
+  }
+
+  .nhlaka-link {
+    @apply text-[#00FFFF] hover:text-[#C4FF00] transition-colors duration-300 relative inline-block;
+  }
+
+  .nhlaka-link::after {
+    @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-[#C4FF00] transition-all duration-300;
+  }
+
+  .nhlaka-link:hover::after {
+    @apply w-full;
+  }
+
+  .nhlaka-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
   }
 }
