@@ -1,4 +1,3 @@
-// pages/index.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -64,14 +63,24 @@ export default function Home() {
               repeatDelay: 1
             }}
           />
-          <motion.span
-            className="text-5xl font-bold text-[#00FFFF]"
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            K8
-          </motion.span>
+          <motion.div className="flex flex-col items-center justify-center">
+            <motion.span
+              className="text-3xl font-bold text-[#00FFFF]"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              Nhlaka
+            </motion.span>
+            <motion.span
+              className="text-sm font-medium text-[#B2BABB]"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+            >
+              Portfolio
+            </motion.span>
+          </motion.div>
         </div>
       </motion.div>
 
@@ -81,9 +90,9 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="text-[#B2BABB]">Kaiju</span>
+        <span className="text-[#B2BABB]">Nhlakanipho</span>
         <span className="text-[#C4FF00] relative">
-          {" No. 8"}
+          {" Masilela"}
           <motion.span
             className="absolute -inset-1 -z-10 rounded-lg blur-md bg-[#C4FF00]/10"
             animate={{ opacity: [0.2, 0.5, 0.2] }}
@@ -112,7 +121,7 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        Welcome to the world of Kaiju! Explore my projects inspired by the epic battles and heroic moments of Kaiju No. 8.
+        Welcome to my portfolio! Explore my projects and discover the creative solutions I've developed.
       </motion.p>
 
       <div className="flex flex-col sm:flex-row gap-4 mt-2">

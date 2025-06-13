@@ -9,7 +9,6 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Projects', href: '/projects' },
-    { name: 'Gallery', href: '/gallery' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -25,10 +24,24 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="flex items-center space-x-2">
+              <div className="w-9 h-9 bg-[#191F3A] rounded-full border border-[#00FFFF] flex items-center justify-center relative overflow-hidden">
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br from-[#191F3A]/50 via-transparent to-[#00FFFF]/30 opacity-70"
+                  animate={{
+                    background: [
+                      "linear-gradient(to bottom right, rgba(25, 31, 58, 0.5), transparent, rgba(0, 255, 255, 0.3))",
+                      "linear-gradient(to bottom right, rgba(25, 31, 58, 0.5), transparent, rgba(0, 255, 255, 0.3))",
+                      "linear-gradient(to bottom right, rgba(25, 31, 58, 0.5), transparent, rgba(0, 255, 255, 0.3))"
+                    ]
+                  }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <span className="text-sm font-bold text-[#00FFFF]">NM</span>
+              </div>
               <span className="relative group">
-                <span className="text-[#B2BABB]">Kaiju</span>{' '}
+                <span className="text-[#B2BABB]">Nhlakanipho's</span>{' '}
                 <span className="text-[#00FFFF] relative">
-                  No. 8
+                  Portfolio
                   <motion.span
                     className="absolute -inset-1 bg-[#00FFFF]/10 rounded-lg blur-sm"
                     initial={{ opacity: 0 }}
