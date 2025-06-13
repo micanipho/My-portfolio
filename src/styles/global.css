@@ -1,0 +1,44 @@
+/* src/styles/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+:root {
+  --kaiju-yellow: #f5d800;
+  --kaiju-green: #3cc698;
+  --kaiju-dark: #15142b;
+  --kaiju-gray: #4a4b5e;
+  --kaiju-light: #f4f4f6;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--kaiju-dark);
+  color: var(--kaiju-light);
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@layer components {
+  .kaiju-gradient {
+    @apply bg-gradient-to-r from-[#15142b] via-[#232244] to-[#2e2c56];
+  }
+
+  .kaiju-accent {
+    @apply text-[#f5d800] hover:text-[#f7e652] transition-colors;
+  }
+
+  .kaiju-button {
+    @apply bg-[#3cc698] hover:bg-[#4fdba9] text-[#15142b] font-bold py-2 px-6 rounded-md transition-all;
+  }
+}
