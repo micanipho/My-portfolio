@@ -1,18 +1,20 @@
-// src/components/Layout.tsx
-import React, { ReactNode } from 'react';
-import Navbar from './Navbar';
+import '../;
 
-type LayoutProps = {
-  children: ReactNode;
-};
+import Navbar from '../components/Navbar';
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <>
-      <Navbar />
-      <main>{children}</main>
-    </>
+    <html lang="en">
+      <body className="bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white">
+        <Navbar />
+        <main className="pt-16">
+          {children}
+        </main>
+      </body>
+    </html>
   );
-};
-
-export default Layout;
+}
