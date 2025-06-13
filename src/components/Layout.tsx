@@ -1,20 +1,24 @@
-import '../;
+import { motion } from 'framer-motion';
+        import { ReactNode } from 'react';
 
-import Navbar from '../components/Navbar';
+        interface LayoutProps {
+          children: ReactNode;
+          className?: string;
+        }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <body className="bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white">
-        <Navbar />
-        <main className="pt-16">
-          {children}
-        </main>
-      </body>
-    </html>
-  );
-}
+        const Layout = ({ children, className = '' }: LayoutProps) => {
+          // @ts-ignore
+            return (
+            <motion.div
+              as="main"
+              className={`min-h-screen ${className}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              {children}
+            </motion.div>
+          );
+        };
+
+        export default Layout;
