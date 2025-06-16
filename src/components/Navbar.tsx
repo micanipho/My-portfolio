@@ -1,7 +1,59 @@
 // src/components/Navbar.tsx
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useCallback, memo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+
+// Memoized logo component to prevent unnecessary re-renders
+const Logo = memo(() => (
+    <div className="w-9 h-9 bg-[#191F3A] rounded-full border border-[#00FFFF] flex items-center justify-center relative overflow-hidden">
+      <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-[#191F3A]/50 via-transparent to-[#00FFFF]/30 opacity-70"
+          animate={{
+            opacity: [0.5, 0.7, 0.5]
+          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <span className="text-sm font-bold text-[#00FFFF]">NM</span>
+    </div>
+));
+Logo.displayName = 'Logo';
+
+// Memoized nav item to prevent unnecessary re-renders
+const NavItem = memo(({
+  item,
+  index,
+  isMobile = false,
+  onClick = () => {}
+}: {
+  item: { name: string; href: string };
+  index: number;
+  isMobile?: boolean;
+  onClick?: () => void;
+}) => {
+  const animationDelay = isMobile ? index * 0.05 : index * 0.1;
+
+  return (
+    <motion.div
+      key={item.name}
+      initial={{ opacity: 0, [isMobile ? 'x' : 'y']: isMobile ? -10 : -10 }}
+      animate={{ opacity: 1, [isMobile ? 'x' : 'y']: 0 }}
+      transition={{ duration: 0.2, delay: animationDelay }}
+      whileHover={!isMobile ? { scale: 1.1, y: -2 } : undefined}
+    >
+      <Link
+        href={item.href}
+        className={`${isMobile ? 'block py-2' : ''} text-[#B2BABB] hover:text-[#C4FF00] text-lg font-medium transition-all duration-300 relative group`}
+        onClick={onClick}
+      >
+        {item.name}
+        {!isMobile && (
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00FFFF] transition-all duration-300 group-hover:w-full"></span>
+        )}
+      </Link>
+    </motion.div>
+  );
+});
+NavItem.displayName = 'NavItem';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +65,14 @@ const Navbar = () => {
     { name: 'Contact', href: '/contact' },
   ];
 
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev);
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   return (
     <nav className="fixed w-full top-0 z-50 bg-gradient-to-r from-[#0E0E10] via-[#191F3A] to-[#0E0E10] shadow-lg border-b border-[#00FFFF]/30">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,61 +83,22 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-9 h-9 bg-[#191F3A] rounded-full border border-[#00FFFF] flex items-center justify-center relative overflow-hidden">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-[#191F3A]/50 via-transparent to-[#00FFFF]/30 opacity-70"
-                  animate={{
-                    background: [
-                      "linear-gradient(to bottom right, rgba(25, 31, 58, 0.5), transparent, rgba(0, 255, 255, 0.3))",
-                      "linear-gradient(to bottom right, rgba(25, 31, 58, 0.5), transparent, rgba(0, 255, 255, 0.3))",
-                      "linear-gradient(to bottom right, rgba(25, 31, 58, 0.5), transparent, rgba(0, 255, 255, 0.3))"
-                    ]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                />
-                <span className="text-sm font-bold text-[#00FFFF]">NM</span>
-              </div>
-              <span className="relative group">
-                <span className="text-[#B2BABB]">Nhlakanipho's</span>{' '}
-                <span className="text-[#00FFFF] relative">
-                  Portfolio
-                  <motion.span
-                    className="absolute -inset-1 bg-[#00FFFF]/10 rounded-lg blur-sm"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: [0, 1, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-                  />
-                </span>
-              </span>
+            <Link href="/" className="flex items-center">
+              <Logo />
             </Link>
           </motion.div>
 
           {/* Desktop menu */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                whileHover={{ scale: 1.1, y: -2 }}
-              >
-                <Link
-                  href={item.href}
-                  className="text-[#B2BABB] hover:text-[#C4FF00] text-lg font-medium transition-all duration-300 relative group"
-                >
-                  {item.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00FFFF] transition-all duration-300 group-hover:w-full"></span>
-                </Link>
-              </motion.div>
+              <NavItem key={item.name} item={item} index={index} />
             ))}
           </div>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
             <motion.button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={toggleMenu}
               className="p-2 rounded-md text-[#B2BABB] hover:text-[#00FFFF] focus:outline-none transition-colors duration-300"
               whileTap={{ scale: 0.95 }}
             >
@@ -96,35 +117,30 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {isOpen && (
-        <motion.div
-          className="md:hidden bg-[#0E0E10]/95 border-b border-[#00FFFF]/30"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="px-4 py-3 space-y-3">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.2, delay: index * 0.05 }}
-              >
-                <Link
-                  href={item.href}
-                  className="block text-[#B2BABB] hover:text-[#C4FF00] text-lg font-medium py-2 transition-colors duration-300"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      )}
+      {/* Mobile menu with AnimatePresence for proper exit animations */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="md:hidden bg-[#0E0E10]/95 border-b border-[#00FFFF]/30"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="px-4 py-3 space-y-3">
+              {navItems.map((item, index) => (
+                <NavItem
+                  key={item.name}
+                  item={item}
+                  index={index}
+                  isMobile={true}
+                  onClick={closeMenu}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

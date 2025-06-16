@@ -1,10 +1,9 @@
 // pages/_app.tsx
 import React from 'react';
-import type { AppProps } from 'next/app';
 import Layout from '../src/components/Layout';
 import '../src/styles/global.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: any) {
   return (
     <Layout>
       <Component {...pageProps} />

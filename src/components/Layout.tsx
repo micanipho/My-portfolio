@@ -1,26 +1,19 @@
 // src/components/Layout.tsx
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
+import Footer from './Footer';
 
 interface LayoutProps {
-  children: ReactNode;
-  className?: string;
+  children: React.ReactNode;
 }
 
-const Layout = ({ children, className = '' }: LayoutProps) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <motion.div
-        className={`min-h-screen pt-16 ${className}`} // Added pt-16 to account for fixed navbar
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4 }}
-      >
-        {children}
-      </motion.div>
-    </>
+      <main className="flex-grow pt-16">{children}</main>
+      <Footer />
+    </div>
   );
 };
 
