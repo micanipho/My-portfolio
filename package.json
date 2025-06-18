@@ -6,11 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "build:prod": "next build && next export",
+    "type-check": "tsc --noEmit",
+    "lighthouse": "lhci autorun",
+    "perf": "next build && next start"
   },
   "dependencies": {
     "autoprefixer": "^10.0.0",
-    "framer-motion": "^7.0.0",
+    "framer-motion": "^11.11.17",
     "next": "^15.3.3",
     "postcss": "^8.0.0",
     "react": "^18.0.0",

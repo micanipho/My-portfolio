@@ -2,9 +2,20 @@
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
+    './app/**/*.{js,ts,jsx,tsx}',
     './src/components/**/*.{js,ts,jsx,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
   ],
+
+  // Enable JIT mode for faster builds and smaller CSS
+  mode: 'jit',
+
   darkMode: 'class',
+
+  // Optimize for production builds
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {

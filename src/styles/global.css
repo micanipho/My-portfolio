@@ -3,30 +3,62 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom global styles */
+/* Performance optimizations */
+@layer base {
+  /* Optimize font rendering */
+  html {
+    font-display: swap;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Optimize animations for performance */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Custom global styles with CSS variables for better performance */
 :root {
   --nhlaka-cyan: #00FFFF;
   --nhlaka-green: #C4FF00;
   --nhlaka-dark: #15142b;
   --nhlaka-gray: #4a4b5e;
   --nhlaka-light: #f4f4f6;
+
+  /* Performance-optimized color palette */
+  --primary-bg: var(--nhlaka-dark);
+  --primary-text: var(--nhlaka-light);
+  --accent-color: var(--nhlaka-cyan);
+  --secondary-accent: var(--nhlaka-green);
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: var(--nhlaka-dark);
-  color: var(--nhlaka-light);
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
   margin: 0;
   padding: 0;
+  line-height: 1.6;
+  /* Optimize for better performance */
+  will-change: auto;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 /* Animation classes */
