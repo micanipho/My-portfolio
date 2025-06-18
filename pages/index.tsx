@@ -69,15 +69,12 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="text-[#B2BABB]">Nhlakanipho</span>
-        <span className="text-cyan-400 relative">
-          {" Masilela"}
-          <motion.span
-            className="absolute -inset-1 -z-10 rounded-lg blur-md bg-cyan-400/10"
-            animate={{ opacity: [0.2, 0.5, 0.2] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-        </span>
+        <span className="text-[#B2BABB]">NHLAKANIPHO</span>
+        <motion.span
+          className="absolute -inset-1 -z-10 rounded-lg blur-md bg-cyan-400/10"
+          animate={{ opacity: [0.2, 0.5, 0.2] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
       </motion.h1>
 
       <motion.div
@@ -100,7 +97,8 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        Welcome to my portfolio! Explore my projects and discover the creative solutions I&apos;ve developed.
+        JUNIOR SOFTWARE DEVELOPER & SOFTWARE ENGINEERING STUDENT AT WETHINKCODE_.
+        PASSIONATE ABOUT CODING CHALLENGES, HACKATHONS, AND BUILDING INNOVATIVE SOLUTIONS.
       </motion.p>
 
       <div className="flex flex-col sm:flex-row gap-4 mt-2">
@@ -169,8 +167,8 @@ export default function Home() {
 
             <div className="flex flex-wrap justify-center gap-5">
               {[
-                'React', 'Next.js', 'TypeScript', 'Tailwind CSS',
-                'Node.js', 'Framer Motion', 'MongoDB', 'GraphQL'
+                'Python', 'Java', 'React', 'Flask', 'Spring Boot',
+                'MySQL', 'PostgreSQL', 'JavaScript', 'HTML/CSS'
               ].map((tech) => (
                 <motion.div
                   key={tech}

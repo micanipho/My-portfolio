@@ -17,19 +17,19 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'Nhlaka Portfolio - Full Stack Developer',
-  description = 'Professional portfolio of Nhlaka, a skilled full-stack developer specializing in modern web technologies.',
+  title = 'NHLAKANIPHO PORTFOLIO - JUNIOR SOFTWARE DEVELOPER',
+  description = 'Professional portfolio of Nhlakanipho, a driven junior software developer and Software Engineering student at WeThinkCode_ specializing in Python, Java, Flask, Spring Boot, React, MySQL, and PostgreSQL.',
   image = '/images/og-image.jpg',
   type = 'website',
-  keywords = ['developer', 'portfolio', 'react', 'nextjs', 'typescript', 'fullstack'],
-  author = 'Nhlaka',
+  keywords = ['developer', 'portfolio', 'python', 'java', 'react', 'flask', 'spring boot', 'mysql', 'postgresql', 'software engineering', 'wethinkcode', 'hackathons', 'coding challenges'],
+  author = 'Nhlakanipho',
   publishedTime,
   modifiedTime,
   noindex = false,
   canonical,
 }) => {
   const router = useRouter();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nhlaka-portfolio.vercel.app';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nhlakanipho-portfolio.vercel.app';
   const currentUrl = canonical || `${siteUrl}${router.asPath}`;
   const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
@@ -41,14 +41,15 @@ const SEO: React.FC<SEOProps> = ({
     url: currentUrl,
     image: imageUrl,
     ...(type === 'profile' && {
-      jobTitle: 'Full Stack Developer',
+      jobTitle: 'Junior Software Developer',
       worksFor: {
         '@type': 'Organization',
-        name: 'Freelance',
+        name: 'WeThinkCode_',
       },
       sameAs: [
-        'https://github.com/nhlaka',
-        'https://linkedin.com/in/nhlaka',
+        'https://github.com/nhlakanipho',
+        'https://linkedin.com/in/nhlakanipho',
+        'https://instagram.com/nhlakanipho',
       ],
     }),
   };
@@ -77,16 +78,16 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:image" content={imageUrl} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:site_name" content="Nhlaka Portfolio" />
+      <meta property="og:site_name" content="Nhlakanipho Portfolio" />
       <meta property="og:locale" content="en_US" />
-      
+
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={currentUrl} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={imageUrl} />
-      <meta property="twitter:creator" content="@nhlaka" />
+      <meta property="twitter:creator" content="@nhlakanipho" />
       
       {/* Article specific meta tags */}
       {type === 'article' && publishedTime && (
