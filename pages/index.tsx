@@ -181,27 +181,104 @@ export default function Home() {
                 return (
                   <motion.div
                     key={techName}
-                    className="group relative p-4 bg-gradient-to-br from-[#191F3A] to-[#15142b] rounded-lg border border-cyan-400/10 hover:border-cyan-400/40 transition-all duration-300 w-16 h-16"
-                    whileHover={{ y: -5, x: 0 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    className="group relative p-4 bg-gradient-to-br from-[#191F3A] to-[#15142b] rounded-lg transition-all duration-300 w-16 h-16"
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: techStackNames.indexOf(techName) * 0.1,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 20
+                    }}
+                    whileHover={{
+                      y: -8,
+                      scale: 1.05,
+                      rotateY: 10,
+                      transition: { type: "spring", stiffness: 400, damping: 15 }
+                    }}
+                    whileTap={{ scale: 0.95 }}
                     title={tech.name}
                     role="button"
                     tabIndex={0}
                     aria-label={`Technology: ${tech.name}`}
                   >
+                    {/* Animated background glow */}
+                    <motion.div
+                      className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+                      style={{
+                        background: `radial-gradient(circle, ${tech.color}20 0%, transparent 70%)`
+                      }}
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.3, 0.6, 0.3]
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: techStackNames.indexOf(techName) * 0.2
+                      }}
+                    />
+
+                    {/* Animated bottom accent line */}
                     <motion.span
                       className="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-400/40 group-hover:w-full transition-all duration-300 rounded-full"
-                      animate={{ opacity: [0.6, 1, 0.6] }}
-                      transition={{ duration: 2, repeat: Infinity }}
+                      animate={{
+                        opacity: [0.4, 0.8, 0.4],
+                        scaleX: [0.8, 1, 0.8]
+                      }}
+                      transition={{
+                        duration: 2.5,
+                        repeat: Infinity,
+                        delay: techStackNames.indexOf(techName) * 0.15
+                      }}
                     />
-                    <div className="flex items-center justify-center">
+
+                    {/* Floating particles effect */}
+                    <motion.div
+                      className="absolute inset-0 pointer-events-none"
+                      animate={{
+                        rotate: [0, 360]
+                      }}
+                      transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      <motion.div
+                        className="absolute top-1 right-1 w-1 h-1 bg-cyan-400/30 rounded-full"
+                        animate={{
+                          scale: [0, 1, 0],
+                          opacity: [0, 1, 0]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: techStackNames.indexOf(techName) * 0.3
+                        }}
+                      />
+                    </motion.div>
+
+                    <div className="flex items-center justify-center relative z-10">
                       <motion.div
                         className="text-[#B2BABB] group-hover:text-cyan-400 transition-colors duration-300"
+                        animate={{
+                          rotateZ: [0, 5, -5, 0]
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: techStackNames.indexOf(techName) * 0.25
+                        }}
                         whileHover={{
                           color: tech.color,
-                          scale: 1.2
+                          scale: 1.3,
+                          rotateZ: 0,
+                          transition: { duration: 0.2 }
                         }}
-                        transition={{ duration: 0.2 }}
                       >
                         <IconComponent
                           size={24}

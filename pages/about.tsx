@@ -199,22 +199,74 @@ const About: React.FC = () => {
                         <motion.div
                           key={skill}
                           className="flex items-center justify-center"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.3, delay: 0.8 + index * 0.1 + skillIndex * 0.05 }}
+                          initial={{ opacity: 0, scale: 0.5, y: 30 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          transition={{
+                            duration: 0.6,
+                            delay: 0.8 + index * 0.1 + skillIndex * 0.08,
+                            type: "spring",
+                            stiffness: 150,
+                            damping: 12
+                          }}
                           title={skill}
                         >
                           <motion.div
-                            className="p-3 bg-[#15142b]/50 border border-cyan-400/20 rounded-lg hover:border-cyan-400/40 transition-all duration-300"
-                            whileHover={{ scale: 1.1, y: -2 }}
+                            className="p-3 bg-[#15142b]/50 rounded-lg transition-all duration-300 relative overflow-hidden"
+                            whileHover={{
+                              scale: 1.2,
+                              y: -5,
+                              rotateY: 15,
+                              transition: { type: "spring", stiffness: 300, damping: 15 }
+                            }}
+                            whileTap={{ scale: 0.9 }}
+                            animate={{
+                              boxShadow: [
+                                "0 0 0 rgba(0, 255, 255, 0)",
+                                "0 0 20px rgba(0, 255, 255, 0.3)",
+                                "0 0 0 rgba(0, 255, 255, 0)"
+                              ]
+                            }}
+                            transition={{
+                              duration: 4,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: skillIndex * 0.3
+                            }}
                           >
-                            <TechIconComponent
-                              techName={skill}
-                              size={20}
-                              showLabel={false}
-                              className="text-[#B2BABB]"
-                              iconClassName="text-[#B2BABB] hover:text-cyan-400 transition-colors duration-300"
+                            {/* Pulsing background */}
+                            <motion.div
+                              className="absolute inset-0 bg-cyan-400/5 rounded-lg"
+                              animate={{
+                                scale: [1, 1.1, 1],
+                                opacity: [0.3, 0.6, 0.3]
+                              }}
+                              transition={{
+                                duration: 2.5,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                                delay: skillIndex * 0.2
+                              }}
                             />
+
+                            <motion.div
+                              animate={{
+                                rotateZ: [0, 10, -10, 0]
+                              }}
+                              transition={{
+                                duration: 6,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                                delay: skillIndex * 0.4
+                              }}
+                            >
+                              <TechIconComponent
+                                techName={skill}
+                                size={20}
+                                showLabel={false}
+                                className="text-[#B2BABB] relative z-10"
+                                iconClassName="text-[#B2BABB] hover:text-cyan-400 transition-colors duration-300"
+                              />
+                            </motion.div>
                           </motion.div>
                         </motion.div>
                       ))}

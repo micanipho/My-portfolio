@@ -105,20 +105,56 @@ const Projects: React.FC = () => {
             {project.technologies.map((tech, techIndex) => (
               <motion.div
                 key={tech}
-                className="p-2 bg-[#191F3A]/50 border border-cyan-400/20 rounded-lg hover:border-cyan-400/40 transition-all duration-300"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: index * 0.1 + techIndex * 0.05 }}
+                className="p-2 bg-[#191F3A]/50 rounded-lg transition-all duration-300 relative overflow-hidden"
+                initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1 + techIndex * 0.08,
+                  type: "spring",
+                  stiffness: 200
+                }}
                 title={tech}
-                whileHover={{ scale: 1.1, y: -2 }}
+                whileHover={{
+                  scale: 1.15,
+                  y: -4,
+                  rotateZ: 5,
+                  transition: { type: "spring", stiffness: 400, damping: 15 }
+                }}
+                whileTap={{ scale: 0.9 }}
               >
-                <TechIconComponent
-                  techName={tech}
-                  size={18}
-                  showLabel={false}
-                  className="text-cyan-400/80"
-                  iconClassName="text-cyan-400/80 hover:text-cyan-400 transition-colors duration-300"
+                {/* Animated background shimmer */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/10 to-transparent"
+                  animate={{
+                    x: ["-100%", "100%"]
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear",
+                    delay: techIndex * 0.5
+                  }}
                 />
+
+                <motion.div
+                  animate={{
+                    rotate: [0, 360]
+                  }}
+                  transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                >
+                  <TechIconComponent
+                    techName={tech}
+                    size={18}
+                    showLabel={false}
+                    className="text-cyan-400/80 relative z-10"
+                    iconClassName="text-cyan-400/80 hover:text-cyan-400 transition-colors duration-300"
+                  />
+                </motion.div>
               </motion.div>
             ))}
           </div>

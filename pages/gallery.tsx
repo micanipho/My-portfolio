@@ -160,24 +160,68 @@ const Gallery: React.FC = () => {
           {/* Technologies */}
           <div className="flex flex-wrap gap-1">
             {item.technologies.slice(0, 4).map((tech, techIndex) => (
-              <div
+              <motion.div
                 key={tech}
-                className="p-1.5 bg-[#191F3A]/50 border border-cyan-400/10 rounded hover:border-cyan-400/30 transition-all duration-300"
+                className="p-1.5 bg-[#191F3A]/50 rounded transition-all duration-300 relative overflow-hidden"
                 title={tech}
+                initial={{ opacity: 0, scale: 0.6 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.4,
+                  delay: techIndex * 0.1,
+                  type: "spring",
+                  stiffness: 200
+                }}
+                whileHover={{
+                  scale: 1.2,
+                  y: -2,
+                  transition: { type: "spring", stiffness: 400, damping: 15 }
+                }}
+                animate={{
+                  rotate: [0, 2, -2, 0]
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: techIndex * 0.5
+                }}
               >
-                <TechIconComponent
-                  techName={tech}
-                  size={14}
-                  showLabel={false}
-                  className="text-cyan-400/70"
-                  iconClassName="text-cyan-400/70 hover:text-cyan-400 transition-colors duration-300"
-                />
-              </div>
+                <motion.div
+                  animate={{
+                    scale: [1, 1.05, 1]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: techIndex * 0.3
+                  }}
+                >
+                  <TechIconComponent
+                    techName={tech}
+                    size={14}
+                    showLabel={false}
+                    className="text-cyan-400/70"
+                    iconClassName="text-cyan-400/70 hover:text-cyan-400 transition-colors duration-300"
+                  />
+                </motion.div>
+              </motion.div>
             ))}
             {item.technologies.length > 4 && (
-              <span className="px-2 py-1 bg-[#191F3A]/50 text-[#B2BABB]/70 text-xs rounded border border-cyan-400/10 flex items-center">
+              <motion.span
+                className="px-2 py-1 bg-[#191F3A]/50 text-[#B2BABB]/70 text-xs rounded flex items-center"
+                animate={{
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
                 +{item.technologies.length - 4}
-              </span>
+              </motion.span>
             )}
           </div>
         </div>
@@ -253,20 +297,62 @@ const Gallery: React.FC = () => {
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-cyan-400 mb-3">Technologies Used</h3>
             <div className="flex flex-wrap gap-3">
-              {item.technologies.map((tech) => (
-                <div
+              {item.technologies.map((tech, techIndex) => (
+                <motion.div
                   key={tech}
-                  className="p-3 bg-[#191F3A]/50 border border-cyan-400/20 rounded-lg hover:border-cyan-400/40 transition-all duration-300"
+                  className="p-3 bg-[#191F3A]/50 rounded-lg transition-all duration-300 relative overflow-hidden"
                   title={tech}
+                  initial={{ opacity: 0, scale: 0.8, x: -20 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: techIndex * 0.1,
+                    type: "spring",
+                    stiffness: 150
+                  }}
+                  whileHover={{
+                    scale: 1.15,
+                    y: -3,
+                    rotateZ: 5,
+                    transition: { type: "spring", stiffness: 300, damping: 15 }
+                  }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <TechIconComponent
-                    techName={tech}
-                    size={20}
-                    showLabel={false}
-                    className="text-cyan-400/80"
-                    iconClassName="text-cyan-400/80 hover:text-cyan-400 transition-colors duration-300"
+                  {/* Animated glow effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-cyan-400/10 rounded-lg"
+                    animate={{
+                      opacity: [0, 0.5, 0],
+                      scale: [0.8, 1.1, 0.8]
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: techIndex * 0.4
+                    }}
                   />
-                </div>
+
+                  <motion.div
+                    animate={{
+                      rotateY: [0, 360]
+                    }}
+                    transition={{
+                      duration: 8,
+                      repeat: Infinity,
+                      ease: "linear",
+                      delay: techIndex * 0.2
+                    }}
+                  >
+                    <TechIconComponent
+                      techName={tech}
+                      size={20}
+                      showLabel={false}
+                      className="text-cyan-400/80 relative z-10"
+                      iconClassName="text-cyan-400/80 hover:text-cyan-400 transition-colors duration-300"
+                    />
+                  </motion.div>
+                </motion.div>
               ))}
             </div>
           </div>
