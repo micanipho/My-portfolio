@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { TechIconComponent } from '../src/utils/techIcons';
 
 // Type definitions
 interface GalleryItem {
@@ -158,17 +159,24 @@ const Gallery: React.FC = () => {
           
           {/* Technologies */}
           <div className="flex flex-wrap gap-1">
-            {item.technologies.slice(0, 3).map((tech, techIndex) => (
-              <span
+            {item.technologies.slice(0, 4).map((tech, techIndex) => (
+              <div
                 key={tech}
-                className="px-2 py-1 bg-[#191F3A]/50 text-cyan-400/70 text-xs rounded border border-cyan-400/10"
+                className="p-1.5 bg-[#191F3A]/50 border border-cyan-400/10 rounded hover:border-cyan-400/30 transition-all duration-300"
+                title={tech}
               >
-                {tech}
-              </span>
+                <TechIconComponent
+                  techName={tech}
+                  size={14}
+                  showLabel={false}
+                  className="text-cyan-400/70"
+                  iconClassName="text-cyan-400/70 hover:text-cyan-400 transition-colors duration-300"
+                />
+              </div>
             ))}
-            {item.technologies.length > 3 && (
-              <span className="px-2 py-1 bg-[#191F3A]/50 text-[#B2BABB]/70 text-xs rounded border border-cyan-400/10">
-                +{item.technologies.length - 3}
+            {item.technologies.length > 4 && (
+              <span className="px-2 py-1 bg-[#191F3A]/50 text-[#B2BABB]/70 text-xs rounded border border-cyan-400/10 flex items-center">
+                +{item.technologies.length - 4}
               </span>
             )}
           </div>
@@ -244,14 +252,21 @@ const Gallery: React.FC = () => {
           
           <div className="mb-6">
             <h3 className="text-lg font-semibold text-cyan-400 mb-3">Technologies Used</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {item.technologies.map((tech) => (
-                <span
+                <div
                   key={tech}
-                  className="px-3 py-1 bg-[#191F3A]/50 text-cyan-400/80 text-sm rounded border border-cyan-400/20"
+                  className="p-3 bg-[#191F3A]/50 border border-cyan-400/20 rounded-lg hover:border-cyan-400/40 transition-all duration-300"
+                  title={tech}
                 >
-                  {tech}
-                </span>
+                  <TechIconComponent
+                    techName={tech}
+                    size={20}
+                    showLabel={false}
+                    className="text-cyan-400/80"
+                    iconClassName="text-cyan-400/80 hover:text-cyan-400 transition-colors duration-300"
+                  />
+                </div>
               ))}
             </div>
           </div>

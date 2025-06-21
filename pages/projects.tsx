@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { TechIconComponent } from '../src/utils/techIcons';
 
 // Type definitions
 interface Project {
@@ -102,15 +103,23 @@ const Projects: React.FC = () => {
           {/* Technologies */}
           <div className="flex flex-wrap gap-2 mb-4">
             {project.technologies.map((tech, techIndex) => (
-              <motion.span
+              <motion.div
                 key={tech}
-                className="px-2 py-1 bg-[#191F3A]/50 text-cyan-400/80 text-xs rounded border border-cyan-400/20"
+                className="p-2 bg-[#191F3A]/50 border border-cyan-400/20 rounded-lg hover:border-cyan-400/40 transition-all duration-300"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: index * 0.1 + techIndex * 0.05 }}
+                title={tech}
+                whileHover={{ scale: 1.1, y: -2 }}
               >
-                {tech}
-              </motion.span>
+                <TechIconComponent
+                  techName={tech}
+                  size={18}
+                  showLabel={false}
+                  className="text-cyan-400/80"
+                  iconClassName="text-cyan-400/80 hover:text-cyan-400 transition-colors duration-300"
+                />
+              </motion.div>
             ))}
           </div>
 

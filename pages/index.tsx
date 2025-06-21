@@ -2,8 +2,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { getTechIcon } from '../src/utils/techIcons';
 
 export default function Home() {
+  // Technology stack names
+  const techStackNames = [
+    'Python', 'Java', 'React', 'Flask', 'Spring Boot',
+    'MySQL', 'PostgreSQL', 'JavaScript', 'HTML/CSS'
+  ];
+
   return (
     <motion.div
       className="min-h-screen bg-gradient-to-br from-[#0E0E10] via-[#191F3A] to-[#0E0E10] text-center p-8 pt-24 flex flex-col items-center justify-center overflow-hidden"
@@ -40,7 +47,7 @@ export default function Home() {
         <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-xl animate-glow-pulse"></div>
         <div className="w-32 h-32 mx-auto bg-[#1e1e24] rounded-full border-2 border-cyan-400 flex items-center justify-center relative overflow-hidden">
           <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-[#1e1e24]/50 via-transparent to-kaiju-green/30 opacity-70"
+            className="absolute inset-0 bg-gradient-to-br from-[#1e1e24]/50 via-transparent to-[#3cc698]/30 opacity-70"
             animate={{
               opacity: [0.5, 0.7, 0.5]
             }}
@@ -78,7 +85,7 @@ export default function Home() {
       </motion.h1>
 
       <motion.div
-        className="w-24 h-1 bg-kaiju-green mx-auto mb-6 rounded-full overflow-hidden"
+        className="w-24 h-1 bg-[#3cc698] mx-auto mb-6 rounded-full overflow-hidden"
         initial={{ width: 0 }}
         animate={{ width: 96 }}
         transition={{ duration: 0.7, delay: 0.3 }}
@@ -125,9 +132,9 @@ export default function Home() {
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          <Link href="/gallery" className="relative px-8 py-3 bg-transparent text-kaiju-green border border-kaiju-green rounded-md shadow-lg shadow-kaiju-green/20 font-medium inline-flex items-center group">
+          <Link href="/gallery" className="relative px-8 py-3 bg-transparent text-[#3cc698] border border-[#3cc698] rounded-md shadow-lg shadow-[#3cc698]/20 font-medium inline-flex items-center group">
             <motion.span
-              className="absolute inset-0 rounded-md opacity-0 bg-kaiju-green/10 group-hover:opacity-100 transition-opacity duration-300"
+              className="absolute inset-0 rounded-md opacity-0 bg-[#3cc698]/10 group-hover:opacity-100 transition-opacity duration-300"
               animate={{ opacity: [0.3, 0.5, 0.3] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -166,24 +173,45 @@ export default function Home() {
             </motion.h3>
 
             <div className="flex flex-wrap justify-center gap-5">
-              {[
-                'Python', 'Java', 'React', 'Flask', 'Spring Boot',
-                'MySQL', 'PostgreSQL', 'JavaScript', 'HTML/CSS'
-              ].map((tech) => (
-                <motion.div
-                  key={tech}
-                  className="group relative px-4 py-2 bg-gradient-to-br from-[#191F3A] to-[#15142b] rounded-md border border-cyan-400/10 hover:border-cyan-400/40 transition-all duration-300"
-                  whileHover={{ y: -3, x: 0 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 15 }}
-                >
-                  <motion.span
-                    className="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-400/40 group-hover:w-full transition-all duration-300 rounded-full"
-                    animate={{ opacity: [0.6, 1, 0.6] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  <span className="text-[#B2BABB] group-hover:text-cyan-400 transition-colors duration-300">{tech}</span>
-                </motion.div>
-              ))}
+              {techStackNames.map((techName) => {
+                const tech = getTechIcon(techName);
+                if (!tech) return null;
+
+                const IconComponent = tech.icon;
+                return (
+                  <motion.div
+                    key={techName}
+                    className="group relative p-4 bg-gradient-to-br from-[#191F3A] to-[#15142b] rounded-lg border border-cyan-400/10 hover:border-cyan-400/40 transition-all duration-300 w-16 h-16"
+                    whileHover={{ y: -5, x: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
+                    title={tech.name}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Technology: ${tech.name}`}
+                  >
+                    <motion.span
+                      className="absolute bottom-0 left-0 h-[2px] w-0 bg-cyan-400/40 group-hover:w-full transition-all duration-300 rounded-full"
+                      animate={{ opacity: [0.6, 1, 0.6] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <div className="flex items-center justify-center">
+                      <motion.div
+                        className="text-[#B2BABB] group-hover:text-cyan-400 transition-colors duration-300"
+                        whileHover={{
+                          color: tech.color,
+                          scale: 1.2
+                        }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <IconComponent
+                          size={24}
+                          aria-hidden="true"
+                        />
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { TechIconComponent } from '../src/utils/techIcons';
 
 // Type definitions
 interface SkillGroup {
@@ -193,21 +194,28 @@ const About: React.FC = () => {
                   />
                   <div className="relative bg-gradient-to-br from-[#191F3A] to-[#15142b] border border-cyan-400/20 rounded-lg p-6 h-full">
                     <h3 className="text-xl font-bold text-cyan-400 mb-4">{skillGroup.category}</h3>
-                    <div className="space-y-2">
+                    <div className="grid grid-cols-3 gap-3">
                       {skillGroup.items.map((skill, skillIndex) => (
                         <motion.div
                           key={skill}
-                          className="flex items-center"
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
+                          className="flex items-center justify-center"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
                           transition={{ duration: 0.3, delay: 0.8 + index * 0.1 + skillIndex * 0.05 }}
+                          title={skill}
                         >
                           <motion.div
-                            className="w-2 h-2 bg-kaiju-green rounded-full mr-3"
-                            animate={{ opacity: [0.6, 1, 0.6] }}
-                            transition={{ duration: 2, repeat: Infinity, delay: skillIndex * 0.2 }}
-                          />
-                          <span className="text-[#B2BABB]">{skill}</span>
+                            className="p-3 bg-[#15142b]/50 border border-cyan-400/20 rounded-lg hover:border-cyan-400/40 transition-all duration-300"
+                            whileHover={{ scale: 1.1, y: -2 }}
+                          >
+                            <TechIconComponent
+                              techName={skill}
+                              size={20}
+                              showLabel={false}
+                              className="text-[#B2BABB]"
+                              iconClassName="text-[#B2BABB] hover:text-cyan-400 transition-colors duration-300"
+                            />
+                          </motion.div>
                         </motion.div>
                       ))}
                     </div>
