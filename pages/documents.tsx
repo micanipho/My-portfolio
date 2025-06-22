@@ -37,16 +37,29 @@ interface Document {
 const sampleDocuments: Document[] = [
   {
     id: '1',
-    title: 'Software Developer Resume',
+    title: 'Software Developer Resume (HTML)',
     description: 'Comprehensive resume showcasing my skills in Python, Java, React, and full-stack development.',
     category: 'resume',
-    fileType: 'pdf',
-    fileName: 'nhlakanipho-resume-2024.pdf',
-    fileSize: '245 KB',
+    fileType: 'txt',
+    fileName: 'resume.html',
+    fileSize: '8.5 KB',
     uploadDate: '2024-01-15',
-    downloadUrl: '/documents/resume.pdf',
-    tags: ['resume', 'cv', 'software developer'],
+    downloadUrl: '/documents/resume.html',
+    tags: ['resume', 'cv', 'software developer', 'html'],
     featured: true
+  },
+  {
+    id: '1b',
+    title: 'Software Developer Resume (Text)',
+    description: 'Plain text version of my resume for easy viewing and copying.',
+    category: 'resume',
+    fileType: 'txt',
+    fileName: 'sample-resume.txt',
+    fileSize: '3.2 KB',
+    uploadDate: '2024-01-15',
+    downloadUrl: '/documents/sample-resume.txt',
+    tags: ['resume', 'cv', 'software developer', 'text'],
+    featured: false
   },
   {
     id: '2',
@@ -142,14 +155,15 @@ const Documents: React.FC = () => {
   }, [searchTerm, selectedCategory, showFeaturedOnly]);
 
   const handleDownload = (document: Document) => {
-    // In a real app, this would trigger the actual download
+    // Trigger the actual download
     console.log('Downloading:', document.fileName);
-    // window.open(document.downloadUrl, '_blank');
+    window.open(document.downloadUrl, '_blank');
   };
 
   const handleView = (document: Document) => {
-    // In a real app, this would open a document viewer
+    // Open document in a new tab for viewing
     console.log('Viewing:', document.fileName);
+    window.open(document.downloadUrl, '_blank');
   };
 
   return (
