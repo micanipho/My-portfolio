@@ -1,6 +1,7 @@
 // src/components/OptimizedImage.tsx
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 interface OptimizedImageProps {
   src: string;
@@ -16,6 +17,9 @@ interface OptimizedImageProps {
   fill?: boolean;
   objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
   objectPosition?: string;
+  lazy?: boolean;
+  onLoad?: () => void;
+  onError?: () => void;
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -25,86 +29,86 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   height,
   className = '',
   priority = false,
-  placeholder = 'empty',
+  placeholder = 'blur',
   blurDataURL,
   sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
-  quality = 85,
+  quality = 90,
   fill = false,
   objectFit = 'cover',
   objectPosition = 'center',
+  lazy = true,
+  onLoad,
+  onError,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     setIsLoading(false);
-  };
+    onLoad?.();
+  }, [onLoad]);
 
-  const handleError = () => {
+  const handleError = useCallback(() => {
     setIsLoading(false);
     setHasError(true);
-  };
+    onError?.();
+  }, [onError]);
 
-  // Generate a simple blur placeholder if none provided
-  const generateBlurDataURL = (w: number, h: number) => {
-    const canvas = document.createElement('canvas');
-    canvas.width = w;
-    canvas.height = h;
-    const ctx = canvas.getContext('2d');
-    if (ctx) {
-      ctx.fillStyle = '#f3f4f6';
-      ctx.fillRect(0, 0, w, h);
-    }
-    return canvas.toDataURL();
-  };
-
-  const defaultBlurDataURL = blurDataURL || (width && height ? generateBlurDataURL(width, height) : undefined);
+  // Optimized blur placeholder
+  const defaultBlurDataURL = blurDataURL || 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==';
 
   if (hasError) {
     return (
-      <div 
-        className={`bg-gray-200 flex items-center justify-center ${className}`}
-        style={{ width: width || '100%', height: height || 'auto' }}
-      >
-        <span className="text-gray-500 text-sm">Image failed to load</span>
-      </div>
-    );
-  }
-
-  const imageProps = {
-    src,
-    alt,
-    className: `transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'} ${className}`,
-    onLoad: handleLoad,
-    onError: handleError,
-    priority,
-    quality,
-    sizes,
-    ...(placeholder === 'blur' && defaultBlurDataURL && { 
-      placeholder: 'blur' as const, 
-      blurDataURL: defaultBlurDataURL 
-    }),
-  };
-
-  if (fill) {
-    return (
-      <div className="relative overflow-hidden">
-        <Image
-          {...imageProps}
-          fill
-          style={{ objectFit, objectPosition }}
-        />
+      <div className={`flex items-center justify-center bg-[#191F3A]/50 rounded-lg ${className}`}>
+        <span className="text-[#B2BABB]/50 text-sm">Image unavailable</span>
       </div>
     );
   }
 
   return (
-    <Image
-      {...imageProps}
-      width={width}
-      height={height}
-      style={{ objectFit, objectPosition }}
-    />
+    <div className={`relative overflow-hidden ${className}`}>
+      {isLoading && (
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-[#191F3A]/30 via-[#191F3A]/50 to-[#191F3A]/30"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/10 to-transparent"
+            animate={{ x: ['-100%', '100%'] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'linear' }}
+          />
+        </motion.div>
+      )}
+
+      <motion.div
+        initial={{ opacity: 0, scale: 1.05 }}
+        animate={{ opacity: isLoading ? 0 : 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={fill ? undefined : width}
+          height={fill ? undefined : height}
+          fill={fill}
+          priority={priority}
+          quality={quality}
+          placeholder={placeholder}
+          blurDataURL={defaultBlurDataURL}
+          sizes={sizes}
+          loading={lazy && !priority ? 'lazy' : 'eager'}
+          style={{
+            objectFit: fill ? objectFit : undefined,
+            objectPosition: fill ? objectPosition : undefined,
+          }}
+          onLoad={handleLoad}
+          onError={handleError}
+          className="transition-all duration-500 ease-out"
+        />
+      </motion.div>
+    </div>
   );
 };
 

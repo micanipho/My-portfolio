@@ -2,11 +2,16 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import Layout from '../src/components/Layout';
+import dynamic from 'next/dynamic';
 import '../src/styles/global.css';
 
-// Performance monitoring (optional)
-// import { reportWebVitals } from '../src/utils/reportWebVitals';
+// Lazy load Layout for better performance
+const Layout = dynamic(() => import('../src/components/Layout'), {
+  loading: () => <div className="min-h-screen bg-[#0E0E10]" />,
+});
+
+// Performance monitoring
+import { reportWebVitals } from '../src/utils/reportWebVitals';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -16,8 +21,20 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 
-        {/* Preload critical CSS - Next.js handles CSS automatically */}
-        {/* <link rel="preload" href="/_next/static/css/app.css" as="style" /> */}
+        {/* DNS prefetch for external resources */}
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
+        {/* Preconnect to critical domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+
+        {/* Resource hints for better loading */}
+        <link rel="prefetch" href="/projects" />
+        <link rel="prefetch" href="/about" />
+        <link rel="prefetch" href="/documents" />
+        <link rel="prefetch" href="/contact" />
+        <link rel="prefetch" href="/gallery" />
       </Head>
 
       <Layout>
@@ -27,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-// Performance monitoring
-// export { reportWebVitals };
+// Enable performance monitoring
+export { reportWebVitals };
 
 export default MyApp;

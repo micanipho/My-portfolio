@@ -1,7 +1,16 @@
 import * as React from 'react';
+import { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { TechIconComponent } from '../src/utils/techIcons';
+import { useLazyLoad } from '../src/hooks/useLazyLoad';
+
+// Lazy load OptimizedImage for better performance
+const OptimizedImage = dynamic(() => import('../src/components/OptimizedImage'), {
+  loading: () => <div className="h-48 bg-[#191F3A]/50 animate-pulse rounded" />,
+  ssr: false
+});
 
 // Type definitions
 interface Project {
@@ -59,13 +68,21 @@ const Projects: React.FC = () => {
     }
   ];
 
-  const ProjectCard = ({ project, index }: { project: Project; index: number }) => (
-    <motion.div
-      className="relative group"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-    >
+  const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+    const { elementRef, isIntersecting } = useLazyLoad({
+      threshold: 0.1,
+      rootMargin: '50px',
+      triggerOnce: true
+    });
+
+    return (
+      <motion.div
+        ref={elementRef}
+        className="relative group"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: isIntersecting ? 1 : 0, y: isIntersecting ? 0 : 30 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+      >
       <motion.div
         className="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 via-[#191F3A]/70 to-kaiju-green/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       />
@@ -189,7 +206,8 @@ const Projects: React.FC = () => {
         </div>
       </div>
     </motion.div>
-  );
+    );
+  };
 
   return (
     <motion.div
@@ -276,9 +294,17 @@ const Projects: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            {projects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
+            <Suspense fallback={
+              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="h-96 bg-[#191F3A]/20 rounded-lg animate-pulse" />
+                ))}
+              </div>
+            }>
+              {projects.map((project, index) => (
+                <ProjectCard key={project.id} project={project} index={index} />
+              ))}
+            </Suspense>
           </motion.div>
 
           {/* Call to Action */}

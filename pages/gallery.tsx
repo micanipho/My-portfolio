@@ -177,15 +177,6 @@ const Gallery: React.FC = () => {
                   y: -2,
                   transition: { type: "spring", stiffness: 400, damping: 15 }
                 }}
-                animate={{
-                  rotate: [0, 2, -2, 0]
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: techIndex * 0.5
-                }}
               >
                 <motion.div
                   animate={{

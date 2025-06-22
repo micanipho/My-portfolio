@@ -1,0 +1,86 @@
+NHLAKANIPHO - SOFTWARE DEVELOPER
+=====================================
+
+CONTACT INFORMATION
+-------------------
+Email: nhlakanipho@example.com
+Phone: +27 XXX XXX XXXX
+Location: South Africa
+LinkedIn: linkedin.com/in/nhlakanipho
+GitHub: github.com/nhlakanipho
+
+PROFESSIONAL SUMMARY
+--------------------
+Driven junior software developer and Software Engineering student at WeThinkCode_ 
+with a passion for creating innovative solutions. Experienced in Python, Java, 
+React, Flask, Spring Boot, MySQL, and PostgreSQL. Strong problem-solving skills 
+with a track record of success in hackathons and coding challenges.
+
+TECHNICAL SKILLS
+---------------
+Programming Languages:
+- Python (Advanced)
+- Java (Intermediate)
+- JavaScript (Intermediate)
+- HTML/CSS (Advanced)
+
+Frameworks & Libraries:
+- React
+- Flask
+- Spring Boot
+- Tailwind CSS
+- Bootstrap
+
+Databases:
+- MySQL
+- PostgreSQL
+
+Tools & Technologies:
+- Git & GitHub
+- VS Code
+- Docker (Basic)
+- Linux/Unix
+
+EDUCATION
+---------
+Software Engineering Student
+WeThinkCode_ | 2023 - Present
+- Intensive software development program
+- Focus on practical coding skills
+- Collaborative learning environment
+
+PROJECTS
+--------
+1. Portfolio Website
+   - Built with Next.js, React, and Tailwind CSS
+   - Responsive design with modern animations
+   - Optimized for performance and SEO
+
+2. Database Management System
+   - MySQL-based inventory management
+   - Python Flask backend
+   - RESTful API design
+
+3. React Task Manager
+   - Frontend application with React
+   - State management with hooks
+   - Local storage integration
+
+ACHIEVEMENTS
+-----------
+- Completed multiple coding challenges
+- Active participant in hackathons
+- Strong academic performance at WeThinkCode_
+- Open source contributions
+
+INTERESTS
+---------
+- Software Development
+- Database Design
+- Web Technologies
+- Problem Solving
+- Continuous Learning
+
+---
+This is a sample resume file for demonstration purposes.
+Last updated: January 2024

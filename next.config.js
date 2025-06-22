@@ -9,6 +9,25 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
   },
 
+  // Configure headers for document files
+  async headers() {
+    return [
+      {
+        source: '/documents/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src 'self'; frame-src 'self' blob:; object-src 'none';",
+          },
+        ],
+      },
+    ];
+  },
+
   // Optimize package imports for better performance
   experimental: {
     optimizePackageImports: ['react-icons'],
@@ -30,10 +49,22 @@ const nextConfig = {
   // Enable compression
   compress: true,
 
-  // Bundle analyzer (enable when needed)
-  // bundleAnalyzer: {
-  //   enabled: process.env.ANALYZE === 'true',
-  // },
+  // Bundle analyzer
+  ...(process.env.ANALYZE === 'true' && {
+    webpack: (config, { isServer }) => {
+      if (!isServer) {
+        const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+        config.plugins.push(
+          new BundleAnalyzerPlugin({
+            analyzerMode: 'static',
+            openAnalyzer: false,
+            reportFilename: '../bundle-analyzer-report.html',
+          })
+        );
+      }
+      return config;
+    },
+  }),
 
   // Headers for better caching and security
   async headers() {
