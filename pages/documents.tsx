@@ -37,28 +37,28 @@ interface Document {
 const sampleDocuments: Document[] = [
   {
     id: '1',
-    title: 'Software Developer Resume (HTML)',
-    description: 'Comprehensive resume showcasing my skills in Python, Java, React, and full-stack development.',
+    title: 'Nhlakanipho Q. Masilela - Resume (Styled)',
+    description: 'Professional resume with modern dark theme styling matching the portfolio design. Features Computer Science education from Wits University, academic excellence, and WeThinkCode_ training.',
     category: 'resume',
     fileType: 'txt',
     fileName: 'resume.html',
-    fileSize: '8.5 KB',
+    fileSize: '18.5 KB',
     uploadDate: '2024-01-15',
     downloadUrl: '/documents/resume.html',
-    tags: ['resume', 'cv', 'software developer', 'html'],
+    tags: ['resume', 'cv', 'styled', 'modern design', 'computer science', 'wits university'],
     featured: true
   },
   {
     id: '1b',
-    title: 'Software Developer Resume (Text)',
-    description: 'Plain text version of my resume for easy viewing and copying.',
+    title: 'Nhlakanipho Q. Masilela - CV (Text)',
+    description: 'Original curriculum vitae in plain text format with personal details, education history, and academic achievements.',
     category: 'resume',
     fileType: 'txt',
     fileName: 'sample-resume.txt',
-    fileSize: '3.2 KB',
+    fileSize: '1.2 KB',
     uploadDate: '2024-01-15',
     downloadUrl: '/documents/sample-resume.txt',
-    tags: ['resume', 'cv', 'software developer', 'text'],
+    tags: ['cv', 'curriculum vitae', 'text format', 'academic'],
     featured: false
   },
   {
