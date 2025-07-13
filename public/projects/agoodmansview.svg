@@ -1,0 +1,60 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0E0E10;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#191F3A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0E0E10;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blockchainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3cc698;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Blockchain blocks -->
+  <rect x="50" y="120" width="40" height="40" fill="#3cc698" opacity="0.8" rx="4"/>
+  <rect x="110" y="120" width="40" height="40" fill="#00FFFF" opacity="0.8" rx="4"/>
+  <rect x="170" y="120" width="40" height="40" fill="#3cc698" opacity="0.8" rx="4"/>
+  <rect x="230" y="120" width="40" height="40" fill="#00FFFF" opacity="0.8" rx="4"/>
+  <rect x="290" y="120" width="40" height="40" fill="#3cc698" opacity="0.8" rx="4"/>
+  
+  <!-- Chain connections -->
+  <line x1="90" y1="140" x2="110" y2="140" stroke="#B2BABB" stroke-width="3"/>
+  <line x1="150" y1="140" x2="170" y2="140" stroke="#B2BABB" stroke-width="3"/>
+  <line x1="210" y1="140" x2="230" y2="140" stroke="#B2BABB" stroke-width="3"/>
+  <line x1="270" y1="140" x2="290" y2="140" stroke="#B2BABB" stroke-width="3"/>
+  
+  <!-- E-commerce elements -->
+  <!-- Shopping cart -->
+  <circle cx="100" cy="80" r="15" fill="none" stroke="#3cc698" stroke-width="2"/>
+  <rect x="92" y="72" width="16" height="10" fill="none" stroke="#3cc698" stroke-width="2"/>
+  <circle cx="95" cy="95" r="2" fill="#3cc698"/>
+  <circle cx="105" cy="95" r="2" fill="#3cc698"/>
+  
+  <!-- Store/vendor icons -->
+  <rect x="200" y="60" width="30" height="25" fill="#191F3A" stroke="#00FFFF" stroke-width="2"/>
+  <polygon points="200,60 215,45 230,60" fill="#00FFFF" opacity="0.6"/>
+  
+  <rect x="280" y="60" width="30" height="25" fill="#191F3A" stroke="#3cc698" stroke-width="2"/>
+  <polygon points="280,60 295,45 310,60" fill="#3cc698" opacity="0.6"/>
+  
+  <!-- Payment/wallet -->
+  <rect x="150" y="200" width="50" height="30" fill="#1E1E24" stroke="#3cc698" stroke-width="2" rx="4"/>
+  <rect x="155" y="205" width="40" height="4" fill="#3cc698"/>
+  <rect x="155" y="212" width="25" height="3" fill="#00FFFF"/>
+  <rect x="155" y="218" width="30" height="3" fill="#3cc698"/>
+  
+  <!-- South African flag colors accent -->
+  <rect x="20" y="20" width="8" height="6" fill="#FF0000"/>
+  <rect x="20" y="26" width="8" height="6" fill="#FFFFFF"/>
+  <rect x="20" y="32" width="8" height="6" fill="#0000FF"/>
+  <rect x="20" y="38" width="8" height="6" fill="#FFD700"/>
+  <rect x="20" y="44" width="8" height="6" fill="#008000"/>
+  
+  <!-- Title -->
+  <text x="200" y="40" text-anchor="middle" fill="#B2BABB" font-family="Arial, sans-serif" font-size="18" font-weight="bold">A Good Man's View</text>
+  <text x="200" y="280" text-anchor="middle" fill="#3cc698" font-family="Arial, sans-serif" font-size="12">Blockchain E-commerce • Next.js • NestJS</text>
+</svg>

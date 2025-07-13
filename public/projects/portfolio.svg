@@ -1,0 +1,81 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0E0E10;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#191F3A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0E0E10;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E1E24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#191F3A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Laptop/Computer -->
+  <rect x="100" y="120" width="200" height="120" fill="#2C2C2C" rx="8"/>
+  <rect x="110" y="130" width="180" height="100" fill="url(#screenGradient)" rx="4"/>
+  
+  <!-- Screen content - portfolio layout -->
+  <!-- Header -->
+  <rect x="115" y="135" width="170" height="15" fill="#3cc698" opacity="0.3"/>
+  <circle cx="125" cy="142" r="3" fill="#3cc698"/>
+  <rect x="135" y="140" width="40" height="4" fill="#B2BABB"/>
+  
+  <!-- Navigation -->
+  <rect x="115" y="155" width="25" height="3" fill="#00FFFF"/>
+  <rect x="145" y="155" width="25" height="3" fill="#B2BABB"/>
+  <rect x="175" y="155" width="25" height="3" fill="#B2BABB"/>
+  <rect x="205" y="155" width="25" height="3" fill="#B2BABB"/>
+  
+  <!-- Content sections -->
+  <rect x="115" y="165" width="170" height="25" fill="#1E1E24" opacity="0.8"/>
+  <rect x="120" y="170" width="60" height="3" fill="#3cc698"/>
+  <rect x="120" y="175" width="80" height="2" fill="#B2BABB"/>
+  <rect x="120" y="180" width="70" height="2" fill="#B2BABB"/>
+  
+  <!-- Project cards -->
+  <rect x="115" y="195" width="50" height="30" fill="#191F3A" stroke="#3cc698" stroke-width="1"/>
+  <rect x="170" y="195" width="50" height="30" fill="#191F3A" stroke="#00FFFF" stroke-width="1"/>
+  <rect x="225" y="195" width="50" height="30" fill="#191F3A" stroke="#3cc698" stroke-width="1"/>
+  
+  <!-- Laptop base -->
+  <rect x="90" y="240" width="220" height="15" fill="#2C2C2C" rx="8"/>
+  
+  <!-- Performance indicators -->
+  <!-- Lighthouse score -->
+  <circle cx="50" cy="80" r="25" fill="none" stroke="#3cc698" stroke-width="3"/>
+  <text x="50" y="85" text-anchor="middle" fill="#3cc698" font-family="Arial, sans-serif" font-size="12" font-weight="bold">100</text>
+  <text x="50" y="110" text-anchor="middle" fill="#B2BABB" font-family="Arial, sans-serif" font-size="8">Lighthouse</text>
+  
+  <!-- Responsive design indicators -->
+  <!-- Mobile -->
+  <rect x="320" y="70" width="15" height="25" fill="#1E1E24" stroke="#00FFFF" stroke-width="2" rx="3"/>
+  <rect x="322" y="73" width="11" height="15" fill="#191F3A"/>
+  
+  <!-- Tablet -->
+  <rect x="340" y="65" width="20" height="30" fill="#1E1E24" stroke="#3cc698" stroke-width="2" rx="3"/>
+  <rect x="342" y="68" width="16" height="20" fill="#191F3A"/>
+  
+  <!-- Desktop -->
+  <rect x="365" y="60" width="25" height="20" fill="#1E1E24" stroke="#B2BABB" stroke-width="2" rx="2"/>
+  <rect x="367" y="62" width="21" height="14" fill="#191F3A"/>
+  <rect x="370" y="82" width="15" height="3" fill="#2C2C2C"/>
+  
+  <!-- Animation elements -->
+  <circle cx="150" cy="60" r="3" fill="#3cc698" opacity="0.8">
+    <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="200" cy="50" r="2" fill="#00FFFF" opacity="0.6">
+    <animate attributeName="opacity" values="0.2;0.8;0.2" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="250" cy="65" r="2" fill="#3cc698" opacity="0.7">
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="#B2BABB" font-family="Arial, sans-serif" font-size="18" font-weight="bold">Portfolio Website</text>
+  <text x="200" y="280" text-anchor="middle" fill="#3cc698" font-family="Arial, sans-serif" font-size="12">Next.js • Tailwind CSS • Framer Motion</text>
+</svg>

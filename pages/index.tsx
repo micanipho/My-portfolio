@@ -110,8 +110,8 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        ASPIRING SOFTWARE ENGINEER | FINAL-YEAR @WETHINKCODE | PYTHON • JAVA • PROBLEM SOLVER |
-        PASSIONATE ABOUT BUILDING SCALABLE APPLICATIONS AND APPLYING ANALYTICAL RIGOR TO BACKEND DEVELOPMENT.
+        JR. BACKEND SOFTWARE ENGINEER | JAVA • SPRING BOOT • PYTHON |
+        PASSIONATE ABOUT BUILDING ROBUST APIS, DATABASE OPTIMIZATION, AND SCALABLE SYSTEM ARCHITECTURE.
       </motion.p>
 
       <div className="flex flex-col sm:flex-row gap-4 mt-2">

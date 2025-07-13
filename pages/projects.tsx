@@ -1,370 +1,287 @@
-import * as React from 'react';
-import { Suspense } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
-import { TechIconComponent } from '../src/utils/techIcons';
-import { useLazyLoad } from '../src/hooks/useLazyLoad';
+import { FaGithub, FaExternalLinkAlt, FaLock } from 'react-icons/fa';
+import { SiNextdotjs, SiNestjs, SiTypescript, SiTailwindcss, SiPostgresql, SiGraphql, SiSpring, SiOpenjdk, SiApache, SiFramer } from 'react-icons/si';
 
-// Lazy load OptimizedImage for better performance
-const OptimizedImage = dynamic(() => import('../src/components/OptimizedImage'), {
-  loading: () => <div className="h-48 bg-[#191F3A]/50 animate-pulse rounded" />,
-  ssr: false
-});
-
-// Type definitions
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  technologies: string[];
-  image: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  featured: boolean;
-}
-
-const Projects: React.FC = () => {
-  const projects: Project[] = [
+export default function Projects() {
+  const projects = [
     {
       id: 1,
-      title: 'STUDENT MANAGEMENT SYSTEM',
-      description: 'A comprehensive student management system built with Java Spring Boot, featuring student registration, course management, and grade tracking with MySQL database.',
-      technologies: ['Java', 'Spring Boot', 'MySQL', 'HTML', 'CSS', 'Bootstrap'],
-      image: '/images/project-1.jpg',
-      liveUrl: '#',
-      githubUrl: 'https://github.com/nhlakanipho',
-      featured: true
+      title: "A Good Man's View",
+      description: "A secure, transparent multi-vendor e-commerce platform for the South African market combining Next.js, NestJS, and blockchain technology with Proof of Stake consensus.",
+      image: "/projects/agoodmansview.svg",
+      tags: ["Next.js", "TypeScript", "NestJS", "GraphQL", "PostgreSQL", "Blockchain", "Tailwind CSS"],
+      github: "https://github.com/A-Good-Man-s-View/agoodmansview_website",
+      live: null, // If not yet deployed
+      status: "In Development",
+      highlights: [
+        "Blockchain-powered with Proof of Stake consensus",
+        "Hybrid GraphQL + RESTful API architecture",
+        "Integrated digital wallets with Visa gateway",
+        "South African market optimization (ZAR currency)",
+        "Comprehensive vendor subscription system"
+      ],
+      icons: [
+        <SiNextdotjs key="nextjs" className="text-white" />,
+        <SiNestjs key="nestjs" className="text-[#E0234E]" />,
+        <SiTypescript key="typescript" className="text-[#3178C6]" />,
+        <SiTailwindcss key="tailwind" className="text-[#06B6D4]" />,
+        <SiPostgresql key="postgresql" className="text-[#4169E1]" />,
+        <SiGraphql key="graphql" className="text-[#E10098]" />
+      ]
     },
     {
       id: 2,
-      title: 'FLASK WEB APPLICATION',
-      description: 'A dynamic web application built with Python Flask, featuring user authentication, database integration, and responsive design.',
-      technologies: ['Python', 'Flask', 'PostgreSQL', 'HTML', 'CSS', 'JavaScript'],
-      image: '/images/project-2.jpg',
-      liveUrl: '#',
-      githubUrl: 'https://github.com/nhlakanipho',
-      featured: true
+      title: "Portfolio Website",
+      description: "A modern, high-performance portfolio website built with Next.js, Tailwind CSS, and Framer Motion animations.",
+      image: "/projects/portfolio.svg",
+      tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
+      github: "https://github.com/nhlakanipho/portfolio",
+      live: "https://nhlakanipho.github.io",
+      status: "Completed",
+      highlights: [
+        "100/100 Lighthouse score with Next.js static generation",
+        "Responsive design with Tailwind CSS",
+        "Modern animations with Framer Motion",
+        "Dark mode support",
+        "Optimized for performance and SEO"
+      ],
+      icons: [
+        <SiNextdotjs key="nextjs" className="text-white" />,
+        <SiTailwindcss key="tailwind" className="text-[#06B6D4]" />,
+        <SiFramer key="framer" className="text-[#0055FF]" />
+      ]
     },
     {
       id: 3,
-      title: 'REACT PORTFOLIO WEBSITE',
-      description: 'A modern, responsive portfolio website showcasing projects and skills with smooth animations and optimized performance.',
-      technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Framer Motion'],
-      image: '/images/project-3.jpg',
-      liveUrl: '#',
-      githubUrl: 'https://github.com/nhlakanipho',
-      featured: false
-    },
-    {
-      id: 4,
-      title: 'CODING CHALLENGE SOLUTIONS',
-      description: 'A collection of coding challenge solutions and algorithms implemented in Python and Java, showcasing problem-solving skills.',
-      technologies: ['Python', 'Java', 'Algorithms', 'Data Structures'],
-      image: '/images/project-4.jpg',
-      liveUrl: '#',
-      githubUrl: 'https://github.com/nhlakanipho',
-      featured: false
+      title: "Library Management System",
+      description: "A comprehensive Spring Boot RESTful API for managing books, users, and borrowing operations in a library. Features complete CRUD operations, book availability tracking, and automated fine calculations.",
+      image: "/projects/lms.svg",
+      tags: ["Java", "Spring Boot", "PostgreSQL", "Maven", "REST API", "JPA"],
+      github: "https://github.com/nhlakanipho/library-management-system",
+      live: null,
+      status: "Completed",
+      highlights: [
+        "Complete RESTful API with 15+ endpoints for books and users",
+        "Automated borrowing/returning system with due date tracking",
+        "PostgreSQL integration with Spring Data JPA",
+        "Fine calculation system for late book returns",
+        "Comprehensive search functionality by title and author",
+        "Maven-based project with clean architecture"
+      ],
+      icons: [
+        <SiOpenjdk key="java" className="text-[#ED8B00]" />,
+        <SiSpring key="spring" className="text-[#6DB33F]" />,
+        <SiPostgresql key="postgresql" className="text-[#4169E1]" />,
+        <SiApache key="maven" className="text-[#C71A36]" />
+      ]
     }
   ];
 
-  const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-    const { elementRef, isIntersecting } = useLazyLoad({
-      threshold: 0.1,
-      rootMargin: '50px',
-      triggerOnce: true
-    });
-
-    return (
-      <motion.div
-        ref={elementRef}
-        className="relative group"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: isIntersecting ? 1 : 0, y: isIntersecting ? 0 : 30 }}
-        transition={{ duration: 0.6, delay: index * 0.1 }}
-      >
-      <motion.div
-        className="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 via-[#191F3A]/70 to-kaiju-green/20 rounded-lg blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      />
-      <div className="relative bg-gradient-to-br from-[#15142b]/90 via-[#191F3A]/95 to-[#15142b]/90 backdrop-blur-sm border border-cyan-400/20 rounded-lg overflow-hidden h-full">
-        {/* Project Image */}
-        <div className="relative h-48 bg-gradient-to-br from-[#191F3A] to-[#15142b] overflow-hidden">
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-kaiju-green/10"
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
-              className="text-6xl text-cyan-400/30"
-              animate={{ rotate: [0, 360] }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            >
-              ⚡
-            </motion.div>
-          </div>
-          {project.featured && (
-            <div className="absolute top-4 right-4">
-              <span className="px-2 py-1 bg-kaiju-green/20 text-kaiju-green text-xs font-medium rounded-full border border-kaiju-green/30">
-                Featured
-              </span>
-            </div>
-          )}
-        </div>
-
-        {/* Project Content */}
-        <div className="p-6">
-          <h3 className="text-xl font-bold text-cyan-400 mb-3">{project.title}</h3>
-          <p className="text-[#B2BABB] text-sm leading-relaxed mb-4">{project.description}</p>
-          
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.technologies.map((tech, techIndex) => (
-              <motion.div
-                key={tech}
-                className="p-2 bg-[#191F3A]/50 rounded-lg transition-all duration-300 relative overflow-hidden"
-                initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
-                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                transition={{
-                  duration: 0.5,
-                  delay: index * 0.1 + techIndex * 0.08,
-                  type: "spring",
-                  stiffness: 200
-                }}
-                title={tech}
-                whileHover={{
-                  scale: 1.15,
-                  y: -4,
-                  rotateZ: 5,
-                  transition: { type: "spring", stiffness: 400, damping: 15 }
-                }}
-                whileTap={{ scale: 0.9 }}
-              >
-                {/* Animated background shimmer */}
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/10 to-transparent"
-                  animate={{
-                    x: ["-100%", "100%"]
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear",
-                    delay: techIndex * 0.5
-                  }}
-                />
-
-                <motion.div
-                  animate={{
-                    rotate: [0, 360]
-                  }}
-                  transition={{
-                    duration: 15,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                >
-                  <TechIconComponent
-                    techName={tech}
-                    size={18}
-                    showLabel={false}
-                    className="text-cyan-400/80 relative z-10"
-                    iconClassName="text-cyan-400/80 hover:text-cyan-400 transition-colors duration-300"
-                  />
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex gap-3">
-            {project.liveUrl && (
-              <motion.a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 px-4 py-2 bg-cyan-400/10 text-cyan-400 border border-cyan-400/30 rounded text-sm font-medium text-center hover:bg-cyan-400/20 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Live Demo
-              </motion.a>
-            )}
-            {project.githubUrl && (
-              <motion.a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 px-4 py-2 bg-kaiju-green/10 text-kaiju-green border border-kaiju-green/30 rounded text-sm font-medium text-center hover:bg-kaiju-green/20 transition-colors duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                GitHub
-              </motion.a>
-            )}
-          </div>
-        </div>
-      </div>
-    </motion.div>
-    );
-  };
-
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-br from-[#0E0E10] via-[#191F3A] to-[#0E0E10] text-white overflow-hidden"
+      className="min-h-screen bg-gradient-to-br from-[#0E0E10] via-[#191F3A] to-[#0E0E10] p-8 pt-24"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Background energy lines */}
-      <div className="absolute inset-0 overflow-hidden opacity-10">
-        {[...Array(8)].map((_, i) => (
+      <div className="max-w-6xl mx-auto">
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold mb-8 text-center text-[#B2BABB]"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          My Projects
+        </motion.h1>
+        
+        <motion.div
+          className="w-24 h-1 bg-[#3cc698] mx-auto mb-12 rounded-full overflow-hidden"
+          initial={{ width: 0 }}
+          animate={{ width: 96 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+        >
           <motion.div
-            key={i}
-            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent w-full"
-            style={{ top: `${5 + i * 12}%`, left: 0 }}
-            animate={{
-              x: ["-100%", "100%"],
-            }}
-            transition={{
-              repeat: Infinity,
-              duration: 6 + i,
-              ease: "linear",
-              delay: i * 0.5,
-            }}
+            className="h-full w-full bg-cyan-400"
+            animate={{ x: ["-100%", "100%"] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            style={{ opacity: 0.6 }}
           />
-        ))}
-      </div>
+        </motion.div>
 
-      <div className="relative z-10 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* Hero Section */}
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.h1
-              className="text-5xl md:text-6xl font-extrabold mb-6"
-              initial={{ opacity: 0, y: -30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <span className="text-[#B2BABB]">My</span>
-              <span className="text-cyan-400 relative ml-4">
-                Projects
-                <motion.span
-                  className="absolute -inset-1 -z-10 rounded-lg blur-md bg-cyan-400/10"
-                  animate={{ opacity: [0.2, 0.5, 0.2] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-              </span>
-            </motion.h1>
-
+        <div className="grid grid-cols-1 gap-12">
+          {projects.map((project, index) => (
             <motion.div
-              className="w-24 h-1 bg-kaiju-green mx-auto mb-8 rounded-full overflow-hidden"
-              initial={{ width: 0 }}
-              animate={{ width: 96 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
+              key={project.id}
+              className="bg-[#1E1E24]/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl border border-[#3cc698]/20"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 * index }}
             >
-              <motion.div
-                className="h-full w-full bg-cyan-400"
-                animate={{ x: ["-100%", "100%"] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                style={{ opacity: 0.6 }}
-              />
-            </motion.div>
+              <div className="md:flex">
+                <div className="md:w-2/5 relative overflow-hidden h-64 md:h-auto">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#3cc698]/20 to-[#191F3A]/50 z-10" />
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-[#191F3A] flex items-center justify-center">
+                      <span className="text-[#3cc698]">Image Coming Soon</span>
+                    </div>
+                  )}
+                  <div className="absolute top-3 right-3 z-20">
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      project.status === "Completed" ? "bg-green-500/20 text-green-300" : 
+                      project.status === "In Development" ? "bg-yellow-500/20 text-yellow-300" :
+                      "bg-blue-500/20 text-blue-300"
+                    }`}>
+                      {project.status}
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="md:w-3/5 p-6 md:p-8">
+                  <h3 className="text-2xl font-bold text-[#B2BABB] mb-3 flex items-center">
+                    {project.title}
+                  </h3>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.icons && project.icons.map((icon, i) => (
+                      <motion.div
+                        key={i}
+                        className="relative group"
+                        initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{
+                          duration: 0.5,
+                          delay: i * 0.1,
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 15
+                        }}
+                        whileHover={{
+                          scale: 1.2,
+                          y: -3,
+                          transition: { type: "spring", stiffness: 400, damping: 10 }
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {/* Animated background glow */}
+                        <motion.div
+                          className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100"
+                          animate={{
+                            scale: [1, 1.1, 1],
+                            opacity: [0.2, 0.4, 0.2]
+                          }}
+                          transition={{
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: i * 0.3
+                          }}
+                          style={{
+                            background: `radial-gradient(circle, currentColor20 0%, transparent 70%)`
+                          }}
+                        />
 
-            <motion.p
-              className="text-xl text-[#B2BABB] max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              Explore my portfolio of web applications, showcasing modern technologies and innovative solutions.
-              Each project represents a unique challenge and learning experience.
-            </motion.p>
-          </motion.div>
+                        {/* Floating particle effect */}
+                        <motion.div
+                          className="absolute top-0 right-0 w-1 h-1 bg-cyan-400/40 rounded-full"
+                          animate={{
+                            scale: [0, 1, 0],
+                            opacity: [0, 1, 0],
+                            rotate: [0, 180, 360]
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            delay: i * 0.5
+                          }}
+                        />
 
-          {/* Projects Grid */}
-          <motion.div
-            className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <Suspense fallback={
-              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                {[...Array(4)].map((_, i) => (
-                  <div key={i} className="h-96 bg-[#191F3A]/20 rounded-lg animate-pulse" />
-                ))}
+                        <motion.div
+                          className="text-xl relative z-10"
+                          animate={{
+                            rotateZ: [0, 5, -5, 0]
+                          }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: i * 0.4
+                          }}
+                          whileHover={{
+                            rotateZ: 0,
+                            transition: { duration: 0.2 }
+                          }}
+                        >
+                          {icon}
+                        </motion.div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  
+                  <p className="text-[#B2BABB]/80 mb-4">
+                    {project.description}
+                  </p>
+                  
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-[#3cc698] mb-2">KEY FEATURES</h4>
+                    <ul className="list-disc list-inside text-[#B2BABB]/70 text-sm space-y-1">
+                      {project.highlights.map((highlight, i) => (
+                        <li key={i}>{highlight}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tags.map((tag, i) => (
+                      <span 
+                        key={i}
+                        className="px-2 py-1 bg-[#3cc698]/10 text-[#3cc698] rounded-md text-xs"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="flex gap-4">
+                    {project.github && (
+                      <a 
+                        href={project.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-[#1E1E24] text-[#B2BABB] rounded-md hover:bg-[#3cc698]/20 transition-colors duration-300"
+                      >
+                        <FaGithub /> Code
+                      </a>
+                    )}
+                    
+                    {project.live ? (
+                      <a 
+                        href={project.live} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 px-4 py-2 bg-[#3cc698]/20 text-[#3cc698] rounded-md hover:bg-[#3cc698]/30 transition-colors duration-300"
+                      >
+                        <FaExternalLinkAlt /> Live Demo
+                      </a>
+                    ) : (
+                      <span className="flex items-center gap-2 px-4 py-2 bg-[#1E1E24]/50 text-[#B2BABB]/50 rounded-md cursor-not-allowed">
+                        <FaLock className="text-sm" /> Coming Soon
+                      </span>
+                    )}
+                  </div>
+                </div>
               </div>
-            }>
-              {projects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} index={index} />
-              ))}
-            </Suspense>
-          </motion.div>
-
-          {/* Call to Action */}
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <h2 className="text-3xl font-bold text-[#B2BABB] mb-8">
-              Interested in <span className="text-cyan-400">Working Together?</span>
-            </h2>
-            <p className="text-xl text-[#B2BABB] mb-8 max-w-2xl mx-auto">
-              I'm always open to discussing new opportunities and exciting projects.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <Link href="/contact" className="relative px-8 py-3 bg-[#1e1e24] text-cyan-400 border border-cyan-400 rounded-md shadow-lg shadow-cyan-400/20 font-medium inline-flex items-center group">
-                  <motion.span
-                    className="absolute inset-0 rounded-md opacity-0 bg-cyan-400/10 group-hover:opacity-100 transition-opacity duration-300"
-                    animate={{ opacity: [0.3, 0.5, 0.3] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  <span>Get In Touch</span>
-                </Link>
-              </motion.div>
-
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <Link href="/about" className="relative px-8 py-3 bg-transparent text-kaiju-green border border-kaiju-green rounded-md shadow-lg shadow-kaiju-green/20 font-medium inline-flex items-center group">
-                  <motion.span
-                    className="absolute inset-0 rounded-md opacity-0 bg-kaiju-green/10 group-hover:opacity-100 transition-opacity duration-300"
-                    animate={{ opacity: [0.3, 0.5, 0.3] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  <span>Learn More About Me</span>
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
       </div>
-
-      {/* Bottom gradient */}
-      <motion.div
-        className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-[#0E0E10] to-transparent"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.7 }}
-        transition={{ duration: 0.5, delay: 1 }}
-      />
     </motion.div>
   );
-};
-
-export default Projects;
+}
