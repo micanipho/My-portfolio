@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaGithub, FaExternalLinkAlt, FaLock } from 'react-icons/fa';
-import { SiNextdotjs, SiNestjs, SiTypescript, SiTailwindcss, SiPostgresql, SiGraphql, SiSpring, SiOpenjdk, SiApache, SiFramer } from 'react-icons/si';
+import { SiNextdotjs, SiNestjs, SiTypescript, SiTailwindcss, SiPostgresql, SiGraphql, SiSpring, SiOpenjdk, SiApache, SiFramer, SiAmazonaws, SiDocker, SiSwagger } from 'react-icons/si';
 
 export default function Projects() {
   const projects = [
@@ -33,24 +33,29 @@ export default function Projects() {
     },
     {
       id: 2,
-      title: "Portfolio Website",
-      description: "A modern, high-performance portfolio website built with Next.js, Tailwind CSS, and Framer Motion animations.",
-      image: "/projects/portfolio.svg",
-      tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
-      github: "https://github.com/nhlakanipho/portfolio",
-      live: "https://nhlakanipho.github.io",
+      title: "FinTrack - Personal Finance API",
+      description: "A comprehensive Personal Finance Management API built with Spring Boot and AWS, demonstrating enterprise-grade financial software development with secure transaction processing, regulatory compliance, and modern cloud deployment patterns.",
+      image: "/projects/fintrack.svg",
+      tags: ["Java", "Spring Boot", "AWS", "PostgreSQL", "Docker", "JWT", "REST API"],
+      github: "https://github.com/nhlakanipho/fintrack-api",
+      live: null,
       status: "Completed",
       highlights: [
-        "100/100 Lighthouse score with Next.js static generation",
-        "Responsive design with Tailwind CSS",
-        "Modern animations with Framer Motion",
-        "Dark mode support",
-        "Optimized for performance and SEO"
+        "JWT-based authentication with role-based access control",
+        "Precise money handling with BigDecimal calculations",
+        "Real-time budget tracking with spending alerts",
+        "AWS integration (RDS, S3, SES) for cloud deployment",
+        "Complete audit trail with Spring Data Envers",
+        "Production-ready with comprehensive monitoring and logging",
+        "85%+ test coverage with unit and integration tests"
       ],
       icons: [
-        <SiNextdotjs key="nextjs" className="text-white" />,
-        <SiTailwindcss key="tailwind" className="text-[#06B6D4]" />,
-        <SiFramer key="framer" className="text-[#0055FF]" />
+        <SiOpenjdk key="java" className="text-[#ED8B00]" />,
+        <SiSpring key="spring" className="text-[#6DB33F]" />,
+        <SiAmazonaws key="aws" className="text-[#FF9900]" />,
+        <SiPostgresql key="postgresql" className="text-[#4169E1]" />,
+        <SiDocker key="docker" className="text-[#2496ED]" />,
+        <SiSwagger key="swagger" className="text-[#85EA2D]" />
       ]
     },
     {
