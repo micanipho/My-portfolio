@@ -31,8 +31,10 @@ import {
   SiDocker,
   SiKubernetes,
   SiAmazonaws,
-  SiVercel
+  SiVercel,
+  SiJson
 } from 'react-icons/si';
+import { FaCode, FaDatabase, FaCogs } from 'react-icons/fa';
 import { IconType } from 'react-icons';
 
 export interface TechIcon {
@@ -97,7 +99,12 @@ export const techIconMap: Record<string, TechIcon> = {
   'Docker': { name: 'Docker', icon: SiDocker, color: '#2496ED', category: 'devops' },
   'Kubernetes': { name: 'Kubernetes', icon: SiKubernetes, color: '#326CE5', category: 'devops' },
   'AWS': { name: 'AWS', icon: SiAmazonaws, color: '#FF9900', category: 'cloud' },
-  'Vercel': { name: 'Vercel', icon: SiVercel, color: '#000000', category: 'cloud' }
+  'Vercel': { name: 'Vercel', icon: SiVercel, color: '#000000', category: 'cloud' },
+
+  // Core Programming Concepts
+  'JSON': { name: 'JSON', icon: SiJson, color: '#000000', category: 'concept' },
+  'Object-Relational Mapping (ORM)': { name: 'ORM', icon: FaDatabase, color: '#4479A1', category: 'concept' },
+  'Object-Oriented Programming (OOP)': { name: 'OOP', icon: FaCode, color: '#61DAFB', category: 'concept' }
 };
 
 // Helper function to get tech icon by name
@@ -133,20 +140,35 @@ export const TechIconComponent: React.FC<TechIconProps> = ({
   animated = false
 }) => {
   const tech = getTechIcon(techName);
-  
+
   if (!tech) {
-    // Fallback for unknown technologies
-    return showLabel ? (
-      <span className={`text-[#B2BABB] ${labelClassName}`}>
-        {techName}
-      </span>
-    ) : null;
+    // Fallback for unknown technologies - show generic icon
+    return (
+      <div
+        className={`flex items-center gap-2 ${className}`}
+        onClick={onClick}
+        role={onClick ? 'button' : undefined}
+        tabIndex={onClick ? 0 : undefined}
+        title={techName}
+      >
+        <FaCogs
+          size={size}
+          className={`text-[#B2BABB] hover:text-cyan-400 transition-colors duration-300 ${iconClassName}`}
+          aria-hidden="true"
+        />
+        {showLabel && (
+          <span className={`text-[#B2BABB] ${labelClassName}`}>
+            {techName}
+          </span>
+        )}
+      </div>
+    );
   }
 
   const IconComponent = tech.icon;
 
   return (
-    <div 
+    <div
       className={`flex items-center gap-2 ${className}`}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
@@ -155,8 +177,8 @@ export const TechIconComponent: React.FC<TechIconProps> = ({
       <IconComponent
         size={size}
         className={`text-[#B2BABB] hover:text-cyan-400 transition-colors duration-300 ${iconClassName}`}
-        style={{ 
-          color: animated ? undefined : tech.color 
+        style={{
+          color: animated ? undefined : tech.color
         }}
         aria-hidden="true"
       />

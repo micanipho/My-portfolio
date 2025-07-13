@@ -1,32 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable image optimization with modern formats
+  // Enable static export for GitHub Pages
+  output: 'export',
+
+  // Add trailing slash for GitHub Pages compatibility
+  trailingSlash: true,
+
+  // Disable image optimization for static export
   images: {
+    unoptimized: true,
     domains: ['images.unsplash.com', 'cdn.sanity.io'],
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
   },
 
-  // Configure headers for document files
-  async headers() {
-    return [
-      {
-        source: '/documents/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-          {
-            key: 'Content-Security-Policy',
-            value: "default-src 'self'; frame-src 'self' blob:; object-src 'none';",
-          },
-        ],
-      },
-    ];
-  },
+  // Note: Headers are not supported with static export
+  // They would need to be configured at the web server level
 
   // Optimize package imports for better performance
   experimental: {
@@ -65,38 +55,6 @@ const nextConfig = {
       return config;
     },
   }),
-
-  // Headers for better caching and security
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-        ],
-      },
-      {
-        source: '/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
 }
 
 module.exports = nextConfig
