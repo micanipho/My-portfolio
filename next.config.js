@@ -6,6 +6,13 @@ const nextConfig = {
   // Add trailing slash for GitHub Pages compatibility
   trailingSlash: true,
 
+  // Configure asset prefix for GitHub Pages
+  // This will be automatically set by GitHub Actions
+  assetPrefix: process.env.NODE_ENV === 'production' ? undefined : '',
+
+  // Ensure proper base path handling
+  basePath: '',
+
   // Disable image optimization for static export
   images: {
     unoptimized: true,
@@ -39,22 +46,38 @@ const nextConfig = {
   // Enable compression
   compress: true,
 
-  // Bundle analyzer
-  ...(process.env.ANALYZE === 'true' && {
-    webpack: (config, { isServer }) => {
-      if (!isServer) {
-        const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false,
-            reportFilename: '../bundle-analyzer-report.html',
-          })
-        );
-      }
-      return config;
-    },
-  }),
+  // Bundle analyzer and webpack configuration
+  webpack: (config, { isServer }) => {
+    // Bundle analyzer (only when ANALYZE=true)
+    if (process.env.ANALYZE === 'true' && !isServer) {
+      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+      config.plugins.push(
+        new BundleAnalyzerPlugin({
+          analyzerMode: 'static',
+          openAnalyzer: false,
+          reportFilename: '../bundle-analyzer-report.html',
+        })
+      );
+    }
+
+    // Copy .nojekyll file to output directory
+    if (!isServer) {
+      const CopyPlugin = require('copy-webpack-plugin');
+      config.plugins.push(
+        new CopyPlugin({
+          patterns: [
+            {
+              from: '.nojekyll',
+              to: '.nojekyll',
+              noErrorOnMissing: true,
+            },
+          ],
+        })
+      );
+    }
+
+    return config;
+  },
 }
 
 module.exports = nextConfig
