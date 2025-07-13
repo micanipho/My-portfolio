@@ -1,18 +1,18 @@
 // src/components/DocumentCard.tsx
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FaFilePdf, 
-  FaFileWord, 
-  FaFilePowerpoint, 
-  FaFileAlt, 
-  FaDownload, 
+import {
+  FaFilePdf,
+  FaFileWord,
+  FaFilePowerpoint,
+  FaFileAlt,
+  FaDownload,
   FaEye,
   FaCertificate,
   FaGraduationCap,
   FaProjectDiagram,
   FaUser,
-  FaPresentation,
+  FaChalkboardTeacher,
   FaFile
 } from 'react-icons/fa';
 import { Document, DocumentCardProps } from '../types/document';
@@ -48,7 +48,7 @@ const getCategoryIcon = (category: string) => {
     case 'projects':
       return <FaProjectDiagram className="text-purple-500" />;
     case 'presentations':
-      return <FaPresentation className="text-pink-500" />;
+      return <FaChalkboardTeacher className="text-pink-500" />;
     default:
       return <FaFile className="text-gray-400" />;
   }

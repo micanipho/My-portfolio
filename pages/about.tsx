@@ -21,21 +21,28 @@ const About: React.FC = () => {
   const skills: SkillGroup[] = [
     { category: 'Programming Languages', items: ['Python', 'Java', 'JavaScript', 'HTML', 'CSS'] },
     { category: 'Frameworks & Libraries', items: ['React', 'Flask', 'Spring Boot', 'Tailwind CSS', 'Bootstrap'] },
+    { category: 'Core Skills', items: ['Object-Relational Mapping (ORM)', 'JSON', 'Object-Oriented Programming (OOP)'] },
     { category: 'Databases & Tools', items: ['MySQL', 'PostgreSQL', 'Git', 'GitHub', 'VS Code'] }
   ];
 
   const experiences: Experience[] = [
     {
-      title: 'Software Engineering Student',
+      title: 'Bootcamp Mentor',
       company: 'WeThinkCode_',
-      period: '2023 - Present',
-      description: 'Intensive software engineering program focusing on Python, Java, and modern development practices. Participating in coding challenges, hackathons, and collaborative projects.'
+      period: 'May 2025 - Present',
+      description: 'As a volunteer mentor and reviewer, I guide bootcamp teams through their project journeys by providing technical and strategic mentorship, helping them understand project requirements, overcome roadblocks, and apply best practices in software development. I also conduct structured reviews, offering constructive feedback and grading their final project submissions based on established criteria.'
     },
     {
-      title: 'Junior Software Developer',
-      company: 'Self-Directed Learning',
-      period: '2022 - Present',
-      description: 'Building projects with Python, Java, React, Flask, and Spring Boot. Passionate about learning new technologies and solving complex problems through code.'
+      title: 'Software Engineering Student',
+      company: 'WeThinkCode_',
+      period: '2024 - 2025',
+      description: 'Pursuing a Diploma in Computer Software Engineering. Intensive program focusing on Python, Java, and modern development practices. Participating in coding challenges, hackathons, and collaborative projects.'
+    },
+    {
+      title: 'Computer Science Graduate',
+      company: 'University of the Witwatersrand',
+      period: 'February 2018 - December 2021',
+      description: 'Completed Bachelor\'s degree in Computer Science. Built strong foundation in analytical thinking and problem-solving from first principles, which I now apply to designing efficient, scalable technology solutions.'
     }
   ];
 
@@ -112,9 +119,9 @@ const About: React.FC = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              I'M A PASSIONATE JUNIOR SOFTWARE DEVELOPER AND SOFTWARE ENGINEERING STUDENT AT WETHINKCODE_.
-              WITH EXPERTISE IN PYTHON, JAVA, AND MODERN WEB TECHNOLOGIES, I LOVE TACKLING CODING CHALLENGES
-              AND BUILDING INNOVATIVE SOLUTIONS THAT MAKE A DIFFERENCE.
+              ASPIRING SOFTWARE ENGINEER | FINAL-YEAR @WETHINKCODE | PYTHON • JAVA • PROBLEM SOLVER |
+              PASSIONATE ABOUT BUILDING SCALABLE APPLICATIONS. FROM PHYSICS EQUATIONS TO SCALABLE CODE,
+              I BRING ANALYTICAL RIGOR TO BACKEND DEVELOPMENT.
             </motion.p>
           </motion.div>
 
@@ -135,13 +142,13 @@ const About: React.FC = () => {
                 <h3 className="text-2xl font-bold text-cyan-400 mb-4">My Journey</h3>
                 <div className="flex-grow">
                   <p className="text-[#B2BABB] leading-relaxed mb-4">
-                    My journey into software development started at WeThinkCode_, where I discovered my passion for
-                    solving complex problems through code. I believe in writing clean, efficient code that not only works
-                    but is also maintainable and scalable.
+                    My journey into software development started with a background in physics and mathematics, which taught me to
+                    solve problems from first principles. At WeThinkCode_, I discovered my passion for building clean, reliable
+                    backend systems using Spring Boot and applying analytical rigor to designing efficient, scalable technology solutions.
                   </p>
                   <p className="text-[#B2BABB] leading-relaxed">
-                    When I'm not coding, you'll find me participating in hackathons, exploring new technologies,
-                    or collaborating with fellow developers on exciting projects.
+                    Currently exploring AI and data to drive smarter systems. Always learning, always building.
+                    Ready to contribute to innovative teams and shape the future of tech together.
                   </p>
                 </div>
               </div>
@@ -157,12 +164,14 @@ const About: React.FC = () => {
                 <h3 className="text-2xl font-bold text-kaiju-green mb-4">What Drives Me</h3>
                 <div className="flex-grow">
                   <p className="text-[#B2BABB] leading-relaxed mb-4">
-                    I'm driven by the endless possibilities that technology offers to improve people's lives.
-                    Every project is an opportunity to learn something new and push the boundaries of what's possible.
+                    I specialize in building clean, reliable backend systems using Spring Boot. My background in physics
+                    and mathematics provides me with the analytical foundation to approach complex technical challenges
+                    with precision and creativity.
                   </p>
                   <p className="text-[#B2BABB] leading-relaxed">
                     I value collaboration, continuous learning, and creating solutions that are not just functional
-                    but also accessible and user-friendly.
+                    but also scalable and maintainable. Every project is an opportunity to apply first-principles thinking
+                    to real-world problems.
                   </p>
                 </div>
               </div>

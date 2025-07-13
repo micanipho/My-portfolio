@@ -110,8 +110,8 @@ export default function Home() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        JUNIOR SOFTWARE DEVELOPER & SOFTWARE ENGINEERING STUDENT AT WETHINKCODE_.
-        PASSIONATE ABOUT CODING CHALLENGES, HACKATHONS, AND BUILDING INNOVATIVE SOLUTIONS.
+        ASPIRING SOFTWARE ENGINEER | FINAL-YEAR @WETHINKCODE | PYTHON • JAVA • PROBLEM SOLVER |
+        PASSIONATE ABOUT BUILDING SCALABLE APPLICATIONS AND APPLYING ANALYTICAL RIGOR TO BACKEND DEVELOPMENT.
       </motion.p>
 
       <div className="flex flex-col sm:flex-row gap-4 mt-2">

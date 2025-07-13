@@ -41,15 +41,14 @@ const SEO: React.FC<SEOProps> = ({
     url: currentUrl,
     image: imageUrl,
     ...(type === 'profile' && {
-      jobTitle: 'Junior Software Developer',
+      jobTitle: 'Aspiring Software Engineer | Final-Year @WeThinkCode',
       worksFor: {
         '@type': 'Organization',
         name: 'WeThinkCode_',
       },
       sameAs: [
-        'https://github.com/nhlakanipho',
-        'https://linkedin.com/in/nhlakanipho',
-        'https://instagram.com/nhlakanipho',
+        'https://github.com/micanipho',
+        'https://linkedin.com/in/nqmasilela',
       ],
     }),
   };
