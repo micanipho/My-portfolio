@@ -22,15 +22,30 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
-  // Webpack configuration for SVG files
-  webpack(config) {
-    // SVG handling
+  // Ensure static files are properly handled
+  webpack: (config, { isServer }) => {
+    // Handle SVG files
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack', 'url-loader'],
+      use: ['@svgr/webpack'],
     });
 
     return config;
+  },
+
+  // Add headers for better static file serving
+  async headers() {
+    return [
+      {
+        source: '/projects/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 
   // Experimental features

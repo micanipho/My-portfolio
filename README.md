@@ -1,4 +1,6 @@
-# 🌟 Portfolio Website
+sudo apt update
+sudo apt --fix-broken install
+sudo apt autoremove# 🌟 Portfolio Website
 
 A modern, high-performance portfolio website built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and deployed on [Vercel](https://vercel.com).  
 
