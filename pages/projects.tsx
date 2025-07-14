@@ -238,15 +238,26 @@ export default function Projects() {
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
                       onError={(e) => {
-                        e.currentTarget.src = '/projects/fallback-project.svg';
-                        e.currentTarget.onerror = null;
+                        console.error(`Failed to load image: ${project.image}`);
+                        // Try multiple fallback strategies
+                        const target = e.currentTarget;
+                        if (target.src.includes('/projects/')) {
+                          // If the original path failed, try without /projects/ prefix
+                          target.src = project.image.replace('/projects/', '/');
+                        } else {
+                          // Final fallback to a placeholder
+                          target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTkxRjNBIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjM2NjNjk4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiPkltYWdlIE5vdCBGb3VuZDwvdGV4dD4KPC9zdmc+';
+                        }
+                        target.onerror = null; // Prevent infinite loop
                       }}
                     />
-                  ) : null}
-                  <div className={`w-full h-full bg-[#191F3A] flex items-center justify-center ${project.image ? 'hidden' : ''}`}>
-                    <span className="text-[#3cc698]">Image Coming Soon</span>
-                  </div>
+                  ) : (
+                    <div className="w-full h-full bg-[#191F3A] flex items-center justify-center">
+                      <span className="text-[#3cc698]">Image Coming Soon</span>
+                    </div>
+                  )}
                   <div className="absolute top-3 right-3 z-20">
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                       project.status === "Completed" ? "bg-green-500/20 text-green-300" : 

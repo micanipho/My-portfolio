@@ -136,12 +136,12 @@ export default function Home() {
       </motion.div>
 
       <motion.h1
-        className="text-6xl font-extrabold mb-4 drop-shadow-lg relative"
+        className="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg relative"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <span className="text-[#B2BABB]">Nhlakanipho's Portfolio</span>
+        <span className="text-[#B2BABB] block">Nhlakanipho's Portfolio</span>
         <motion.span
           className="absolute -inset-1 -z-10 rounded-lg blur-md bg-cyan-400/10"
           animate={{ opacity: [0.2, 0.5, 0.2] }}
