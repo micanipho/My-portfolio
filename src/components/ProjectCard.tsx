@@ -27,7 +27,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
       <div className="relative h-48 overflow-hidden">
         {project.image ? (
           <img
-            src={`/projects/${project.image}`}
+            src={project.image.startsWith('/projects/') ? project.image : `/projects/${project.image}`}
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             onError={(e) => {

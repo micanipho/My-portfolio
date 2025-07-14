@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { projectImages } from '../data/projectImages';
 
 const SvgTester: React.FC = () => {
   const [testResults, setTestResults] = useState<{[key: string]: boolean}>({});
@@ -27,17 +26,6 @@ const SvgTester: React.FC = () => {
       img.src = `/projects/${file}`;
     });
     
-    // Test base64 SVG loading
-    Object.keys(projectImages).forEach(key => {
-      const img = new Image();
-      img.onload = () => {
-        setTestResults(prev => ({...prev, [`base64_${key}`]: true}));
-      };
-      img.onerror = () => {
-        setTestResults(prev => ({...prev, [`base64_${key}`]: false}));
-      };
-      img.src = projectImages[key];
-    });
   }, []);
   
   return (
