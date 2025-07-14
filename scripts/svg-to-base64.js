@@ -15,6 +15,7 @@ const svgFiles = [
   'agoodmansview.svg',
   'fintrack.svg', 
   'lms.svg',
+  'portfolio.svg',
   'fallback-project.svg'
 ];
 

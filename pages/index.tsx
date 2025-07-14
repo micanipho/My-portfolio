@@ -24,24 +24,83 @@ export default function Home() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Background energy lines */}
-      <div className="absolute inset-0 overflow-hidden opacity-20">
-        {[...Array(5)].map((_, i) => (
+      {/* Background cyan glow particles */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        {/* Cosmic dust particles with cyan glow */}
+        {[...Array(30)].map((_, i) => (
           <motion.div
-            key={i}
-            className="absolute h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent w-full"
-            style={{ top: `${15 + i * 20}%`, left: 0 }}
+            key={`cosmic-dust-${i}`}
+            className="absolute rounded-full blur-sm"
+            style={{ 
+              left: `${Math.random() * 100}%`, 
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              background: '#00FFFF',
+              boxShadow: '0 0 12px 4px rgba(0, 255, 255, 0.6)'
+            }}
             animate={{
-              x: ["-100%", "100%"],
+              scale: [1, 1.8, 1],
+              opacity: [0.4, 0.8, 0.4]
             }}
             transition={{
+              duration: 3 + Math.random() * 4,
               repeat: Infinity,
-              duration: 4 + i,
-              ease: "linear",
-              delay: i * 0.5,
+              ease: "easeInOut",
+              delay: i * 0.2
             }}
           />
         ))}
+        
+        {/* Kaiju energy particles with cyan glow */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={`kaiju-particle-${i}`}
+            className="absolute rounded-full"
+            style={{ 
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              background: '#00FFFF',
+              boxShadow: '0 0 15px 5px rgba(0, 255, 255, 0.7)'
+            }}
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 0.9, 0],
+              y: [0, -70, -140]
+            }}
+            transition={{
+              duration: 5 + Math.random() * 3,
+              repeat: Infinity,
+              delay: i * 0.4,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+        
+        {/* Subtle cyan nebula effect */}
+        <motion.div
+          className="absolute rounded-full opacity-20 blur-3xl"
+          style={{ 
+            top: '50%', 
+            left: '50%', 
+            width: '100%',
+            height: '100%',
+            x: '-50%', 
+            y: '-50%',
+            background: 'radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%)'
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
 
       <motion.div

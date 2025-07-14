@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaGithub, FaExternalLinkAlt, FaLock } from 'react-icons/fa';
 import { SiNextdotjs, SiNestjs, SiTypescript, SiTailwindcss, SiPostgresql, SiGraphql, SiSpring, SiOpenjdk, SiApache, SiFramer, SiAmazonaws, SiDocker, SiSwagger } from 'react-icons/si';
-import { projectImages } from '../src/data/projectImages';
 
 export default function Projects() {
   const projects = [
@@ -236,13 +235,12 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#3cc698]/20 to-[#191F3A]/50 z-10" />
                   {project.image ? (
                     <img
-                      src={projectImages[project.id] || `/projects/${project.image}`}
+                      src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       onError={(e) => {
-                        console.error(`Failed to load image: ${project.image}`);
-                        e.currentTarget.src = projectImages.fallbackproject || '/projects/fallback-project.svg';
-                        e.currentTarget.onerror = null; // Prevent infinite error loop
+                        e.currentTarget.src = '/projects/fallback-project.svg';
+                        e.currentTarget.onerror = null;
                       }}
                     />
                   ) : null}
