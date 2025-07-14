@@ -60,7 +60,7 @@ const nextConfig = {
       );
     }
 
-    // Copy .nojekyll file to output directory
+    // Copy .nojekyll file and ensure public assets are copied
     if (!isServer) {
       const CopyPlugin = require('copy-webpack-plugin');
       config.plugins.push(
@@ -69,6 +69,11 @@ const nextConfig = {
             {
               from: '.nojekyll',
               to: '.nojekyll',
+              noErrorOnMissing: true,
+            },
+            {
+              from: 'public/projects',
+              to: 'projects',
               noErrorOnMissing: true,
             },
           ],

@@ -37,9 +37,9 @@ export default function Projects() {
       description: "A comprehensive Personal Finance Management API built with Spring Boot and AWS, demonstrating enterprise-grade financial software development with secure transaction processing, regulatory compliance, and modern cloud deployment patterns.",
       image: "/projects/fintrack.svg",
       tags: ["Java", "Spring Boot", "AWS", "PostgreSQL", "Docker", "JWT", "REST API"],
-      github: "https://github.com/nhlakanipho/fintrack-api",
+      github: "https://github.com/micanipho/FinTrack",
       live: null,
-      status: "Completed",
+      status: "In Development",
       highlights: [
         "JWT-based authentication with role-based access control",
         "Precise money handling with BigDecimal calculations",
@@ -64,7 +64,7 @@ export default function Projects() {
       description: "A comprehensive Spring Boot RESTful API for managing books, users, and borrowing operations in a library. Features complete CRUD operations, book availability tracking, and automated fine calculations.",
       image: "/projects/lms.svg",
       tags: ["Java", "Spring Boot", "PostgreSQL", "Maven", "REST API", "JPA"],
-      github: "https://github.com/nhlakanipho/library-management-system",
+      github: "https://github.com/micanipho/Library-management-system",
       live: null,
       status: "Completed",
       highlights: [
@@ -128,16 +128,24 @@ export default function Projects() {
                 <div className="md:w-2/5 relative overflow-hidden h-64 md:h-auto">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#3cc698]/20 to-[#191F3A]/50 z-10" />
                   {project.image ? (
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
+                    <img
+                      src={project.image}
+                      alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      onError={(e) => {
+                        console.log(`Failed to load image: ${project.image}`);
+                        // Try fallback image
+                        e.currentTarget.src = '/projects/fallback-project.svg';
+                        e.currentTarget.onerror = () => {
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                        };
+                      }}
                     />
-                  ) : (
-                    <div className="w-full h-full bg-[#191F3A] flex items-center justify-center">
-                      <span className="text-[#3cc698]">Image Coming Soon</span>
-                    </div>
-                  )}
+                  ) : null}
+                  <div className={`w-full h-full bg-[#191F3A] flex items-center justify-center ${project.image ? 'hidden' : ''}`}>
+                    <span className="text-[#3cc698]">Image Coming Soon</span>
+                  </div>
                   <div className="absolute top-3 right-3 z-20">
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                       project.status === "Completed" ? "bg-green-500/20 text-green-300" : 

@@ -13,7 +13,9 @@
     "lighthouse": "lhci autorun",
     "perf": "next build && next start",
     "test-deployment": "node scripts/test-deployment.js",
-    "deploy-test": "npm run build && npm run test-deployment"
+    "deploy-test": "npm run build && npm run test-deployment",
+    "test-svg": "node scripts/convert-svg-to-png.js",
+    "svg-to-base64": "node scripts/svg-to-base64.js"
   },
   "dependencies": {
     "autoprefixer": "^10.0.0",
