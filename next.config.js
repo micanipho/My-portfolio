@@ -22,22 +22,20 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
 
-  // Note: Headers are not supported with static export
-  // They would need to be configured at the web server level
+  // Webpack configuration for SVG files
+  webpack(config) {
+    // SVG handling
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack', 'url-loader'],
+    });
 
-  // Optimize package imports for better performance
-  experimental: {
-    optimizePackageImports: ['react-icons'],
+    return config;
   },
 
-  // Turbopack configuration (stable in Next.js 15+)
-  turbopack: {
-    rules: {
-      '*.svg': {
-        loaders: ['@svgr/webpack'],
-        as: '*.js',
-      },
-    },
+  // Experimental features
+  experimental: {
+    optimizePackageImports: ['react-icons'],
   },
 
   // Enable strict mode for better development experience
@@ -45,44 +43,6 @@ const nextConfig = {
 
   // Enable compression
   compress: true,
-
-  // Bundle analyzer and webpack configuration
-  webpack: (config, { isServer }) => {
-    // Bundle analyzer (only when ANALYZE=true)
-    if (process.env.ANALYZE === 'true' && !isServer) {
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'static',
-          openAnalyzer: false,
-          reportFilename: '../bundle-analyzer-report.html',
-        })
-      );
-    }
-
-    // Copy .nojekyll file and ensure public assets are copied
-    if (!isServer) {
-      const CopyPlugin = require('copy-webpack-plugin');
-      config.plugins.push(
-        new CopyPlugin({
-          patterns: [
-            {
-              from: '.nojekyll',
-              to: '.nojekyll',
-              noErrorOnMissing: true,
-            },
-            {
-              from: 'public/projects',
-              to: 'projects',
-              noErrorOnMissing: true,
-            },
-          ],
-        })
-      );
-    }
-
-    return config;
-  },
 }
 
-module.exports = nextConfig
+module.exports = nextConfig;

@@ -64,6 +64,8 @@ module.exports = {
         'energy-flow': 'energyFlow 4s ease infinite',
         'fadeIn': 'fadeIn 1s ease-in',
         'slideUp': 'slideUp 0.7s ease-in-out',
+        'kaiju-glow': 'kaijuGlow 4s ease-in-out infinite',
+        'cosmic-dust': 'cosmicDust 15s linear infinite',
       },
       keyframes: {
         glowPulse: {
@@ -89,6 +91,14 @@ module.exports = {
         slideUp: {
           '0%': { transform: 'translateY(20px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        kaijuGlow: {
+          '0%, 100%': { opacity: 0.3, transform: 'scale(1)' },
+          '50%': { opacity: 0.7, transform: 'scale(1.1)' },
+        },
+        cosmicDust: {
+          '0%': { transform: 'rotate(0deg) translateX(10px) rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg) translateX(10px) rotate(-360deg)' },
         }
       }
     },

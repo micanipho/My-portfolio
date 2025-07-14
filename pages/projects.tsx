@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaGithub, FaExternalLinkAlt, FaLock } from 'react-icons/fa';
 import { SiNextdotjs, SiNestjs, SiTypescript, SiTailwindcss, SiPostgresql, SiGraphql, SiSpring, SiOpenjdk, SiApache, SiFramer, SiAmazonaws, SiDocker, SiSwagger } from 'react-icons/si';
+import { projectImages } from '../src/data/projectImages';
 
 export default function Projects() {
   const projects = [
@@ -86,11 +87,117 @@ export default function Projects() {
 
   return (
     <motion.div
-      className="min-h-screen bg-gradient-to-br from-[#0E0E10] via-[#191F3A] to-[#0E0E10] p-8 pt-24"
+      className="min-h-screen bg-gradient-to-br from-[#0E0E10] via-[#191F3A] to-[#0E0E10] p-8 pt-24 relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      {/* Kaiju cosmic background effects - CYAN GLOW PARTICLES */}
+      <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
+        {/* Glowing cosmic dust with cyan theme */}
+        {[...Array(35)].map((_, i) => (
+          <motion.div
+            key={`star-${i}`}
+            className="absolute rounded-full blur-sm"
+            style={{ 
+              left: `${Math.random() * 100}%`, 
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              background: i % 5 === 0 ? '#3cc698' : '#00FFFF',
+              boxShadow: i % 5 === 0 ? '0 0 10px 3px #3cc698' : '0 0 12px 4px #00FFFF'
+            }}
+            animate={{
+              scale: [1, 1.8, 1],
+              opacity: [0.4, 0.8, 0.4]
+            }}
+            transition={{
+              duration: 3 + Math.random() * 4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.2
+            }}
+          />
+        ))}
+        
+        {/* Larger cyan orbs with intense glow */}
+        {[...Array(10)].map((_, i) => (
+          <motion.div
+            key={`orb-${i}`}
+            className="absolute rounded-full blur-md"
+            style={{ 
+              left: `${10 + Math.random() * 80}%`, 
+              top: `${10 + Math.random() * 80}%`,
+              width: `${Math.random() * 6 + 4}px`,
+              height: `${Math.random() * 6 + 4}px`,
+              background: 'rgba(0, 255, 255, 0.7)',
+              boxShadow: '0 0 20px 8px rgba(0, 255, 255, 0.5)'
+            }}
+            animate={{
+              scale: [1, 1.5, 1],
+              opacity: [0.4, 0.8, 0.4],
+              x: [0, Math.random() * 40 - 20],
+              y: [0, Math.random() * 40 - 20]
+            }}
+            transition={{
+              duration: 8 + Math.random() * 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.5
+            }}
+          />
+        ))}
+        
+        {/* Kaiju energy particles with cyan glow */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={`particle-${i}`}
+            className="absolute rounded-full"
+            style={{ 
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${Math.random() * 4 + 2}px`,
+              height: `${Math.random() * 4 + 2}px`,
+              background: '#00FFFF',
+              boxShadow: '0 0 15px 5px rgba(0, 255, 255, 0.7)'
+            }}
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 0.9, 0],
+              y: [0, -70, -140]
+            }}
+            transition={{
+              duration: 5 + Math.random() * 3,
+              repeat: Infinity,
+              delay: i * 0.4,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+        
+        {/* Subtle nebula effect */}
+        <motion.div
+          className="absolute rounded-full opacity-20 blur-3xl"
+          style={{ 
+            top: '50%', 
+            left: '50%', 
+            width: '100%',
+            height: '100%',
+            x: '-50%', 
+            y: '-50%',
+            background: 'radial-gradient(circle, rgba(0, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%)'
+          }}
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.1, 0.2, 0.1]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
       <div className="max-w-6xl mx-auto">
         <motion.h1
           className="text-4xl md:text-5xl font-bold mb-8 text-center text-[#B2BABB]"
@@ -129,17 +236,13 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#3cc698]/20 to-[#191F3A]/50 z-10" />
                   {project.image ? (
                     <img
-                      src={project.image}
+                      src={projectImages[project.id] || `/projects/${project.image}`}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       onError={(e) => {
-                        console.log(`Failed to load image: ${project.image}`);
-                        // Try fallback image
-                        e.currentTarget.src = '/projects/fallback-project.svg';
-                        e.currentTarget.onerror = () => {
-                          e.currentTarget.style.display = 'none';
-                          e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                        };
+                        console.error(`Failed to load image: ${project.image}`);
+                        e.currentTarget.src = projectImages.fallbackproject || '/projects/fallback-project.svg';
+                        e.currentTarget.onerror = null; // Prevent infinite error loop
                       }}
                     />
                   ) : null}
