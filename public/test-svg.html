@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG Test</title>
+</head>
+<body>
+    <h1>SVG Loading Test</h1>
+
+    <h2>FinTrack SVG:</h2>
+    <img src="/projects/fintrack.svg" alt="FinTrack" style="width: 200px; height: 150px; border: 1px solid #ccc;">
+
+    <h2>AGoodMansView SVG:</h2>
+    <img src="/projects/agoodmansview.svg" alt="AGoodMansView" style="width: 200px; height: 150px; border: 1px solid #ccc;">
+
+    <h2>LMS SVG:</h2>
+    <img src="/projects/lms.svg" alt="LMS" style="width: 200px; height: 150px; border: 1px solid #ccc;">
+
+    <script>
+        // Test SVG loading
+        document.querySelectorAll('img').forEach(img => {
+            img.onload = () => console.log(`✓ Loaded: ${img.src}`);
+            img.onerror = () => console.error(`✗ Failed to load: ${img.src}`);
+        });
+    </script>
+</body>
+</html>
+
