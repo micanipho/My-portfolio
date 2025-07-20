@@ -23,7 +23,7 @@ const requiredDirectories = [
   'projects',
   'contact',
   'documents',
-  'gallery'
+
 ];
 
 let allTestsPassed = true;

@@ -37,10 +37,10 @@ interface Document {
 const sampleDocuments: Document[] = [
   {
     id: '1',
-    title: 'Nhlakanipho Q. Masilela - Resume (Styled)',
+    title: 'Nhlakanipho Q. Masilela - Resume/CV',
     description: 'Professional resume with modern dark theme styling matching the portfolio design. Features Computer Science education from Wits University, academic excellence, and WeThinkCode_ training.',
     category: 'resume',
-    fileType: 'txt',
+    fileType: 'pdf',
     fileName: 'resume.html',
     fileSize: '18.5 KB',
     uploadDate: '2024-01-15',
@@ -49,56 +49,17 @@ const sampleDocuments: Document[] = [
     featured: true
   },
   {
-    id: '1b',
-    title: 'Nhlakanipho Q. Masilela - CV (Text)',
-    description: 'Original curriculum vitae in plain text format with personal details, education history, and academic achievements.',
-    category: 'resume',
-    fileType: 'txt',
-    fileName: 'sample-resume.txt',
-    fileSize: '1.2 KB',
-    uploadDate: '2024-01-15',
-    downloadUrl: '/documents/sample-resume.txt',
-    tags: ['cv', 'curriculum vitae', 'text format', 'academic'],
-    featured: false
-  },
-  {
     id: '2',
-    title: 'Python Programming Certificate',
-    description: 'Certificate of completion for advanced Python programming course from WeThinkCode_.',
+    title: 'CS50AI: Introduction to Artificial Intelligence with Python',
+    description: 'Verified certificate from HarvardX for completing CS50\'s Introduction to Artificial Intelligence with Python. Covers machine learning, neural networks, natural language processing, and computer vision using Python.',
     category: 'certificates',
     fileType: 'pdf',
-    fileName: 'python-certificate.pdf',
-    fileSize: '180 KB',
-    uploadDate: '2023-12-10',
-    downloadUrl: '/documents/python-cert.pdf',
-    tags: ['python', 'programming', 'certificate'],
+    fileName: 'cs50ai-certificate.pdf',
+    fileSize: '245 KB',
+    uploadDate: '2024-12-15',
+    downloadUrl: '/documents/cs50ai-certificate.pdf',
+    tags: ['artificial intelligence', 'machine learning', 'python', 'harvard', 'cs50', 'neural networks', 'computer vision', 'nlp'],
     featured: true
-  },
-  {
-    id: '3',
-    title: 'Database Design Project',
-    description: 'Comprehensive documentation for a MySQL database design project including ERD and implementation.',
-    category: 'projects',
-    fileType: 'pdf',
-    fileName: 'database-project-docs.pdf',
-    fileSize: '1.2 MB',
-    uploadDate: '2023-11-20',
-    downloadUrl: '/documents/db-project.pdf',
-    tags: ['mysql', 'database', 'project', 'documentation'],
-    featured: false
-  },
-  {
-    id: '4',
-    title: 'React Development Presentation',
-    description: 'Presentation on modern React development practices and hooks.',
-    category: 'presentations',
-    fileType: 'pptx',
-    fileName: 'react-presentation.pptx',
-    fileSize: '3.5 MB',
-    uploadDate: '2023-10-15',
-    downloadUrl: '/documents/react-presentation.pptx',
-    tags: ['react', 'frontend', 'presentation'],
-    featured: false
   }
 ];
 
@@ -134,10 +95,7 @@ const Documents: React.FC = () => {
   const categories = [
     { value: 'all', label: 'All Documents' },
     { value: 'resume', label: 'Resume/CV' },
-    { value: 'certificates', label: 'Certificates' },
-    { value: 'academic', label: 'Academic' },
-    { value: 'projects', label: 'Projects' },
-    { value: 'presentations', label: 'Presentations' }
+    { value: 'certificates', label: 'Certificates' }
   ];
 
   // Filter documents
@@ -163,7 +121,14 @@ const Documents: React.FC = () => {
   const handleView = (document: Document) => {
     // Open document in a new tab for viewing
     console.log('Viewing:', document.fileName);
-    window.open(document.downloadUrl, '_blank');
+
+    // For HTML files, open directly
+    if (document.fileName.endsWith('.html')) {
+      window.open(document.downloadUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      // For other file types, try to open directly
+      window.open(document.downloadUrl, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (

@@ -27,6 +27,7 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const contactMethods: ContactMethod[] = [
     {
@@ -73,17 +74,41 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
+    setErrorMessage('');
+
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      // Option 1: Formspree (Easiest for GitHub Pages)
+      // Using your actual Formspree form ID
+      const formspreeResponse = await fetch('https://formspree.io/f/mldlglyq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (formspreeResponse.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        setErrorMessage('Failed to send message. Please try again or contact me directly.');
+      }
     } catch (error) {
       setSubmitStatus('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
+      console.error('Network error:', error);
     } finally {
       setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        setErrorMessage('');
+      }, 5000);
     }
   };
 
@@ -313,7 +338,7 @@ const Contact: React.FC = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                     >
-                      ❌ Something went wrong. Please try again or contact me directly.
+                      ❌ {errorMessage || 'Something went wrong. Please try again or contact me directly.'}
                     </motion.div>
                   )}
                   </div>

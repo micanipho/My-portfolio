@@ -142,7 +142,7 @@ export default function Home() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <span className="text-[#B2BABB] block leading-tight">
-          Nhlakanipho's Portfolio
+          Nhlakanipho Masilela
         </span>
         <motion.span
           className="absolute -inset-2 -z-10 rounded-lg blur-md bg-cyan-400/10"
@@ -206,21 +206,6 @@ export default function Home() {
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             />
             <span className="relative z-10">View Documents</span>
-          </Link>
-        </motion.div>
-
-        <motion.div
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        >
-          <Link href="/gallery" className="relative px-6 py-3 bg-transparent text-[#3cc698] border border-[#3cc698] rounded-md shadow-lg shadow-[#3cc698]/20 font-medium inline-flex items-center group w-full sm:w-auto justify-center">
-            <motion.span
-              className="absolute inset-0 rounded-md opacity-0 bg-[#3cc698]/10 group-hover:opacity-100 transition-opacity duration-300"
-              animate={{ opacity: [0.2, 0.3, 0.2] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-            <span className="relative z-10">View Gallery</span>
           </Link>
         </motion.div>
       </div>

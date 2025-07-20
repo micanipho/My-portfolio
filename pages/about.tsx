@@ -30,7 +30,7 @@ const About: React.FC = () => {
       title: 'Bootcamp Mentor',
       company: 'WeThinkCode_',
       period: 'May 2025 - Present',
-      description: 'As a volunteer mentor and reviewer, I guide bootcamp teams through their project journeys by providing technical and strategic mentorship, helping them understand project requirements, overcome roadblocks, and apply best practices in software development. I also conduct structured reviews, offering constructive feedback and grading their final project submissions based on established criteria.'
+      description: 'As a volunteer mentor and reviewer, I channel my passion for continuous learning and knowledge sharing by guiding bootcamp teams through innovative project solutions. I foster collaborative environments where team members learn from each other while applying cutting-edge development practices. Through structured reviews and constructive feedback, I help teams transform individual learning into collective innovation, creating solutions that exceed expectations and inspire further exploration.'
     },
     {
       title: 'Software Engineering Student',
@@ -39,10 +39,10 @@ const About: React.FC = () => {
       description: 'Pursuing a Diploma in Computer Software Engineering. Intensive program focusing on Python, Java, and modern development practices. Participating in coding challenges, hackathons, and collaborative projects.'
     },
     {
-      title: 'Computer Science Graduate',
+      title: 'Computer Science Studies',
       company: 'University of the Witwatersrand',
       period: 'February 2018 - December 2021',
-      description: 'Completed Bachelor\'s degree in Computer Science. Built strong foundation in analytical thinking and problem-solving from first principles, which I now apply to designing efficient, scalable technology solutions.'
+      description: 'Pursued Bachelor\'s degree in Computer Science through final year. Built strong foundation in analytical thinking and problem-solving from first principles, which I now apply to designing efficient, scalable technology solutions.'
     }
   ];
 
@@ -120,8 +120,7 @@ const About: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               ASPIRING SOFTWARE ENGINEER | FINAL-YEAR @WETHINKCODE | PYTHON • JAVA • PROBLEM SOLVER |
-              PASSIONATE ABOUT BUILDING SCALABLE APPLICATIONS. FROM PHYSICS EQUATIONS TO SCALABLE CODE,
-              I BRING ANALYTICAL RIGOR TO BACKEND DEVELOPMENT.
+              PASSIONATE ABOUT BUILDING SCALABLE APPLICATIONS AND INNOVATIVE BACKEND SOLUTIONS.
             </motion.p>
           </motion.div>
 
@@ -143,12 +142,13 @@ const About: React.FC = () => {
                 <div className="flex-grow">
                   <p className="text-[#B2BABB] leading-relaxed mb-4">
                     My journey into software development started with a background in physics and mathematics, which taught me to
-                    solve problems from first principles. At WeThinkCode_, I discovered my passion for building clean, reliable
-                    backend systems using Spring Boot and applying analytical rigor to designing efficient, scalable technology solutions.
+                    solve problems from first principles. At WeThinkCode_, I discovered not only my passion for building clean, reliable
+                    backend systems, but also the joy of collaborative learning and knowledge sharing that transforms individual insights into team innovations.
                   </p>
                   <p className="text-[#B2BABB] leading-relaxed">
-                    Currently exploring AI and data to drive smarter systems. Always learning, always building.
-                    Ready to contribute to innovative teams and shape the future of tech together.
+                    Through hackathons, coding challenges, and mentoring experiences, I've learned that the most impactful solutions emerge
+                    when diverse perspectives combine with continuous learning. Currently exploring AI and data solutions while building
+                    systems that solve real problems.
                   </p>
                 </div>
               </div>
@@ -164,14 +164,15 @@ const About: React.FC = () => {
                 <h3 className="text-2xl font-bold text-kaiju-green mb-4">What Drives Me</h3>
                 <div className="flex-grow">
                   <p className="text-[#B2BABB] leading-relaxed mb-4">
-                    I specialize in building clean, reliable backend systems using Spring Boot. My background in physics
-                    and mathematics provides me with the analytical foundation to approach complex technical challenges
-                    with precision and creativity.
+                    What truly drives me is continuous learning and the ability to share what I learn through innovative ideas and teamwork.
+                    Every new technology, framework, or concept I discover becomes an opportunity to not only grow personally but to
+                    contribute something valuable to my team and the broader development community.
                   </p>
                   <p className="text-[#B2BABB] leading-relaxed">
-                    I value collaboration, continuous learning, and creating solutions that are not just functional
-                    but also scalable and maintainable. Every project is an opportunity to apply first-principles thinking
-                    to real-world problems.
+                    I believe the best innovations emerge when diverse minds collaborate and share knowledge freely. Whether it's
+                    mentoring bootcamp teams, exploring AI and data solutions, or applying first-principles thinking to complex problems,
+                    I'm energized by the cycle of learning, creating, and teaching others. This passion for knowledge sharing drives
+                    me to build not just functional systems, but solutions that inspire and educate.
                   </p>
                 </div>
               </div>

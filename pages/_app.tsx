@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="prefetch" href="/about" />
         <link rel="prefetch" href="/documents" />
         <link rel="prefetch" href="/contact" />
-        <link rel="prefetch" href="/gallery" />
+
       </Head>
 
       <Layout>
