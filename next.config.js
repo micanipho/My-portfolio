@@ -8,10 +8,10 @@ const nextConfig = {
 
   // Configure asset prefix for GitHub Pages
   // This will be automatically set by GitHub Actions
-  assetPrefix: process.env.NODE_ENV === 'production' ? undefined : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/My-portfolio' : '',
 
   // Ensure proper base path handling
-  basePath: '',
+  basePath: process.env.NODE_ENV === 'production' ? '/My-portfolio' : '',
 
   // Disable image optimization for static export
   images: {
