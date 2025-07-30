@@ -18,6 +18,11 @@ import {
   FaFile
 } from 'react-icons/fa';
 
+// Utility function to get the correct base path for URLs
+const getBasePath = () => {
+  return process.env.NODE_ENV === 'production' ? '/My-portfolio' : '';
+};
+
 // Document interface
 interface Document {
   id: string;
@@ -44,7 +49,7 @@ const sampleDocuments: Document[] = [
     fileName: 'resume.html',
     fileSize: '18.5 KB',
     uploadDate: '2024-01-15',
-    downloadUrl: '/documents/resume.html',
+    downloadUrl: `${getBasePath()}/documents/resume.html`,
     tags: ['resume', 'cv', 'styled', 'modern design', 'computer science', 'wits university'],
     featured: true
   },
@@ -57,7 +62,7 @@ const sampleDocuments: Document[] = [
     fileName: 'cs50ai-certificate.pdf',
     fileSize: '245 KB',
     uploadDate: '2024-12-15',
-    downloadUrl: '/documents/cs50ai-certificate.pdf',
+    downloadUrl: `${getBasePath()}/documents/cs50ai-certificate.pdf`,
     tags: ['artificial intelligence', 'machine learning', 'python', 'harvard', 'cs50', 'neural networks', 'computer vision', 'nlp'],
     featured: true
   }
