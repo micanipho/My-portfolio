@@ -18,10 +18,8 @@ import {
   FaFile
 } from 'react-icons/fa';
 
-// Utility function to get the correct base path for URLs
-const getBasePath = () => {
-  return process.env.NODE_ENV === 'production' ? '/My-portfolio' : '';
-};
+// Base path for GitHub Pages deployment
+const BASE_PATH = '/My-portfolio';
 
 // Document interface
 interface Document {
@@ -49,7 +47,7 @@ const sampleDocuments: Document[] = [
     fileName: 'resume.html',
     fileSize: '18.5 KB',
     uploadDate: '2024-01-15',
-    downloadUrl: `${getBasePath()}/documents/resume.html`,
+    downloadUrl: `${BASE_PATH}/documents/resume.html`,
     tags: ['resume', 'cv', 'styled', 'modern design', 'computer science', 'wits university'],
     featured: true
   },
@@ -62,7 +60,7 @@ const sampleDocuments: Document[] = [
     fileName: 'cs50ai-certificate.pdf',
     fileSize: '245 KB',
     uploadDate: '2024-12-15',
-    downloadUrl: `${getBasePath()}/documents/cs50ai-certificate.pdf`,
+    downloadUrl: `${BASE_PATH}/documents/cs50ai-certificate.pdf`,
     tags: ['artificial intelligence', 'machine learning', 'python', 'harvard', 'cs50', 'neural networks', 'computer vision', 'nlp'],
     featured: true
   }
