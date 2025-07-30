@@ -28,6 +28,8 @@ const getFileTypeIcon = (fileType: string) => {
     case 'ppt':
     case 'pptx':
       return <FaFilePowerpoint className="text-orange-500" />;
+    case 'html':
+      return <FaFile className="text-cyan-400" />;
     case 'txt':
     case 'md':
       return <FaFileAlt className="text-gray-400" />;

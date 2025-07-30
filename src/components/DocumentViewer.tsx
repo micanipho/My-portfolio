@@ -94,6 +94,22 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({
       );
     }
 
+    // For HTML files, use iframe without PDF-specific parameters
+    if (documentType === 'html') {
+      return (
+        <iframe
+          src={documentUrl}
+          className="w-full h-full border-0"
+          title={documentTitle}
+          onLoad={() => setIsLoading(false)}
+          onError={() => {
+            setIsLoading(false);
+            setError('Failed to load HTML document');
+          }}
+        />
+      );
+    }
+
     // For other document types, show a preview message
     return (
       <div className="flex items-center justify-center h-full">

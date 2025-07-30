@@ -26,14 +26,15 @@ export type DocumentCategory =
   | 'presentations'
   | 'other';
 
-export type FileType = 
+export type FileType =
   | 'pdf'
   | 'doc'
   | 'docx'
   | 'ppt'
   | 'pptx'
   | 'txt'
-  | 'md';
+  | 'md'
+  | 'html';
 
 export interface DocumentFilter {
   category?: DocumentCategory;

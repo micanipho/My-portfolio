@@ -1,29 +1,150 @@
-1
-1
-CURRICULUMN VITAE OF Nhlakanipho Quiton Masilela
-PERSONAL INFORMATION
-Surname Masilela
-First Names Nhlakanipho Quinton
-Identity Number 9812075418086
-Gender Male
-CONTACT DETAILS
-Contact No 0636639970
-Email Address nqmasilela777@gmail.com
-SECONDARY EDUCATION
-High school Khaliphani Senior Secondary School
-Year 2016
-TERTIARY EDUCATION
-Institution University of Witwatersrand
-Qualification Bachelor’s degree in computer science
-Year obtained (2018-2021) Incomplete
-PRIZES AND AWARDS
-Award Certificate of first class
-Subject Introduction to Algorithms and Programming l
-Year obtained 2018
-Award Certificate of first class
-Subject Linear algebra ll
-Year obtained 2019
-Award Certificate of first class
-Subject Software design project III
-Year obtained 20212
+================================================================================
+                    NHLAKANIPHO QUINTON MASILELA
+                ASPIRING SOFTWARE ENGINEER | FINAL-YEAR @WETHINKCODE
+================================================================================
 
+CONTACT INFORMATION
+Email: nqmasilela777@gmail.com
+Location: Johannesburg, South Africa
+Gender: Male
+
+================================================================================
+                              PROFESSIONAL SUMMARY
+================================================================================
+
+Strategic-minded software engineer with a talent for translating complex 
+technical concepts into actionable solutions. I excel at seeing the bigger 
+picture while maintaining attention to detail, enabling me to architect systems 
+that align with business objectives. My collaborative approach and strong 
+communication skills allow me to transform business goals into robust technical 
+products that deliver real value. Though naturally introverted, being placed in 
+leadership situations has cultivated a deep passion for mentoring and guiding 
+teams—I've discovered that my thoughtful, analytical approach creates 
+environments where team members feel heard and empowered. I thrive in 
+cross-functional environments where clear communication and teamwork drive 
+innovation.
+
+================================================================================
+                               TECHNICAL SKILLS
+================================================================================
+
+PROGRAMMING LANGUAGES:
+• Python (Advanced)
+• Java (Intermediate)
+• JavaScript (Intermediate)
+• HTML/CSS (Advanced)
+
+FRAMEWORKS & LIBRARIES:
+• React
+• Flask
+• Spring Boot
+• Tailwind CSS
+• Bootstrap
+
+CORE SKILLS:
+• Object-Relational Mapping (ORM)
+• JSON
+• Object-Oriented Programming (OOP)
+
+DATABASES & TOOLS:
+• MySQL
+• PostgreSQL
+• Git & GitHub
+• VS Code
+• Docker (Basic)
+
+================================================================================
+                                  EDUCATION
+================================================================================
+
+DIPLOMA IN COMPUTER SOFTWARE ENGINEERING
+Institution: WeThinkCode_
+Period: 2024 - 2025
+• Intensive software development program
+• Focus on practical coding skills and modern development practices
+• Collaborative learning environment with coding challenges and hackathons
+
+BACHELOR'S DEGREE IN COMPUTER SCIENCE (INCOMPLETE - FINAL YEAR)
+Institution: University of the Witwatersrand
+Period: February 2018 - December 2021
+• Strong foundation in computer science principles and analytical thinking
+• Specialized in algorithms and software design
+• Mathematical background providing first-principles problem-solving approach
+• Completed coursework through final year level
+
+SECONDARY EDUCATION
+Institution: Khaliphani Senior Secondary School
+Period: Completed 2016
+• Foundation education providing strong academic base for higher learning in 
+  Computer Science and Mathematics
+
+================================================================================
+                            PROFESSIONAL EXPERIENCE
+================================================================================
+
+BOOTCAMP MENTOR
+Institution: WeThinkCode_
+Period: May 2025 - Present
+• Lead and mentor diverse bootcamp teams, fostering collaborative environments 
+  that drive project success
+• Communicate complex technical concepts clearly to team members with varying 
+  skill levels and backgrounds
+• Facilitate strategic planning sessions, helping teams align technical 
+  solutions with project objectives
+• Conduct comprehensive project reviews, providing constructive feedback that 
+  promotes growth and learning
+• Demonstrate servant leadership by prioritizing team development and knowledge 
+  transfer over individual recognition
+
+================================================================================
+                        ACADEMIC ACHIEVEMENTS & AWARDS
+================================================================================
+
+• Certificate of First Class - Introduction to Algorithms and Programming I (2018)
+• Certificate of First Class - Linear Algebra II (2019)
+• Certificate of First Class - Software Design Project III (2021)
+• Consistent academic excellence in computer science subjects
+• Strong mathematical and algorithmic problem-solving skills
+• Demonstrated proficiency in software design and development
+
+================================================================================
+                              CORE COMPETENCIES
+================================================================================
+
+ACADEMIC EXCELLENCE:
+• Algorithms & Programming
+• Linear Algebra
+• Software Design
+• Computer Science Theory
+
+TECHNICAL SKILLS:
+• Programming Languages
+• Software Development
+• Problem Solving
+• Mathematical Analysis
+
+LEADERSHIP & SOFT SKILLS:
+• Team Leadership & Mentorship
+• Strategic Communication
+• Cross-functional Collaboration
+• Big Picture Thinking
+• Stakeholder Engagement
+• Knowledge Sharing
+
+================================================================================
+                               CAREER OBJECTIVE
+================================================================================
+
+Aspiring Software Engineer seeking opportunities to apply analytical rigor from 
+physics and mathematics background to backend development. Passionate about 
+building scalable applications and applying first-principles thinking to solve 
+complex technical challenges. Ready to contribute to innovative teams and shape 
+the future of technology through clean, reliable backend systems using Spring 
+Boot and modern development practices.
+
+================================================================================
+                                   FOOTER
+================================================================================
+
+Last updated: July 2025 | Available for employment opportunities
+References available upon request

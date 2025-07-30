@@ -24,7 +24,7 @@ interface Document {
   title: string;
   description: string;
   category: 'resume' | 'certificates' | 'academic' | 'projects' | 'presentations' | 'other';
-  fileType: 'pdf' | 'doc' | 'docx' | 'ppt' | 'pptx' | 'txt';
+  fileType: 'pdf' | 'doc' | 'docx' | 'ppt' | 'pptx' | 'txt' | 'html';
   fileName: string;
   fileSize: string;
   uploadDate: string;
@@ -40,7 +40,7 @@ const sampleDocuments: Document[] = [
     title: 'Nhlakanipho Q. Masilela - Resume/CV',
     description: 'Professional resume with modern dark theme styling matching the portfolio design. Features Computer Science education from Wits University, academic excellence, and WeThinkCode_ training.',
     category: 'resume',
-    fileType: 'pdf',
+    fileType: 'html',
     fileName: 'resume.html',
     fileSize: '18.5 KB',
     uploadDate: '2024-01-15',
@@ -71,6 +71,8 @@ const getFileTypeIcon = (fileType: string) => {
     case 'docx': return <FaFileWord className="text-blue-500" />;
     case 'ppt':
     case 'pptx': return <FaFilePowerpoint className="text-orange-500" />;
+    case 'html': return <FaFile className="text-cyan-400" />;
+    case 'txt': return <FaFileAlt className="text-gray-400" />;
     default: return <FaFileAlt className="text-gray-400" />;
   }
 };
