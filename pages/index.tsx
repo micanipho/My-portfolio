@@ -1,7 +1,9 @@
 // pages/index.tsx
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { getAssetPath } from '../src/utils/assetPath';
 
 export default function Home() {
   const [typedText, setTypedText] = useState('');
@@ -312,12 +314,31 @@ export default function Home() {
               <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 bg-[#1e1e24] rounded-full border-2 border-cyan-400 flex items-center justify-center relative overflow-hidden">
                 {/* Profile Image */}
                 <motion.img
-                  src="/profile-picture.jpg" // You'll need to add your image here
+                  src={getAssetPath('profile-picture.jpg')}
                   alt="Nhlakanipho Masilela"
                   className="w-full h-full object-cover rounded-full"
                   initial={{ opacity: 0, scale: 1.1 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
+                  onError={(e) => {
+                    console.log('Image failed to load, trying alternative paths');
+                    const img = e.target as HTMLImageElement;
+                    // Try different fallback paths
+                    const fallbackPaths = [
+                      '/My-portfolio/profile-picture.jpg',
+                      './profile-picture.jpg',
+                      '/profile-picture.jpg'
+                    ];
+
+                    let currentIndex = fallbackPaths.findIndex(path => img.src.includes(path.split('/').pop() || ''));
+                    if (currentIndex < fallbackPaths.length - 1) {
+                      img.src = fallbackPaths[currentIndex + 1];
+                    } else {
+                      // All fallbacks failed, hide the image
+                      img.style.display = 'none';
+                      console.error('All image fallback paths failed');
+                    }
+                  }}
                 />
 
                 {/* Overlay gradient animation */}
