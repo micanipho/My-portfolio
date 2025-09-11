@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -29,8 +28,14 @@ const About: React.FC = () => {
     {
       title: 'Bootcamp Mentor',
       company: 'WeThinkCode_',
-      period: 'May 2025 - Present',
-      description: 'As a volunteer mentor and reviewer, I channel my passion for continuous learning and knowledge sharing by guiding bootcamp teams through innovative project solutions. I foster collaborative environments where team members learn from each other while applying cutting-edge development practices. Through structured reviews and constructive feedback, I help teams transform individual learning into collective innovation, creating solutions that exceed expectations and inspire further exploration.'
+      period: 'May 2025 - August 2025',
+      description: 'Served as volunteer mentor and reviewer for bootcamp teams, guiding them through project development cycles. Provided technical and strategic mentorship to help teams understand project requirements and overcome development challenges. Mentored students in implementing software development best practices and industry standards, conducted structured project reviews and assessments using established evaluation criteria, and delivered constructive feedback to support student learning outcomes and skill development.'
+    },
+    {
+      title: 'Peer Mentor',
+      company: 'WeThinkCode_',
+      period: 'March 2025 - April 2025',
+      description: 'Helped students succeed academically through comprehensive peer mentorship and guidance on coursework challenges. Provided coaching on effective study methods and learning strategies to improve student outcomes. Built collaborative learning communities that strengthened peer support networks, facilitated group study sessions and peer-to-peer knowledge sharing initiatives, and improved academic performance across mentored student cohorts through targeted support.'
     },
     {
       title: 'Software Engineering Student',
@@ -42,7 +47,7 @@ const About: React.FC = () => {
       title: 'Computer Science Studies',
       company: 'University of the Witwatersrand',
       period: 'February 2018 - December 2021',
-      description: 'Pursued Bachelor\'s degree in Computer Science through final year. Built strong foundation in analytical thinking and problem-solving from first principles, which I now apply to designing efficient, scalable technology solutions.'
+      description: 'Pursued Bachelor\'s degree in Computer Science, dropping out in my 3rd and final year. Built strong foundation in analytical thinking and problem-solving from first principles, which I now apply to designing efficient, scalable technology solutions.'
     }
   ];
 
@@ -124,55 +129,32 @@ const About: React.FC = () => {
             </motion.p>
           </motion.div>
 
-          {/* Personal Story Section */}
+          {/* Personal Story Section - Simplified to Journey Only */}
           <motion.div
-            className="grid md:grid-cols-2 gap-12 mb-16"
+            className="max-w-4xl mx-auto mb-16"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <div className="relative h-full">
+            <div className="relative">
               <motion.div
-                className="absolute -inset-1 bg-gradient-to-r from-cyan-400/10 via-[#191F3A]/70 to-cyan-400/10 rounded-lg blur-md"
+                className="absolute -inset-1 bg-gradient-to-r from-cyan-400/10 via-[#191F3A]/70 to-kaiju-green/10 rounded-lg blur-md"
                 animate={{ opacity: [0.3, 0.5, 0.3] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               />
-              <div className="relative bg-gradient-to-br from-[#15142b]/80 via-[#191F3A]/90 to-[#15142b]/80 backdrop-blur-sm border border-cyan-400/20 rounded-lg p-8 h-full flex flex-col">
-                <h3 className="text-2xl font-bold text-cyan-400 mb-4">My Journey</h3>
-                <div className="flex-grow">
-                  <p className="text-[#B2BABB] leading-relaxed mb-4">
+              <div className="relative bg-gradient-to-br from-[#15142b]/80 via-[#191F3A]/90 to-[#15142b]/80 backdrop-blur-sm border border-cyan-400/20 rounded-lg p-8">
+                <h3 className="text-3xl font-bold text-cyan-400 mb-6 text-center">My Journey</h3>
+                <div className="space-y-6 text-[#B2BABB] leading-relaxed text-lg">
+                  <p>
                     My journey into software development started with a background in physics and mathematics, which taught me to
                     solve problems from first principles. At WeThinkCode_, I discovered not only my passion for building clean, reliable
                     backend systems, but also the joy of collaborative learning and knowledge sharing that transforms individual insights into team innovations.
                   </p>
-                  <p className="text-[#B2BABB] leading-relaxed">
-                    Through hackathons, coding challenges, and mentoring experiences, I've learned that the most impactful solutions emerge
-                    when diverse perspectives combine with continuous learning. Currently exploring AI and data solutions while building
-                    systems that solve real problems.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative h-full">
-              <motion.div
-                className="absolute -inset-1 bg-gradient-to-r from-kaiju-green/10 via-[#191F3A]/70 to-kaiju-green/10 rounded-lg blur-md"
-                animate={{ opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              />
-              <div className="relative bg-gradient-to-br from-[#15142b]/80 via-[#191F3A]/90 to-[#15142b]/80 backdrop-blur-sm border border-kaiju-green/20 rounded-lg p-8 h-full flex flex-col">
-                <h3 className="text-2xl font-bold text-kaiju-green mb-4">What Drives Me</h3>
-                <div className="flex-grow">
-                  <p className="text-[#B2BABB] leading-relaxed mb-4">
-                    What truly drives me is continuous learning and the ability to share what I learn through innovative ideas and teamwork.
-                    Every new technology, framework, or concept I discover becomes an opportunity to not only grow personally but to
-                    contribute something valuable to my team and the broader development community.
-                  </p>
-                  <p className="text-[#B2BABB] leading-relaxed">
+                  <p>
                     I believe the best innovations emerge when diverse minds collaborate and share knowledge freely. Whether it's
                     mentoring bootcamp teams, exploring AI and data solutions, or applying first-principles thinking to complex problems,
                     I'm energized by the cycle of learning, creating, and teaching others. This passion for knowledge sharing drives
-                    me to build not just functional systems, but solutions that inspire and educate.
+                    me to build not just functional systems, but solutions that inspire and educate while solving real-world problems.
                   </p>
                 </div>
               </div>

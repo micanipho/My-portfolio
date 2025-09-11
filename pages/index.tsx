@@ -36,7 +36,7 @@ export default function Home() {
           setTypedText('');
         }, 500); // Pause before next line
       }
-    }, 50); // Typing speed
+    }, 25); // Typing speed - reduced from 35ms to 25ms for even faster typing
 
     return () => clearInterval(typingInterval);
   }, [currentLineIndex]);
@@ -300,7 +300,7 @@ export default function Home() {
             )}
           </div>
 
-          {/* Right side - Animated circle */}
+          {/* Right side - Animated circle with profile picture */}
           <div className="flex-1 flex flex-col items-center justify-center lg:pl-8">
             <motion.div
               className="relative will-change-transform"
@@ -310,25 +310,51 @@ export default function Home() {
             >
               <div className="absolute inset-0 rounded-full bg-cyan-400/20 blur-xl"></div>
               <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 bg-[#1e1e24] rounded-full border-2 border-cyan-400 flex items-center justify-center relative overflow-hidden">
+                {/* Profile Image */}
+                <motion.img
+                  src="/profile-picture.jpg" // You'll need to add your image here
+                  alt="Nhlakanipho Masilela"
+                  className="w-full h-full object-cover rounded-full"
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                />
+
+                {/* Overlay gradient animation */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-[#1e1e24]/50 via-transparent to-[#3cc698]/30 opacity-70"
+                  className="absolute inset-0 bg-gradient-to-br from-[#1e1e24]/30 via-transparent to-[#3cc698]/20 opacity-40 rounded-full"
                   animate={{
-                    opacity: [0.5, 0.7, 0.5]
+                    opacity: [0.3, 0.5, 0.3]
                   }}
                   transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 />
+
+                {/* Scanning light effect */}
                 <motion.div
-                  className="absolute h-full w-4 bg-cyan-400/10"
+                  className="absolute h-full w-4 bg-cyan-400/20 rounded-full"
                   style={{ left: '-10%' }}
                   animate={{
-                    left: ["0%", "100%"],
-                    opacity: [0.1, 0.5, 0.1]
+                    left: ["-10%", "110%"],
+                    opacity: [0.1, 0.6, 0.1]
                   }}
                   transition={{
                     duration: 2,
                     repeat: Infinity,
                     ease: "linear",
                     repeatDelay: 1
+                  }}
+                />
+
+                {/* Subtle border glow animation */}
+                <motion.div
+                  className="absolute inset-0 rounded-full border-2 border-cyan-400/50"
+                  animate={{
+                    borderColor: ["rgba(0, 255, 255, 0.5)", "rgba(60, 198, 152, 0.5)", "rgba(0, 255, 255, 0.5)"]
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }}
                 />
               </div>
