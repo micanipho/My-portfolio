@@ -1,14 +1,14 @@
 // pages/index.tsx
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { getAssetPath } from '../src/utils/assetPath';
 
 export default function Home() {
   const [typedText, setTypedText] = useState('');
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
+  const [imageSrc, setImageSrc] = useState('');
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   const textLines = [
     "Hi, I'm Nhlakanipho Masilela",
@@ -17,6 +17,21 @@ export default function Home() {
     "Skilled in Java, Spring Boot, Python, and Database management, with a focus on backend development.",
     "Eager to contribute to innovative projects and grow in a dynamic tech environment."
   ];
+
+  // Determine the correct image path based on environment
+  useEffect(() => {
+    const getImagePath = () => {
+      if (typeof window !== 'undefined') {
+        const isGitHubPages = window.location.hostname.includes('github.io') ||
+                             window.location.pathname.startsWith('/My-portfolio');
+        return isGitHubPages ? '/My-portfolio/profile-picture-optimized.jpg' : '/profile-picture-optimized.jpg';
+      }
+      return '/profile-picture-optimized.jpg';
+    };
+
+    setImageSrc(getImagePath());
+    console.log('Image path set to:', getImagePath());
+  }, []);
 
   useEffect(() => {
     if (currentLineIndex >= textLines.length) {
@@ -314,13 +329,13 @@ export default function Home() {
               <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 bg-[#1e1e24] rounded-full border-2 border-cyan-400 flex items-center justify-center relative overflow-hidden">
                 {/* Profile Image */}
                 <motion.img
-                  src="/profile-picture.jpg"
+                  src={imageSrc}
                   alt="Nhlakanipho Masilela"
                   className="w-full h-full object-cover rounded-full"
                   initial={{ opacity: 0, scale: 1.1 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
-                  onLoad={() => console.log('Profile image loaded successfully')}
+                  onLoad={() => setImageLoaded(true)}
                   onError={(e) => {
                     console.log('Image failed to load, trying fallback');
                     const img = e.target as HTMLImageElement;
