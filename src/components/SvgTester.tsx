@@ -14,6 +14,19 @@ const SvgTester: React.FC = () => {
     
     const results: {[key: string]: boolean} = {};
     
+    // Determine the correct path based on environment
+    const getBasePath = () => {
+      if (typeof window !== 'undefined') {
+        const isGitHubPages = window.location.hostname.includes('github.io') ||
+                             window.location.pathname.startsWith('/My-portfolio');
+        return isGitHubPages ? '/My-portfolio/projects/' : '/projects/';
+      }
+      return '/projects/';
+    };
+
+    const basePath = getBasePath();
+    console.log('SvgTester using base path:', basePath);
+
     // Test direct SVG loading
     svgFiles.forEach(file => {
       const img = new Image();
@@ -21,9 +34,22 @@ const SvgTester: React.FC = () => {
         setTestResults(prev => ({...prev, [file]: true}));
       };
       img.onerror = () => {
+        console.error(`Failed to load ${file} from ${basePath}${file}`);
         setTestResults(prev => ({...prev, [file]: false}));
+
+        // Try fallback path if not already using GitHub Pages path
+        if (!basePath.includes('/My-portfolio/')) {
+          const fallbackImg = new Image();
+          fallbackImg.onload = () => {
+            setTestResults(prev => ({...prev, [`${file} (fallback)`]: true}));
+          };
+          fallbackImg.onerror = () => {
+            setTestResults(prev => ({...prev, [`${file} (fallback)`]: false}));
+          };
+          fallbackImg.src = `/My-portfolio/projects/${file}`;
+        }
       };
-      img.src = `/projects/${file}`;
+      img.src = `${basePath}${file}`;
     });
     
   }, []);
