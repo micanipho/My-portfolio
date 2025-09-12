@@ -314,29 +314,36 @@ export default function Home() {
               <div className="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 bg-[#1e1e24] rounded-full border-2 border-cyan-400 flex items-center justify-center relative overflow-hidden">
                 {/* Profile Image */}
                 <motion.img
-                  src={getAssetPath('profile-picture.jpg')}
+                  src="/profile-picture.jpg"
                   alt="Nhlakanipho Masilela"
                   className="w-full h-full object-cover rounded-full"
                   initial={{ opacity: 0, scale: 1.1 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.4 }}
+                  onLoad={() => console.log('Profile image loaded successfully')}
                   onError={(e) => {
-                    console.log('Image failed to load, trying alternative paths');
+                    console.log('Image failed to load, trying fallback');
                     const img = e.target as HTMLImageElement;
-                    // Try different fallback paths
-                    const fallbackPaths = [
-                      '/My-portfolio/profile-picture.jpg',
-                      './profile-picture.jpg',
-                      '/profile-picture.jpg'
-                    ];
 
-                    let currentIndex = fallbackPaths.findIndex(path => img.src.includes(path.split('/').pop() || ''));
-                    if (currentIndex < fallbackPaths.length - 1) {
-                      img.src = fallbackPaths[currentIndex + 1];
+                    // For GitHub Pages deployment, try the full path
+                    if (!img.src.includes('/My-portfolio/')) {
+                      img.src = '/My-portfolio/profile-picture.jpg';
                     } else {
-                      // All fallbacks failed, hide the image
+                      // If that also fails, show a fallback
+                      console.error('Image loading failed completely');
                       img.style.display = 'none';
-                      console.error('All image fallback paths failed');
+                      const parent = img.parentElement;
+                      if (parent && !parent.querySelector('.fallback-avatar')) {
+                        const fallbackDiv = document.createElement('div');
+                        fallbackDiv.className = 'fallback-avatar absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-[#3cc698]/30 rounded-full flex items-center justify-center';
+                        fallbackDiv.innerHTML = `
+                          <div class="text-center text-cyan-400">
+                            <div class="text-6xl mb-2">👨‍💻</div>
+                            <div class="text-lg font-bold">NM</div>
+                          </div>
+                        `;
+                        parent.appendChild(fallbackDiv);
+                      }
                     }
                   }}
                 />
