@@ -2,25 +2,26 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaGithub, FaExternalLinkAlt, FaLock } from 'react-icons/fa';
-import { SiNextdotjs, SiNestjs, SiTypescript, SiTailwindcss, SiPostgresql, SiGraphql, SiSpring, SiOpenjdk, SiApache, SiFramer, SiAmazonaws, SiDocker, SiSwagger } from 'react-icons/si';
+import { SiNextdotjs, SiNestjs, SiTypescript, SiTailwindcss, SiPostgresql, SiGraphql, SiSpring, SiOpenjdk, SiApache, SiFramer, SiAmazonaws, SiDocker, SiSwagger, SiReact, SiNodedotjs, SiExpress, SiVite } from 'react-icons/si';
+import ProjectImage from '../src/components/ProjectImage';
 
 export default function Projects() {
   const projects = [
     {
       id: 1,
       title: "A Good Man's View",
-      description: "A secure, transparent multi-vendor e-commerce platform for the South African market combining Next.js, NestJS, and blockchain technology with Proof of Stake consensus.",
+      description: "A multi-vendor e-commerce platform for the South African market built with Next.js and NestJS. Currently learning and implementing blockchain concepts with Proof of Stake consensus for secure transactions.",
       image: "/projects/agoodmansview.svg",
       tags: ["Next.js", "TypeScript", "NestJS", "GraphQL", "PostgreSQL", "Blockchain", "Tailwind CSS"],
       github: "https://github.com/A-Good-Man-s-View/agoodmansview_website",
-      live: null, // If not yet deployed
+      live: null,
       status: "In Development",
       highlights: [
-        "Blockchain-powered with Proof of Stake consensus",
-        "Hybrid GraphQL + RESTful API architecture",
-        "Integrated digital wallets with Visa gateway",
-        "South African market optimization (ZAR currency)",
-        "Comprehensive vendor subscription system"
+        "Learning blockchain integration with Proof of Stake",
+        "Building GraphQL and REST API endpoints",
+        "Implementing digital wallet functionality",
+        "Practicing full-stack development with modern frameworks",
+        "Working with PostgreSQL database design"
       ],
       icons: [
         <SiNextdotjs key="nextjs" className="text-white" />,
@@ -34,20 +35,19 @@ export default function Projects() {
     {
       id: 2,
       title: "FinTrack - Personal Finance API",
-      description: "A comprehensive Personal Finance Management API built with Spring Boot and AWS, demonstrating enterprise-grade financial software development with secure transaction processing, regulatory compliance, and modern cloud deployment patterns.",
+      description: "A personal finance management REST API built with Spring Boot to learn backend development. Features user authentication, budget tracking, and transaction management while practicing secure coding patterns and AWS deployment.",
       image: "/projects/fintrack.svg",
       tags: ["Java", "Spring Boot", "AWS", "PostgreSQL", "Docker", "JWT", "REST API"],
       github: "https://github.com/micanipho/FinTrack",
       live: null,
       status: "In Development",
       highlights: [
-        "JWT-based authentication with role-based access control",
-        "Precise money handling with BigDecimal calculations",
-        "Real-time budget tracking with spending alerts",
-        "AWS integration (RDS, S3, SES) for cloud deployment",
-        "Complete audit trail with Spring Data Envers",
-        "Production-ready with comprehensive monitoring and logging",
-        "85%+ test coverage with unit and integration tests"
+        "Implementing JWT authentication and authorization",
+        "Learning proper money handling with BigDecimal",
+        "Building RESTful API endpoints with Spring Boot",
+        "Practicing AWS deployment (RDS, S3, SES)",
+        "Writing unit and integration tests",
+        "Working with Docker for containerization"
       ],
       icons: [
         <SiOpenjdk key="java" className="text-[#ED8B00]" />,
@@ -60,26 +60,30 @@ export default function Projects() {
     },
     {
       id: 3,
-      title: "Library Management System",
-      description: "A comprehensive Spring Boot RESTful API for managing books, users, and borrowing operations in a library. Features complete CRUD operations, book availability tracking, and automated fine calculations.",
-      image: "/projects/lms.svg",
-      tags: ["Java", "Spring Boot", "PostgreSQL", "Maven", "REST API", "JPA"],
-      github: "https://github.com/micanipho/Library-management-system",
+      title: "Travel Mate",
+      description: "A community-driven web application to help improve taxi commuting in South Africa. Building with React and Node.js to learn full-stack development, user authentication, and real-time features with PostgreSQL.",
+      image: "/projects/travelmate.svg",
+      tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Vite", "Tailwind CSS"],
+      github: "https://github.com/micanipho/travel-mate",
       live: null,
-      status: "Completed",
+      status: "In Development",
       highlights: [
-        "Complete RESTful API with 15+ endpoints for books and users",
-        "Automated borrowing/returning system with due date tracking",
-        "PostgreSQL integration with Spring Data JPA",
-        "Fine calculation system for late book returns",
-        "Comprehensive search functionality by title and author",
-        "Maven-based project with clean architecture"
+        "Learning JWT authentication with Express",
+        "Building a REST API with Node.js and PostgreSQL",
+        "Creating interactive UI with React 18 and TypeScript",
+        "Implementing CRUD operations for destinations and alerts",
+        "Practicing security best practices (Helmet, CORS)",
+        "Working with modern tools like Vite and TanStack Query",
+        "Learning database design and SQL queries"
       ],
       icons: [
-        <SiOpenjdk key="java" className="text-[#ED8B00]" />,
-        <SiSpring key="spring" className="text-[#6DB33F]" />,
+        <SiReact key="react" className="text-[#61DAFB]" />,
+        <SiTypescript key="typescript" className="text-[#3178C6]" />,
+        <SiNodedotjs key="nodejs" className="text-[#339933]" />,
+        <SiExpress key="express" className="text-[#B2BABB]" />,
         <SiPostgresql key="postgresql" className="text-[#4169E1]" />,
-        <SiApache key="maven" className="text-[#C71A36]" />
+        <SiVite key="vite" className="text-[#646CFF]" />,
+        <SiTailwindcss key="tailwind" className="text-[#06B6D4]" />
       ]
     }
   ];
@@ -234,24 +238,10 @@ export default function Projects() {
                 <div className="md:w-2/5 relative overflow-hidden h-64 md:h-auto">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#3cc698]/20 to-[#191F3A]/50 z-10" />
                   {project.image ? (
-                    <img
+                    <ProjectImage
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                      onError={(e) => {
-                        console.error(`Failed to load image: ${project.image}`);
-                        const target = e.currentTarget;
-
-                        // First fallback: try the fallback SVG
-                        if (!target.src.includes('fallback-project')) {
-                          target.src = '/projects/fallback-project.svg';
-                        } else {
-                          // Final fallback: inline SVG placeholder
-                          target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjMTkxRjNBIi8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjM2NjNjk4IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiPkltYWdlIE5vdCBGb3VuZDwvdGV4dD4KPC9zdmc+';
-                        }
-                        target.onerror = null; // Prevent infinite loop
-                      }}
+                      className="w-full h-full"
                     />
                   ) : (
                     <div className="w-full h-full bg-[#191F3A] flex items-center justify-center">

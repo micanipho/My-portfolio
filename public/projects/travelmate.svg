@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0E0E10;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#191F3A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0E0E10;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="taxiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3cc698;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#00FFFF;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGradient)"/>
+
+  <!-- Glow effects -->
+  <circle cx="400" cy="300" r="250" fill="url(#glowGradient)" opacity="0.3"/>
+
+  <!-- Road/Route Lines -->
+  <path d="M 100 450 Q 250 400, 400 420 T 700 380" stroke="#3cc698" stroke-width="4" fill="none" opacity="0.6" stroke-dasharray="10,5"/>
+  <path d="M 80 350 Q 200 320, 350 330 T 720 300" stroke="#00FFFF" stroke-width="3" fill="none" opacity="0.4" stroke-dasharray="8,4"/>
+
+  <!-- Location Pins -->
+  <g transform="translate(200, 280)">
+    <path d="M 0,-30 C -12,-30 -20,-22 -20,-10 C -20,2 0,30 0,30 C 0,30 20,2 20,-10 C 20,-22 12,-30 0,-30 Z" fill="#3cc698" opacity="0.8"/>
+    <circle cx="0" cy="-10" r="8" fill="#0E0E10"/>
+  </g>
+
+  <g transform="translate(600, 250)">
+    <path d="M 0,-30 C -12,-30 -20,-22 -20,-10 C -20,2 0,30 0,30 C 0,30 20,2 20,-10 C 20,-22 12,-30 0,-30 Z" fill="#00FFFF" opacity="0.8"/>
+    <circle cx="0" cy="-10" r="8" fill="#0E0E10"/>
+  </g>
+
+  <!-- Taxi/Vehicle Icon -->
+  <g transform="translate(400, 300)">
+    <!-- Vehicle Body -->
+    <rect x="-50" y="-25" width="100" height="50" rx="10" fill="url(#taxiGradient)" opacity="0.9"/>
+    <!-- Windows -->
+    <rect x="-40" y="-18" width="35" height="20" rx="3" fill="#191F3A" opacity="0.7"/>
+    <rect x="5" y="-18" width="35" height="20" rx="3" fill="#191F3A" opacity="0.7"/>
+    <!-- Wheels -->
+    <circle cx="-30" cy="25" r="12" fill="#B2BABB" stroke="#3cc698" stroke-width="2"/>
+    <circle cx="30" cy="25" r="12" fill="#B2BABB" stroke="#3cc698" stroke-width="2"/>
+    <circle cx="-30" cy="25" r="6" fill="#0E0E10"/>
+    <circle cx="30" cy="25" r="6" fill="#0E0E10"/>
+    <!-- Headlights -->
+    <circle cx="52" cy="-10" r="4" fill="#00FFFF" opacity="0.8"/>
+    <circle cx="52" cy="10" r="4" fill="#00FFFF" opacity="0.8"/>
+  </g>
+
+  <!-- Mobile Phone Frame -->
+  <g transform="translate(150, 150)">
+    <rect x="0" y="0" width="120" height="200" rx="15" fill="#1E1E24" stroke="#3cc698" stroke-width="3" opacity="0.8"/>
+    <rect x="10" y="30" width="100" height="150" rx="5" fill="#0E0E10"/>
+    <!-- Screen content - route -->
+    <path d="M 20 50 L 100 50 L 100 100 L 60 140 L 20 100 Z" fill="#3cc698" opacity="0.3"/>
+    <circle cx="30" cy="60" r="4" fill="#00FFFF"/>
+    <circle cx="90" cy="60" r="4" fill="#3cc698"/>
+    <line x1="30" y1="60" x2="90" y2="60" stroke="#00FFFF" stroke-width="2" stroke-dasharray="3,2"/>
+    <!-- Notification dots -->
+    <circle cx="95" cy="15" r="6" fill="#FF4444"/>
+    <text x="95" y="19" font-size="10" fill="white" text-anchor="middle">3</text>
+  </g>
+
+  <!-- Community Icons (people) -->
+  <g transform="translate(620, 450)" opacity="0.7">
+    <circle cx="0" cy="-15" r="10" fill="#3cc698"/>
+    <path d="M -12,0 L -12,25 M 12,0 L 12,25 M 0,0 L 0,30 M -8,10 L 8,10" stroke="#3cc698" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(680, 440)" opacity="0.6">
+    <circle cx="0" cy="-15" r="10" fill="#00FFFF"/>
+    <path d="M -12,0 L -12,25 M 12,0 L 12,25 M 0,0 L 0,30 M -8,10 L 8,10" stroke="#00FFFF" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Signal waves -->
+  <g transform="translate(400, 200)" opacity="0.5">
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#00FFFF" stroke-width="2">
+      <animate attributeName="r" from="20" to="50" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" from="1" to="0" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#3cc698" stroke-width="2">
+      <animate attributeName="r" from="20" to="50" dur="2s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" from="1" to="0" dur="2s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#3cc698" text-anchor="middle">Travel Mate</text>
+  <text x="400" y="130" font-family="Arial, sans-serif" font-size="18" fill="#00FFFF" text-anchor="middle" opacity="0.8">Community-Driven Taxi Information</text>
+
+  <!-- Tech Stack Icons at bottom -->
+  <g transform="translate(250, 540)">
+    <text font-family="Arial, sans-serif" font-size="14" fill="#B2BABB">React • TypeScript • Node.js • PostgreSQL • Express</text>
+  </g>
+</svg>
+
