@@ -61,29 +61,23 @@ export default function Projects() {
     {
       id: 3,
       title: "Travel Mate",
-      description: "A community-driven web application to help improve taxi commuting in South Africa. Building with React and Node.js to learn full-stack development, user authentication, and real-time features with PostgreSQL.",
+      description: "A simple community-driven app to improve taxi commuting in South Africa. Built to learn full-stack development with a small, focused feature set.",
       image: "/projects/travelmate.svg",
-      tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Vite", "Tailwind CSS"],
+      tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL"],
       github: "https://github.com/micanipho/travel-mate",
-      live: null,
+      live: "https://travel-mate-kappa.vercel.app/",
       status: "In Development",
       highlights: [
-        "Learning JWT authentication with Express",
-        "Building a REST API with Node.js and PostgreSQL",
-        "Creating interactive UI with React 18 and TypeScript",
-        "Implementing CRUD operations for destinations and alerts",
-        "Practicing security best practices (Helmet, CORS)",
-        "Working with modern tools like Vite and TanStack Query",
-        "Learning database design and SQL queries"
+        "Real-time taxi availability and basic route info",
+        "Simple REST API with Node.js and PostgreSQL",
+        "User authentication (JWT) for core flows",
+        "Interactive maps mockup and CRUD for destinations/alerts"
       ],
       icons: [
         <SiReact key="react" className="text-[#61DAFB]" />,
         <SiTypescript key="typescript" className="text-[#3178C6]" />,
         <SiNodedotjs key="nodejs" className="text-[#339933]" />,
-        <SiExpress key="express" className="text-[#B2BABB]" />,
-        <SiPostgresql key="postgresql" className="text-[#4169E1]" />,
-        <SiVite key="vite" className="text-[#646CFF]" />,
-        <SiTailwindcss key="tailwind" className="text-[#06B6D4]" />
+        <SiPostgresql key="postgresql" className="text-[#4169E1]" />
       ]
     }
   ];

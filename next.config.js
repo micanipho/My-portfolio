@@ -1,17 +1,19 @@
 /** @type {import('next').NextConfig} */
+// Only apply GitHub Pages-specific settings when an explicit env var is set.
+// This avoids adding a basePath/assetPrefix during Vercel (or other) deployments.
+const isGithubPages = process.env.GITHUB_PAGES === 'true';
+
 const nextConfig = {
-  // Enable static export for GitHub Pages
-  output: 'export',
+  // Enable static export when deploying to GitHub Pages (optional)
+  // Keep as-is for GH Pages, but allow other platforms (Vercel) to run normally.
+  output: isGithubPages ? 'export' : undefined,
 
   // Add trailing slash for GitHub Pages compatibility
-  trailingSlash: true,
+  trailingSlash: isGithubPages ? true : false,
 
-  // Configure asset prefix for GitHub Pages
-  // This will be automatically set by GitHub Actions
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/My-portfolio' : '',
-
-  // Ensure proper base path handling
-  basePath: process.env.NODE_ENV === 'production' ? '/My-portfolio' : '',
+  // Configure asset prefix & basePath only for GitHub Pages
+  assetPrefix: isGithubPages ? '/My-portfolio' : '',
+  basePath: isGithubPages ? '/My-portfolio' : '',
 
   // Disable image optimization for static export
   images: {
