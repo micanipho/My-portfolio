@@ -32,7 +32,7 @@ npm run dev
 pages/            route files (index, about, projects, contact, documents)
 src/components/   Navbar, Footer, Layout, SEO, WorkRow, PerformanceMonitor
 src/data/         project content (src/data/projects.ts)
-src/styles/       global.css, next/font loaders
+src/styles/       global.css
 public/           static assets, resume.html
 ```
 
