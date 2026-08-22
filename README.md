@@ -5,7 +5,7 @@ Personal portfolio site, built with [Next.js](https://nextjs.org/) (Pages Router
 ## Stack
 
 - **Framework**: Next.js 15 (Pages Router)
-- **Styling**: Tailwind CSS, self-hosted Google Fonts via `next/font`
+- **Styling**: Tailwind CSS, Google Fonts (Barlow / Barlow Condensed) loaded via `pages/_document.tsx`
 - **Hosting**: Vercel
 
 No animation library, no CMS — content lives in `src/data/projects.ts` and the page files directly.
