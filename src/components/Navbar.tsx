@@ -1,162 +1,114 @@
 // src/components/Navbar.tsx
 import * as React from 'react';
 import { useState, useCallback, memo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
-// Type definitions
 interface NavItemType {
   name: string;
   href: string;
 }
 
-interface NavItemProps {
-  item: NavItemType;
-  index: number;
-  isMobile?: boolean;
-  onClick?: () => void;
-}
+const NAV_ITEMS: NavItemType[] = [
+  { name: 'Work', href: '/projects' },
+  { name: 'About', href: '/about' },
+  { name: 'Documents', href: '/documents' },
+  { name: 'Contact', href: '/contact' },
+];
 
-// Memoized logo component to prevent unnecessary re-renders
-const Logo = memo(() => (
-    <div className="w-9 h-9 bg-[#191F3A] rounded-full border border-[#00FFFF] flex items-center justify-center relative overflow-hidden">
-      {/* @ts-ignore - framer-motion type compatibility issue */}
-      <motion.div
-          // @ts-ignore - framer-motion type compatibility issue
-          className="absolute inset-0 bg-gradient-to-br from-[#191F3A]/50 via-transparent to-[#00FFFF]/30 opacity-70"
-          animate={{
-            opacity: [0.5, 0.7, 0.5]
-          }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <span className="text-sm font-bold text-[#00FFFF]">NM</span>
+// Slim status strip — repeats the hero's "operational" signal on every page.
+const StatusStrip = memo(() => (
+  <div className="flex items-stretch h-[30px] border-b border-unit-border bg-unit-strip">
+    <div
+      className="hidden sm:block w-16 unit-hazard"
+      aria-hidden="true"
+    />
+    <div className="flex-grow flex items-center justify-between px-4 sm:px-6 font-display text-[11px] sm:text-xs font-medium tracking-[0.14em] uppercase">
+      <div className="flex items-center gap-2 sm:gap-3">
+        <span className="w-1.5 h-1.5 rounded-full bg-unit-teal inline-block" aria-hidden="true" />
+        <span className="text-unit-teal">Operational</span>
+        <span className="hidden sm:inline-block w-px h-3 bg-unit-border-2" aria-hidden="true" />
+        <span className="hidden sm:inline text-unit-steel-2">Johannesburg &middot; UTC+2</span>
+      </div>
+      <div className="text-unit-orange">Open to opportunities</div>
     </div>
+  </div>
+));
+StatusStrip.displayName = 'StatusStrip';
+
+const Logo = memo(() => (
+  <span className="flex items-center gap-3">
+    <span className="w-[3px] h-[22px] bg-unit-orange inline-block" aria-hidden="true" />
+    <span className="font-display text-xl font-bold tracking-[0.1em] uppercase text-unit-bone">
+      N. Masilela
+    </span>
+  </span>
 ));
 Logo.displayName = 'Logo';
-
-// Memoized nav item to prevent unnecessary re-renders
-const NavItem = memo(({
-  item,
-  index,
-  isMobile = false,
-  onClick = () => {}
-}: NavItemProps) => {
-  const animationDelay = isMobile ? index * 0.05 : index * 0.1;
-
-  return (
-    // @ts-ignore - framer-motion type compatibility issue
-    <motion.div
-      initial={{ opacity: 0, [isMobile ? 'x' : 'y']: isMobile ? -10 : -10 }}
-      animate={{ opacity: 1, [isMobile ? 'x' : 'y']: 0 }}
-      transition={{ duration: 0.2, delay: animationDelay }}
-      whileHover={!isMobile ? { scale: 1.1, y: -2 } : undefined}
-    >
-      <Link
-        href={item.href}
-        className={`${isMobile ? 'block py-2' : ''} text-[#B2BABB] hover:text-[#C4FF00] text-lg font-medium transition-all duration-300 relative group`}
-        onClick={onClick}
-      >
-        {item.name}
-        {!isMobile && (
-          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#00FFFF] transition-all duration-300 group-hover:w-full"></span>
-        )}
-      </Link>
-    </motion.div>
-  );
-});
-NavItem.displayName = 'NavItem';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const navItems: NavItemType[] = [
-    { name: 'Home', href: '/' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'About', href: '/about' },
-    { name: 'Documents', href: '/documents' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
-  const toggleMenu = useCallback(() => {
-    setIsOpen(prev => !prev);
-  }, []);
-
-  const closeMenu = useCallback(() => {
-    setIsOpen(false);
-  }, []);
+  const toggleMenu = useCallback(() => setIsOpen((prev) => !prev), []);
+  const closeMenu = useCallback(() => setIsOpen(false), []);
 
   return (
-    <nav className="fixed w-full top-0 z-50 bg-gradient-to-r from-[#0E0E10] via-[#191F3A] to-[#0E0E10] shadow-lg border-b border-[#00FFFF]/30">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* @ts-ignore - framer-motion type compatibility issue */}
-          <motion.div
-            className="text-2xl font-bold tracking-wider"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link href="/" className="flex items-center">
-              <Logo />
-            </Link>
-          </motion.div>
+    <header className="fixed top-0 inset-x-0 z-50">
+      <StatusStrip />
 
-          {/* Desktop menu */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item, index) => (
-              <NavItem key={item.name} item={item} index={index} />
+      <nav className="h-16 bg-unit-bg/95 backdrop-blur-sm border-b border-unit-border">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex justify-between items-center">
+          <Link href="/" className="flex items-center" onClick={closeMenu}>
+            <Logo />
+          </Link>
+
+          <div className="hidden md:flex items-center gap-9 font-display text-sm font-semibold tracking-[0.14em] uppercase text-unit-steel-2">
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="hover:text-unit-bone transition-colors duration-200"
+              >
+                {item.name}
+              </Link>
             ))}
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            {/* @ts-ignore - framer-motion type compatibility issue */}
-            <motion.button
-              onClick={toggleMenu}
-              className="p-2 rounded-md text-[#B2BABB] hover:text-[#00FFFF] focus:outline-none transition-colors duration-300"
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </motion.button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu with AnimatePresence for proper exit animations */}
-      <AnimatePresence>
-        {isOpen && (
-          // @ts-ignore - framer-motion type compatibility issue
-          <motion.div
-            className="md:hidden bg-[#0E0E10]/95 border-b border-[#00FFFF]/30"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden p-2 -mr-2 text-unit-steel-2 hover:text-unit-bone transition-colors duration-200"
+            aria-expanded={isOpen}
+            aria-label={isOpen ? 'Close main menu' : 'Open main menu'}
           >
-            <div className="px-4 py-3 space-y-3">
-              {navItems.map((item, index) => (
-                <NavItem
+            {isOpen ? (
+              <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+
+        {isOpen && (
+          <div className="md:hidden bg-unit-bg border-b border-unit-border">
+            <div className="px-4 py-3 flex flex-col gap-1">
+              {NAV_ITEMS.map((item) => (
+                <Link
                   key={item.name}
-                  item={item}
-                  index={index}
-                  isMobile={true}
+                  href={item.href}
                   onClick={closeMenu}
-                />
+                  className="py-2.5 font-display text-base font-semibold tracking-[0.1em] uppercase text-unit-steel-2 hover:text-unit-bone transition-colors duration-200"
+                >
+                  {item.name}
+                </Link>
               ))}
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
-    </nav>
+      </nav>
+    </header>
   );
 };
 

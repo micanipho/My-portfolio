@@ -1,5 +1,5 @@
 {
-  "name": "my-portfolio",
+  "name": "nhlakanipho-portfolio",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -7,35 +7,22 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build",
-    "build:prod": "next build && next export",
-    "type-check": "tsc --noEmit",
-    "lighthouse": "lhci autorun",
-    "perf": "next build && next start",
-    "test-deployment": "node scripts/test-deployment.js",
-    "deploy-test": "npm run build && npm run test-deployment",
-    "test-svg": "node scripts/convert-svg-to-png.js",
-    "svg-to-base64": "node scripts/svg-to-base64.js"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "autoprefixer": "^10.0.0",
-    "framer-motion": "^11.11.17",
     "next": "^15.3.3",
     "postcss": "^8.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-icons": "^4.12.0",
-    "sanity": "^2.36.6",
     "tailwindcss": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "24.0.1",
     "@types/react": "19.1.8",
-    "copy-webpack-plugin": "^13.0.0",
     "eslint": "^8.0.0",
     "eslint-config-next": "^13.0.0",
-    "typescript": "^4.0.0",
-    "webpack-bundle-analyzer": "^4.10.2"
+    "typescript": "^4.0.0"
   },
   "browserslist": {
     "production": [

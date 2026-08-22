@@ -1,66 +1,43 @@
-sudo apt update
-sudo apt --fix-broken install
-sudo apt autoremove# 🌟 Portfolio Website
+# Nhlakanipho Masilela — Portfolio
 
-A modern, high-performance portfolio website built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and deployed on [Vercel](https://vercel.com).  
+Personal portfolio site, built with [Next.js](https://nextjs.org/) (Pages Router), TypeScript, and Tailwind CSS. Deployed on [Vercel](https://vercel.com).
 
-![Portfolio Screenshot](./public/screenshot.png) *Replace with your own screenshot*
+## Stack
 
-## 🚀 Features
-- **Blazing Fast**: 100/100 Lighthouse score (thanks to Next.js static generation).  
-- **Responsive**: Mobile-first design with Tailwind CSS.  
-- **Modern Animations**: Powered by Framer Motion.  
-- **CMS Integration**: Edit content easily with Sanity.io.  
-- **Dark Mode**: Toggle between light/dark themes.  
+- **Framework**: Next.js 15 (Pages Router)
+- **Styling**: Tailwind CSS, self-hosted Google Fonts via `next/font`
+- **Hosting**: Vercel
 
-## 🛠 Tech Stack
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)  
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Framer Motion](https://www.framer.com/motion/)  
-- **CMS**: [Sanity.io](https://www.sanity.io/) (optional)  
-- **Hosting**: [Vercel](https://vercel.com)  
-- **Analytics**: [Vercel Analytics](https://vercel.com/analytics)  
+No animation library, no CMS — content lives in `src/data/projects.ts` and the page files directly.
 
-## 📦 Installation
+## Running locally
 
 ```bash
-# Clone the repository
-$ git clone https://github.com/your-username/My-portfolio.git
-
-# Navigate to the project directory
-$ cd My-portfolio
-
-# Install dependencies
-$ npm install
-```
-
-## ▶️ How to Run
-
-```bash
-# Start the development server
+npm install
 npm run dev
-
-# Open your browser and navigate to http://localhost:3000
+# http://localhost:3000
 ```
 
-## 📦 Deployment
+## Scripts
 
-```bash
-# Build the project for production
-$ npm run build
+- `npm run dev` — start the dev server
+- `npm run build` — production build
+- `npm start` — run the production build locally
+- `npm run type-check` — TypeScript, no emit
+- `npm run lint` — ESLint
 
-# Start the production server
-$ npm start
+## Structure
+
+```
+pages/            route files (index, about, projects, contact, documents)
+src/components/   Navbar, Footer, Layout, SEO, WorkRow, PerformanceMonitor
+src/data/         project content (src/data/projects.ts)
+src/styles/       global.css, next/font loaders
+public/           static assets, resume.html
 ```
 
-## ���� Configuration
-- Edit `app/config.ts` to update your personal info (name, bio, social links).  
-- For Sanity CMS, set up your project and update `sanity.config.ts`.  
+To update project content, edit `src/data/projects.ts` — it's the single source both the homepage's "Selected work" section and the full `/projects` page read from.
 
-## 📝 License
-MIT © [Your Name](https://your-portfolio-url.com)  
+## Deployment
 
----
-
-💡 **Pro Tip**:  
-- Use `next/image` for optimized images.  
-- Add a `sitemap.xml` and `robots.txt` for SEO.
+Pushes to `main` deploy to Vercel automatically via its Git integration. `.github/workflows/ci.yml` runs a type-check and build on every push and PR.
