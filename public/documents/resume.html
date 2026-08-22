@@ -3,602 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhlakanipho Quinton Masilela - Software Developer Resume</title>
+    <title>Nhlakanipho Quinton Masilela — Résumé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap');
-
+        :root {
+            --bg: #0A121C;
+            --panel: #0E1927;
+            --border: #1E2E42;
+            --border-dim: #182739;
+            --orange: #F2622E;
+            --teal: #2FB6C4;
+            --bone: #E6EDF5;
+            --steel: #7C90AA;
+            --steel-3: #A9BACD;
+        }
+        * { box-sizing: border-box; }
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Barlow', system-ui, sans-serif;
+            font-weight: 300;
             line-height: 1.6;
-            color: #B2BABB;
-            max-width: 900px;
+            color: var(--steel-3);
+            max-width: 880px;
             margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #0E0E10 0%, #191F3A 50%, #0E0E10 100%);
-            min-height: 100vh;
+            padding: 40px 24px 60px;
+            background: var(--bg);
+        }
+        h1, h2, h3, .display {
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
         }
         .header {
-            text-align: center;
-            background: linear-gradient(135deg, #1e1e24 0%, #2a2a35 100%);
-            border: 1px solid #00FFFF;
-            border-radius: 15px;
-            padding: 30px 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00FFFF, transparent);
-            animation: shimmer 3s infinite;
-        }
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
+            border-bottom: 2px solid var(--orange);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
         }
         .header h1 {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #00FFFF 0%, #C4FF00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 2.8em;
-            margin: 0;
-            font-weight: 700;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            color: var(--bone);
+            font-size: 2.4em;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin: 0 0 8px 0;
         }
         .header .title {
-            color: #00FFFF;
-            font-size: 1.4em;
-            margin: 15px 0;
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
+            color: var(--orange);
+            font-size: 1.05em;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 0.14em;
+            margin: 0 0 18px 0;
         }
         .contact-info {
             display: flex;
-            justify-content: center;
-            gap: 25px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            gap: 18px;
+            font-size: 0.9em;
         }
-        .contact-info span {
-            color: #B2BABB;
-            font-size: 0.95em;
-            background: rgba(0, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            transition: all 0.3s ease;
+        .contact-info a, .contact-info span {
+            color: var(--steel);
+            text-decoration: none;
         }
-        .contact-info span:hover {
-            background: rgba(0, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
-        }
-        .section {
-            background: linear-gradient(135deg, #1e1e24 0%, #2a2a35 100%);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #00FFFF, #C4FF00, #00FFFF);
-            border-radius: 15px 15px 0 0;
-        }
+        .contact-info a:hover { color: var(--orange); }
+        .section { margin-bottom: 32px; }
         .section h2 {
-            font-family: 'Montserrat', sans-serif;
-            color: #00FFFF;
-            font-size: 1.6em;
-            margin: 0 0 20px 0;
+            color: var(--bone);
+            font-size: 1.15em;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            padding-left: 15px;
+            letter-spacing: 0.14em;
+            margin: 0 0 18px 0;
+            padding-left: 12px;
+            border-left: 3px solid var(--orange);
         }
-        .section h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #00FFFF, #C4FF00);
-            border-radius: 2px;
-        }
+        p { margin: 0 0 12px 0; }
+        .summary p { color: var(--steel-3); max-width: 68ch; }
+
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
         }
         .skill-category {
-            background: linear-gradient(135deg, #191F3A 0%, #2a2a35 100%);
-            border: 1px solid rgba(196, 255, 0, 0.3);
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(196, 255, 0, 0.2);
-            border-color: rgba(196, 255, 0, 0.5);
-        }
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #C4FF00, #00FFFF);
-            border-radius: 12px 0 0 12px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            padding: 16px 18px;
         }
         .skill-category h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #C4FF00;
-            margin: 0 0 15px 0;
-            font-size: 1.2em;
+            color: var(--teal);
+            margin: 0 0 10px 0;
+            font-size: 0.95em;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
-        .skill-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+        .skill-list { list-style: none; padding: 0; margin: 0; }
         .skill-list li {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            margin: 8px 0;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.95em;
-            color: #B2BABB;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            font-size: 0.92em;
+            color: var(--steel-3);
+            padding: 4px 0;
+            border-bottom: 1px solid var(--border-dim);
         }
-        .skill-list li:hover {
-            background: rgba(0, 255, 255, 0.2);
-            transform: translateX(5px);
-            color: #00FFFF;
+        .skill-list li:last-child { border-bottom: none; }
+
+        .entry {
+            padding: 18px 0;
+            border-top: 1px solid var(--border-dim);
         }
-        .skill-list li::before {
-            content: '▶';
-            color: #00FFFF;
-            margin-right: 10px;
-            font-size: 0.8em;
+        .entry:first-child { border-top: none; padding-top: 0; }
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+            margin-bottom: 4px;
         }
-        .project {
-            background: linear-gradient(135deg, #191F3A 0%, #2a2a35 100%);
-            border: 1px solid rgba(196, 255, 0, 0.3);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .project:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(196, 255, 0, 0.2);
-            border-color: rgba(196, 255, 0, 0.5);
-        }
-        .project::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #C4FF00, #00FFFF);
-            border-radius: 12px 0 0 12px;
-        }
-        .project h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #C4FF00;
-            margin: 0 0 12px 0;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-        .project-tech {
-            color: #00FFFF;
-            font-weight: 600;
-            font-size: 0.95em;
-            margin-top: 12px;
-            padding: 8px 12px;
-            background: rgba(0, 255, 255, 0.1);
-            border-radius: 6px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-        .achievement {
-            background: linear-gradient(135deg, rgba(196, 255, 0, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
-            border: 1px solid rgba(196, 255, 0, 0.3);
-            padding: 15px 20px;
-            margin: 12px 0;
-            border-radius: 10px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .achievement:hover {
-            transform: translateX(5px);
-            background: linear-gradient(135deg, rgba(196, 255, 0, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
-            box-shadow: 0 5px 15px rgba(196, 255, 0, 0.2);
-        }
-        .achievement::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #C4FF00, #00FFFF);
-            border-radius: 10px 0 0 10px;
-        }
-        .education {
-            background: linear-gradient(135deg, #191F3A 0%, #2a2a35 100%);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .education:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
-            border-color: rgba(0, 255, 255, 0.5);
-        }
-        .education::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #00FFFF, #C4FF00);
-            border-radius: 12px 0 0 12px;
-        }
-        .education h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #00FFFF;
-            margin: 0 0 8px 0;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-        .education .institution {
-            color: #C4FF00;
-            font-weight: 600;
+        .entry h3 {
+            color: var(--bone);
+            margin: 0;
             font-size: 1.1em;
+            font-weight: 600;
+        }
+        .entry .period {
+            color: var(--steel);
+            font-size: 0.85em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+        }
+        .entry .institution {
+            color: var(--orange);
+            font-weight: 500;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 10px;
+        }
+        .entry ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        .entry li {
+            font-size: 0.92em;
+            color: var(--steel-3);
             margin-bottom: 5px;
         }
-        .education .period {
-            color: #B2BABB;
-            font-style: italic;
-            font-size: 0.95em;
+        .entry p {
+            font-size: 0.92em;
+            color: var(--steel-3);
+        }
+        .current-tag {
+            display: inline-block;
+            font-size: 0.7em;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--teal);
+            border: 1px solid #1E4A52;
+            background: #0C1F24;
+            padding: 2px 8px;
+            margin-left: 8px;
+            vertical-align: middle;
         }
 
-        /* Secondary Education Specific Styling */
-        .secondary-education {
-            background: linear-gradient(135deg, rgba(196, 255, 0, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%) !important;
-            border: 1px solid rgba(196, 255, 0, 0.4) !important;
-            position: relative;
-            margin-top: 20px;
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-dim);
+            color: var(--steel);
+            font-size: 0.85em;
         }
-        .secondary-education:hover {
-            background: linear-gradient(135deg, rgba(196, 255, 0, 0.15) 0%, rgba(0, 255, 255, 0.15) 100%) !important;
-            border-color: rgba(196, 255, 0, 0.6) !important;
-            box-shadow: 0 8px 25px rgba(196, 255, 0, 0.2) !important;
-        }
-        .secondary-education::before {
-            background: linear-gradient(135deg, #C4FF00, #00FFFF) !important;
-        }
-        .secondary-education h3 {
-            color: #C4FF00 !important;
-            display: flex;
-            align-items: center;
-        }
-        .secondary-education h3::after {
-            content: '🎓';
-            margin-left: 10px;
-            font-size: 1.1em;
-        }
-        .secondary-education .institution {
-            color: #00FFFF !important;
-        }
-        .secondary-details {
-            margin-top: 12px;
-            padding: 12px 15px;
-            background: rgba(196, 255, 0, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(196, 255, 0, 0.2);
-        }
-        .secondary-details p {
-            margin: 0;
-            color: #B2BABB;
-            font-size: 0.95em;
-            font-style: italic;
-        }
-        /* Print Styles */
+
         @media print {
             body {
-                background: white !important;
-                color: #333 !important;
-                margin: 0;
-                padding: 15px;
+                background: #ffffff !important;
+                color: #2a3442 !important;
+                padding: 0;
+                max-width: 100%;
             }
-            .header {
-                page-break-after: avoid;
-                background: white !important;
-                border: 2px solid #333 !important;
-                box-shadow: none !important;
-            }
-            .header h1 {
-                color: #333 !important;
-                -webkit-text-fill-color: #333 !important;
-            }
-            .header .title {
-                color: #666 !important;
-            }
-            .section {
-                page-break-inside: avoid;
-                background: white !important;
-                border: 1px solid #ddd !important;
-                box-shadow: none !important;
-            }
-            .section h2 {
-                color: #333 !important;
-            }
-            .skill-category, .project, .education, .achievement {
-                background: #f8f9fa !important;
-                border: 1px solid #ddd !important;
-                box-shadow: none !important;
-            }
-            .secondary-education {
-                background: #f0f8f0 !important;
-                border: 1px solid #90c695 !important;
-            }
-            .secondary-education h3 {
-                color: #2d5a32 !important;
-            }
-            .secondary-education .institution {
-                color: #1a472a !important;
-            }
-            .secondary-details {
-                background: #e8f5e8 !important;
-                border: 1px solid #c3d9c6 !important;
-            }
-            .contact-info span {
-                background: #f0f0f0 !important;
-                border: 1px solid #ddd !important;
-                color: #333 !important;
-            }
-            .skill-list li {
-                background: white !important;
-                border: 1px solid #ddd !important;
-                color: #333 !important;
-            }
+            .header { border-bottom-color: #F2622E !important; }
+            .header h1 { color: #14202e !important; }
+            .header .title { color: #C4501F !important; }
+            .contact-info a, .contact-info span { color: #4a5a70 !important; }
+            .section h2 { color: #14202e !important; border-left-color: #F2622E !important; }
+            .skill-category { background: #f7f8fa !important; border-color: #dde2ea !important; }
+            .skill-category h3 { color: #1a7a86 !important; }
+            .skill-list li, .entry li, .entry p, .summary p { color: #3d4a5c !important; border-color: #e5e9ef !important; }
+            .entry h3 { color: #14202e !important; }
+            .entry .institution { color: #C4501F !important; }
+            .entry .period { color: #6b7a8f !important; }
+            .current-tag { color: #12707c !important; border-color: #b9dfe3 !important; background: #eaf7f8 !important; }
+            .entry, .footer-note { border-color: #e5e9ef !important; }
+            .section { page-break-inside: avoid; }
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            .header h1 {
-                font-size: 2.2em;
-            }
-            .contact-info {
-                gap: 15px;
-            }
-            .contact-info span {
-                font-size: 0.85em;
-                padding: 6px 12px;
-            }
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            .section {
-                padding: 20px;
-            }
+        @media (max-width: 640px) {
+            body { padding: 24px 16px 40px; }
+            .header h1 { font-size: 1.9em; }
+            .entry-head { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>NHLAKANIPHO QUINTON MASILELA</h1>
-        <div class="title">GRADUATE SOFTWARE ENGINEER @ BOXFUSION</div>
+        <div class="title">Graduate Software Engineer @ Boxfusion</div>
         <div class="contact-info">
-            <span>📧 nqmasilela777@gmail.com</span>
-            <span>📍 Johannesburg, South Africa</span>
-            <span>👤 Male</span>
+            <a href="mailto:nqmasilela777@gmail.com">nqmasilela777@gmail.com</a>
+            <span>Johannesburg, South Africa</span>
+            <a href="https://github.com/micanipho" target="_blank" rel="noopener noreferrer">github.com/micanipho</a>
+            <a href="https://linkedin.com/in/nqmasilela" target="_blank" rel="noopener noreferrer">linkedin.com/in/nqmasilela</a>
         </div>
     </div>
 
-    <div class="section">
-        <h2>PROFESSIONAL SUMMARY</h2>
+    <div class="section summary">
+        <h2>Professional Summary</h2>
         <p>Graduate Software Engineer at Boxfusion, working on Shesha — an open-source low-code framework used to build production line-of-business applications. Backend-focused, with a background in physics and mathematics that shaped a first-principles approach to problem-solving. Recent work: rebuilding canvas sizing and zoom behaviour in Shesha's Form Designer, a ticket that had been reassigned twice and slipped three sprints before it reached me. Comfortable moving between individual contribution and mentoring — I've run structured project reviews and study sessions for bootcamp teams at WeThinkCode_.</p>
     </div>
 
     <div class="section">
-        <h2>TECHNICAL SKILLS</h2>
+        <h2>Technical Skills</h2>
         <div class="skills-grid">
             <div class="skill-category">
-                <h3>Programming Languages</h3>
+                <h3>Languages</h3>
                 <ul class="skill-list">
-                    <li>Python (Advanced)</li>
-                    <li>Java (Intermediate)</li>
-                    <li>JavaScript (Intermediate)</li>
-                    <li>HTML/CSS (Advanced)</li>
+                    <li>Python</li>
+                    <li>TypeScript</li>
+                    <li>Java</li>
+                    <li>C#</li>
+                    <li>JavaScript</li>
+                    <li>SQL</li>
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Frameworks & Libraries</h3>
+                <h3>Frameworks &amp; Libraries</h3>
                 <ul class="skill-list">
-                    <li>React</li>
-                    <li>Flask</li>
+                    <li>React / Next.js</li>
                     <li>Spring Boot</li>
-                    <li>Tailwind CSS</li>
-                    <li>Bootstrap</li>
+                    <li>.NET</li>
+                    <li>Flask</li>
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Core Skills</h3>
+                <h3>Data &amp; Infrastructure</h3>
                 <ul class="skill-list">
-                    <li>Object-Relational Mapping (ORM)</li>
-                    <li>JSON</li>
-                    <li>Object-Oriented Programming (OOP)</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Databases & Tools</h3>
-                <ul class="skill-list">
-                    <li>MySQL</li>
-                    <li>PostgreSQL</li>
-                    <li>Git & GitHub</li>
-                    <li>VS Code</li>
-                    <li>Docker (Basic)</li>
+                    <li>PostgreSQL / MySQL</li>
+                    <li>Docker</li>
+                    <li>AWS</li>
+                    <li>Git &amp; GitHub</li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="section">
-        <h2>EDUCATION</h2>
+        <h2>Professional Experience</h2>
 
-        <div class="education" style="margin-bottom: 20px;">
-            <h3>Diploma in Computer Software Engineering</h3>
-            <div class="institution">WeThinkCode_</div>
-            <div class="period">2024 - 2025</div>
-            <ul style="margin-top: 10px;">
-                <li>Intensive software development program</li>
-                <li>Focus on practical coding skills and modern development practices</li>
-                <li>Collaborative learning environment with coding challenges and hackathons</li>
-            </ul>
-        </div>
-
-        <div class="education">
-            <h3>Bachelor's Degree in Computer Science (Incomplete - Final Year)</h3>
-            <div class="institution">University of the Witwatersrand</div>
-            <div class="period">February 2018 - December 2021</div>
-            <ul style="margin-top: 10px;">
-                <li>Strong foundation in computer science principles and analytical thinking</li>
-                <li>Specialized in algorithms and software design</li>
-                <li>Mathematical background providing first-principles problem-solving approach</li>
-                <li>Completed coursework through final year level</li>
-            </ul>
-        </div>
-
-        <div class="education secondary-education">
-            <h3>Secondary Education</h3>
-            <div class="institution">Khaliphani Senior Secondary School</div>
-            <div class="period">Completed 2016</div>
-            <div class="secondary-details">
-                <p>Foundation education providing strong academic base for higher learning in Computer Science and Mathematics.</p>
+        <div class="entry">
+            <div class="entry-head">
+                <h3>Graduate Software Engineer<span class="current-tag">Current</span></h3>
+                <span class="period">February 2026 — Present</span>
             </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>PROFESSIONAL EXPERIENCE</h2>
-
-        <div class="education" style="margin-bottom: 20px;">
-            <h3>Graduate Software Engineer</h3>
             <div class="institution">Boxfusion</div>
-            <div class="period">February 2026 - Present</div>
-            <ul style="margin-top: 10px;">
+            <ul>
                 <li>Contribute to Shesha, an open-source low-code framework used to build production line-of-business applications</li>
                 <li>Rebuilt canvas sizing and zoom behaviour in the Form Designer: auto-fit default, predefined zoom steps, an editable zoom field, and component wrapping that survives a zoom change</li>
                 <li>Took on a ticket that had been reassigned twice and was three sprints late, and shipped it after requirements changed mid-way through</li>
             </ul>
         </div>
 
-        <div class="education" style="margin-bottom: 20px;">
-            <h3>Bootcamp Mentor</h3>
+        <div class="entry">
+            <div class="entry-head">
+                <h3>Peer &amp; Bootcamp Mentor</h3>
+                <span class="period">March 2025 — August 2025</span>
+            </div>
             <div class="institution">WeThinkCode_</div>
-            <div class="period">May 2025 - August 2025</div>
-            <ul style="margin-top: 10px;">
-                <li>Lead and mentor diverse bootcamp teams, fostering collaborative environments that drive project success</li>
-                <li>Communicate complex technical concepts clearly to team members with varying skill levels and backgrounds</li>
-                <li>Facilitate strategic planning sessions, helping teams align technical solutions with project objectives</li>
-                <li>Conduct comprehensive project reviews, providing constructive feedback that promotes growth and learning</li>
-                <li>Demonstrate servant leadership by prioritizing team development and knowledge transfer over individual recognition</li>
+            <ul>
+                <li>Coached students on study methods and coursework, running group study sessions across the cohort</li>
+                <li>Reviewed bootcamp teams' projects against structured evaluation criteria across multiple project cycles</li>
+                <li>Gave feedback teams could act on immediately, not just a pass/fail grade</li>
             </ul>
         </div>
     </div>
 
-
     <div class="section">
-        <h2>ACADEMIC ACHIEVEMENTS & AWARDS</h2>
-        <div class="achievement">🏆 Certificate of First Class - Introduction to Algorithms and Programming I (2018)</div>
-        <div class="achievement">🏆 Certificate of First Class - Linear Algebra II (2019)</div>
-        <div class="achievement">🏆 Certificate of First Class - Software Design Project III (2021)</div>
-        <div class="achievement">✅ Consistent academic excellence in computer science subjects</div>
-        <div class="achievement">✅ Strong mathematical and algorithmic problem-solving skills</div>
-        <div class="achievement">✅ Demonstrated proficiency in software design and development</div>
-    </div>
+        <h2>Education</h2>
 
-    <div class="section">
-        <h2>CORE COMPETENCIES</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Academic Excellence</h3>
-                <ul class="skill-list">
-                    <li>Algorithms & Programming</li>
-                    <li>Linear Algebra</li>
-                    <li>Software Design</li>
-                    <li>Computer Science Theory</li>
-                </ul>
+        <div class="entry">
+            <div class="entry-head">
+                <h3>Diploma in Computer Software Engineering</h3>
+                <span class="period">2024 — 2025</span>
             </div>
-            <div class="skill-category">
-                <h3>Technical Skills</h3>
-                <ul class="skill-list">
-                    <li>Programming Languages</li>
-                    <li>Software Development</li>
-                    <li>Problem Solving</li>
-                    <li>Mathematical Analysis</li>
-                </ul>
+            <div class="institution">WeThinkCode_</div>
+            <ul>
+                <li>Intensive software development program covering Python, Java, and modern development practices</li>
+                <li>Built through coding challenges, hackathons, and collaborative projects rather than lectures alone</li>
+            </ul>
+        </div>
+
+        <div class="entry">
+            <div class="entry-head">
+                <h3>Computer Science</h3>
+                <span class="period">February 2018 — December 2021</span>
             </div>
-            <div class="skill-category">
-                <h3>Leadership & Soft Skills</h3>
-                <ul class="skill-list">
-                    <li>Team Leadership & Mentorship</li>
-                    <li>Strategic Communication</li>
-                    <li>Cross-functional Collaboration</li>
-                    <li>Big Picture Thinking</li>
-                    <li>Stakeholder Engagement</li>
-                    <li>Knowledge Sharing</li>
-                </ul>
-            </div>
+            <div class="institution">University of the Witwatersrand</div>
+            <p>Three years toward a Computer Science degree before leaving to pursue software development directly. Built a foundation in algorithms, software design, and analytical thinking from first principles that still shapes how I approach a system today.</p>
         </div>
     </div>
 
     <div class="section">
-        <h2>CAREER OBJECTIVE</h2>
+        <h2>Career Objective</h2>
         <p>Looking to grow further into backend and platform engineering — deeper ownership of production systems, building on current work in Java, Spring Boot, and distributed systems within an open-source codebase.</p>
     </div>
 
-    <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 0.9em;">
+    <div class="footer-note">
         <p>Last updated: August 2026 | Open to opportunities</p>
-        <p><em>References available upon request</em></p>
     </div>
 </body>
 </html>
