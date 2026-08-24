@@ -1,27 +1,17 @@
 {
-  "name": "Nhlakanipho Masilela Portfolio",
-  "short_name": "Nhlakanipho",
-  "description": "Professional portfolio of Nhlakanipho Masilela, an aspiring software engineer and final-year student at WeThinkCode_",
+  "name": "Nhlakanipho Masilela — Software Developer",
+  "short_name": "N. Masilela",
+  "description": "Graduate Software Engineer at Boxfusion, working on Shesha.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#15142b",
-  "theme_color": "#00FFFF",
+  "background_color": "#0A121C",
+  "theme_color": "#0A121C",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
-    },
-    {
-      "src": "/favicon-32x32.png",
-      "sizes": "32x32",
-      "type": "image/png"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png"
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ],
   "categories": ["portfolio", "developer", "technology"],

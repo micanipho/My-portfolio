@@ -17,12 +17,12 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'NHLAKANIPHO PORTFOLIO - JUNIOR SOFTWARE DEVELOPER',
-  description = 'Professional portfolio of Nhlakanipho, a driven junior software developer and Software Engineering student at WeThinkCode_ specializing in Python, Java, Flask, Spring Boot, React, MySQL, and PostgreSQL.',
+  title = 'Nhlakanipho Masilela — Software Developer',
+  description = 'Graduate Software Engineer at Boxfusion, working on Shesha — an open-source low-code framework. Backend-focused: Java, C#/.NET, Spring Boot, Python, React, PostgreSQL.',
   image = '/images/og-image.jpg',
   type = 'website',
-  keywords = ['developer', 'portfolio', 'python', 'java', 'react', 'flask', 'spring boot', 'mysql', 'postgresql', 'software engineering', 'wethinkcode', 'hackathons', 'coding challenges'],
-  author = 'Nhlakanipho',
+  keywords = ['software developer', 'backend developer', 'Boxfusion', 'Shesha', 'Java', 'Spring Boot', 'C#', '.NET', 'Python', 'React', 'TypeScript', 'PostgreSQL', 'Johannesburg', 'South Africa'],
+  author = 'Nhlakanipho Masilela',
   publishedTime,
   modifiedTime,
   noindex = false,
@@ -41,10 +41,10 @@ const SEO: React.FC<SEOProps> = ({
     url: currentUrl,
     image: imageUrl,
     ...(type === 'profile' && {
-      jobTitle: 'Aspiring Software Engineer | Final-Year @WeThinkCode',
+      jobTitle: 'Graduate Software Engineer',
       worksFor: {
         '@type': 'Organization',
-        name: 'WeThinkCode_',
+        name: 'Boxfusion',
       },
       sameAs: [
         'https://github.com/micanipho',
@@ -110,7 +110,7 @@ const SEO: React.FC<SEOProps> = ({
       {/* Performance and Security */}
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <meta name="format-detection" content="telephone=no" />
-      <meta name="theme-color" content="#15142b" />
+      <meta name="theme-color" content="#0A121C" />
       
       {/* Preload critical resources - commented out until custom fonts are added */}
       {/* <link

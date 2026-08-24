@@ -4,13 +4,12 @@ import dynamic from 'next/dynamic';
 import PerformanceMonitor from './PerformanceMonitor';
 import SEO from './SEO';
 
-// Lazy load components for better performance
 const Navbar = dynamic(() => import('./Navbar'), {
-  loading: () => <div className="h-16 bg-[#15142b]" />, // Placeholder
+  loading: () => <div className="h-[94px] bg-unit-bg" />,
 });
 
 const Footer = dynamic(() => import('./Footer'), {
-  loading: () => <div className="h-20 bg-[#15142b]" />, // Placeholder
+  loading: () => <div className="h-24 bg-unit-bg" />,
 });
 
 interface LayoutProps {
@@ -30,20 +29,20 @@ const Layout: React.FC<LayoutProps> = ({ children, seoProps }) => {
       <SEO {...seoProps} />
       <PerformanceMonitor />
 
-      <div className="flex flex-col min-h-screen">
-        <Suspense fallback={<div className="h-16 bg-[#15142b]" />}>
+      <div className="flex flex-col min-h-screen bg-unit-bg">
+        <Suspense fallback={<div className="h-[94px] bg-unit-bg" />}>
           <Navbar />
         </Suspense>
 
         <main
-          className="flex-grow pt-16"
+          className="flex-grow pt-[94px]"
           role="main"
           aria-label="Main content"
         >
           {children}
         </main>
 
-        <Suspense fallback={<div className="h-20 bg-[#15142b]" />}>
+        <Suspense fallback={<div className="h-24 bg-unit-bg" />}>
           <Footer />
         </Suspense>
       </div>
