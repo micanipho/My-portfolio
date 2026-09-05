@@ -26,27 +26,8 @@ export const STATUS_STYLES: Record<ProjectStatus, { text: string; border: string
 
 export const projects: Project[] = [
   {
-    slug: 'shesha-form-designer',
-    number: '01',
-    title: 'Shesha — Form Designer canvas & zoom',
-    summary:
-      "Rebuilt canvas sizing and zoom in Shesha's Form Designer: an auto-fit default, 25% zoom steps, an editable zoom field, and component wrapping that survives a zoom change. The ticket had been reassigned twice and was three sprints late before it reached me.",
-    detail:
-      "Shesha is an open-source low-code framework that teams use to build production line-of-business applications. Issue #5012 covered seven sub-requirements for the Form Designer's canvas: fill available width, a sane default zoom, predefined zoom steps, an editable zoom input, plus/minus exiting auto mode, and a 1920×1080 preset. Requirements shifted mid-ticket — the default zoom moved from 80% to 75% and the step size changed — so the fix had to stay easy to re-tune, not just correct once.",
-    highlights: [
-      'Canvas fills available width with no bottom scrollbar, components re-wrap and keep their zoom level',
-      'Editable zoom field with predefined steps; +/- exits auto mode automatically',
-      'Shipped after requirements changed mid-ticket, without a rewrite',
-    ],
-    tech: ['TypeScript', 'React', '.NET'],
-    status: 'merged',
-    statusLabel: 'Merged',
-    link: 'https://github.com/shesha-io/shesha-framework/issues/5012',
-    linkLabel: 'Read the issue',
-  },
-  {
     slug: 'travel-mate',
-    number: '02',
+    number: '01',
     title: 'Travel Mate',
     summary:
       'Minibus taxi routes in South Africa are coordinated almost entirely by word of mouth. Travel Mate gives commuters a way to post and check route availability in real time.',
@@ -65,7 +46,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'fintrack',
-    number: '03',
+    number: '02',
     title: 'FinTrack',
     summary:
       'A personal finance API built to get money handling right, not just feature-complete. Amounts are BigDecimal end to end, so a balance never drifts by a cent. JWT auth, Dockerised, deployed on AWS.',
@@ -81,5 +62,24 @@ export const projects: Project[] = [
     statusLabel: 'Source',
     link: 'https://github.com/micanipho/FinTrack',
     linkLabel: 'Read the code',
+  },
+  {
+    slug: 'prompt-forge',
+    number: '03',
+    title: 'PromptForge',
+    summary:
+      'A four-person build: a platform that turns a natural-language app description into a generated full-stack project, pushes it to a new GitHub repository, and deploys it. I owned the code-generation engine and the validate-and-repair loop that stops generated code shipping broken.',
+    detail:
+      'Generating code is the easy half — the hard half is that a model will confidently emit a project that doesn’t compile. My work sat on that seam: a validator that runs the generated project through TypeScript and ESLint, parses the compiler and linter output back into structured failures, maps each failure to the specific files responsible, and hands those paths to a refiner that repairs only what broke before the build is retried. Built on ABP/.NET 9 with a Next.js dashboard.',
+    highlights: [
+      'Validate-and-repair loop — parses tsc and ESLint output into structured failures, then maps each one to the files that need repairing',
+      'Generation engine split behind interfaces (planner, scaffolder, refiner, validator) so each stage is testable on its own',
+      'GitHub OAuth and API automation: generated projects land as real repositories and deploy, rather than downloading as a zip',
+    ],
+    tech: ['C#', '.NET 9', 'ABP', 'Next.js', 'PostgreSQL'],
+    status: 'live',
+    statusLabel: 'Live · Team',
+    link: 'https://abp-group.vercel.app/',
+    linkLabel: 'Open the app',
   },
 ];
