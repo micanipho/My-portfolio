@@ -11,6 +11,9 @@ const Layout = dynamic(() => import('../src/components/Layout'), {
 
 import { reportWebVitals } from '../src/utils/reportWebVitals';
 
+// Hand-written <link> hrefs are not rewritten by basePath the way next/link is.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="font-sans">
@@ -18,10 +21,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 
-        <link rel="prefetch" href="/projects" />
-        <link rel="prefetch" href="/about" />
-        <link rel="prefetch" href="/documents" />
-        <link rel="prefetch" href="/contact" />
+        <link rel="prefetch" href={`${BASE_PATH}/projects`} />
+        <link rel="prefetch" href={`${BASE_PATH}/about`} />
+        <link rel="prefetch" href={`${BASE_PATH}/documents`} />
+        <link rel="prefetch" href={`${BASE_PATH}/contact`} />
       </Head>
 
       <Layout>

@@ -7,6 +7,10 @@ import WorkRow from '../src/components/WorkRow';
 
 const STACK = ['Java', 'C# / .NET', 'Spring Boot', 'Python', 'React', 'TypeScript', 'PostgreSQL', 'Docker'];
 
+// next/image skips basePath when unoptimized (static export), so public/
+// asset paths are prefixed by hand.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export default function Home() {
   return (
     <div className="bg-unit-bg text-unit-bone">
@@ -62,7 +66,7 @@ export default function Home() {
 
           <div className="relative w-full h-[300px]">
             <Image
-              src="/profile.jpg"
+              src={`${BASE_PATH}/profile.jpg`}
               alt="Nhlakanipho Masilela"
               fill
               sizes="(max-width: 1024px) 100vw, 380px"

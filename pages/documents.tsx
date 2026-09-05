@@ -12,13 +12,17 @@ interface DocEntry {
   downloadName: string;
 }
 
+// Files in public/ are served under the deployment's basePath. Plain <a> hrefs
+// are not rewritten by Next, so they carry the prefix explicitly.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const DOCUMENTS: DocEntry[] = [
   {
     title: 'Résumé / CV',
     description:
       'Graduate Software Engineer at Boxfusion, working on Shesha. Full experience, education, and skills.',
-    viewUrl: '/documents/resume.html',
-    downloadUrl: '/documents/resume.pdf',
+    viewUrl: `${BASE_PATH}/documents/resume.html`,
+    downloadUrl: `${BASE_PATH}/documents/resume.pdf`,
     downloadName: 'Nhlakanipho-Masilela-CV.pdf',
   },
 ];

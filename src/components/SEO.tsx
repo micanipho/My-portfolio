@@ -29,7 +29,10 @@ const SEO: React.FC<SEOProps> = ({
   canonical,
 }) => {
   const router = useRouter();
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://nhlakanipho-portfolio.vercel.app';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://micanipho.github.io/My-portfolio';
+  // basePath is applied automatically to next/link and next/image, but not to
+  // hand-written <link> hrefs pointing at files in public/.
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const currentUrl = canonical || `${siteUrl}${router.asPath}`;
   const imageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
@@ -122,8 +125,8 @@ const SEO: React.FC<SEOProps> = ({
       /> */}
       
       {/* Favicon */}
-      <link rel="icon" href="/favicon.ico" />
-      <link rel="manifest" href="/site.webmanifest" />
+      <link rel="icon" href={`${basePath}/favicon.ico`} />
+      <link rel="manifest" href={`${basePath}/site.webmanifest`} />
       {/* Additional favicon sizes can be added when custom icons are created */}
       {/* <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" /> */}
       {/* <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" /> */}
