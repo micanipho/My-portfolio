@@ -17,8 +17,8 @@ export default function Projects() {
           Selected work
         </h1>
         <p className="text-lg font-light leading-relaxed text-unit-steel-3 max-w-2xl text-pretty">
-          Three things I've actually shipped: one merged into an open-source framework other teams build on, one
-          live, one a backend built to get a hard problem right.
+          Three things I've actually shipped: a live app built around how people actually move, a backend built to
+          get money handling right, and a team platform where I owned the code-generation engine.
         </p>
       </div>
 

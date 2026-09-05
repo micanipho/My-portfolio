@@ -3,602 +3,588 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhlakanipho Quinton Masilela - Software Developer Resume</title>
+    <title>Nhlakanipho Quinton Masilela — Résumé</title>
+    <meta name="description" content="Résumé of Nhlakanipho Quinton Masilela — Graduate Software Engineer at Boxfusion, working on Shesha.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap');
+        /* ── Response Unit tokens — mirrors tailwind.config.js ─────────────── */
+        :root {
+            --bg:         #0A121C;
+            --strip:      #0C1522;
+            --panel:      #0E1927;
+            --border:     #1E2E42;
+            --border-dim: #182739;
+            --border-2:   #223349;
+            --orange:     #F2622E;
+            --teal:       #2FB6C4;
+            --bone:       #E6EDF5;
+            --steel:      #7C90AA;
+            --steel-2:    #8A9BB0;
+            --steel-3:    #A9BACD;
+            --hazard-opacity: 0.4;
+            --page: 980px;
+        }
+
+        * { box-sizing: border-box; }
+
+        html { background: var(--bg); }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Barlow', system-ui, sans-serif;
+            font-weight: 300;
+            font-size: 16px;
             line-height: 1.6;
-            color: #B2BABB;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: linear-gradient(135deg, #0E0E10 0%, #191F3A 50%, #0E0E10 100%);
-            min-height: 100vh;
-        }
-        .header {
-            text-align: center;
-            background: linear-gradient(135deg, #1e1e24 0%, #2a2a35 100%);
-            border: 1px solid #00FFFF;
-            border-radius: 15px;
-            padding: 30px 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00FFFF, transparent);
-            animation: shimmer 3s infinite;
-        }
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-        .header h1 {
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #00FFFF 0%, #C4FF00 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 2.8em;
+            color: var(--steel-3);
+            background: var(--bg);
             margin: 0;
-            font-weight: 700;
-            text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
-        .header .title {
-            color: #00FFFF;
-            font-size: 1.4em;
-            margin: 15px 0;
-            font-weight: 600;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .contact-info span {
-            color: #B2BABB;
-            font-size: 0.95em;
-            background: rgba(0, 255, 255, 0.1);
-            padding: 8px 15px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        .contact-info span:hover {
-            background: rgba(0, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
-        }
-        .section {
-            background: linear-gradient(135deg, #1e1e24 0%, #2a2a35 100%);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        .section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #00FFFF, #C4FF00, #00FFFF);
-            border-radius: 15px 15px 0 0;
-        }
-        .section h2 {
-            font-family: 'Montserrat', sans-serif;
-            color: #00FFFF;
-            font-size: 1.6em;
-            margin: 0 0 20px 0;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            padding-left: 15px;
-        }
-        .section h2::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #00FFFF, #C4FF00);
-            border-radius: 2px;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .skill-category {
-            background: linear-gradient(135deg, #191F3A 0%, #2a2a35 100%);
-            border: 1px solid rgba(196, 255, 0, 0.3);
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(196, 255, 0, 0.2);
-            border-color: rgba(196, 255, 0, 0.5);
-        }
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #C4FF00, #00FFFF);
-            border-radius: 12px 0 0 12px;
-        }
-        .skill-category h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #C4FF00;
-            margin: 0 0 15px 0;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-        .skill-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .skill-list li {
-            background: rgba(0, 255, 255, 0.1);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            margin: 8px 0;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.95em;
-            color: #B2BABB;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .skill-list li:hover {
-            background: rgba(0, 255, 255, 0.2);
-            transform: translateX(5px);
-            color: #00FFFF;
-        }
-        .skill-list li::before {
-            content: '▶';
-            color: #00FFFF;
-            margin-right: 10px;
-            font-size: 0.8em;
-        }
-        .project {
-            background: linear-gradient(135deg, #191F3A 0%, #2a2a35 100%);
-            border: 1px solid rgba(196, 255, 0, 0.3);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .project:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(196, 255, 0, 0.2);
-            border-color: rgba(196, 255, 0, 0.5);
-        }
-        .project::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #C4FF00, #00FFFF);
-            border-radius: 12px 0 0 12px;
-        }
-        .project h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #C4FF00;
-            margin: 0 0 12px 0;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-        .project-tech {
-            color: #00FFFF;
-            font-weight: 600;
-            font-size: 0.95em;
-            margin-top: 12px;
-            padding: 8px 12px;
-            background: rgba(0, 255, 255, 0.1);
-            border-radius: 6px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
-        }
-        .achievement {
-            background: linear-gradient(135deg, rgba(196, 255, 0, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
-            border: 1px solid rgba(196, 255, 0, 0.3);
-            padding: 15px 20px;
-            margin: 12px 0;
-            border-radius: 10px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .achievement:hover {
-            transform: translateX(5px);
-            background: linear-gradient(135deg, rgba(196, 255, 0, 0.2) 0%, rgba(0, 255, 255, 0.2) 100%);
-            box-shadow: 0 5px 15px rgba(196, 255, 0, 0.2);
-        }
-        .achievement::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #C4FF00, #00FFFF);
-            border-radius: 10px 0 0 10px;
-        }
-        .education {
-            background: linear-gradient(135deg, #191F3A 0%, #2a2a35 100%);
-            border: 1px solid rgba(0, 255, 255, 0.3);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .education:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
-            border-color: rgba(0, 255, 255, 0.5);
-        }
-        .education::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #00FFFF, #C4FF00);
-            border-radius: 12px 0 0 12px;
-        }
-        .education h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #00FFFF;
-            margin: 0 0 8px 0;
-            font-size: 1.2em;
-            font-weight: 600;
-        }
-        .education .institution {
-            color: #C4FF00;
-            font-weight: 600;
-            font-size: 1.1em;
-            margin-bottom: 5px;
-        }
-        .education .period {
-            color: #B2BABB;
-            font-style: italic;
-            font-size: 0.95em;
+            padding: 0 0 56px;
         }
 
-        /* Secondary Education Specific Styling */
-        .secondary-education {
-            background: linear-gradient(135deg, rgba(196, 255, 0, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%) !important;
-            border: 1px solid rgba(196, 255, 0, 0.4) !important;
-            position: relative;
-            margin-top: 20px;
+        h1, h2, h3, .display { font-family: 'Barlow Condensed', system-ui, sans-serif; }
+
+        a { color: inherit; }
+
+        .wrap { max-width: var(--page); margin: 0 auto; padding: 0 24px; }
+
+        /* ── Hazard stripe ─────────────────────────────────────────────────── */
+        .hazard {
+            height: 8px;
+            background: repeating-linear-gradient(135deg, var(--orange) 0 12px, transparent 12px 24px);
+            opacity: var(--hazard-opacity);
         }
-        .secondary-education:hover {
-            background: linear-gradient(135deg, rgba(196, 255, 0, 0.15) 0%, rgba(0, 255, 255, 0.15) 100%) !important;
-            border-color: rgba(196, 255, 0, 0.6) !important;
-            box-shadow: 0 8px 25px rgba(196, 255, 0, 0.2) !important;
+
+        /* ── Status strip ──────────────────────────────────────────────────── */
+        .strip {
+            display: flex;
+            align-items: stretch;
+            height: 30px;
+            background: var(--strip);
+            border-bottom: 1px solid var(--border);
         }
-        .secondary-education::before {
-            background: linear-gradient(135deg, #C4FF00, #00FFFF) !important;
+        .strip .hazard-block {
+            width: 64px;
+            flex: none;
+            background: repeating-linear-gradient(135deg, var(--orange) 0 12px, transparent 12px 24px);
+            opacity: var(--hazard-opacity);
         }
-        .secondary-education h3 {
-            color: #C4FF00 !important;
+        .strip-inner {
+            flex-grow: 1;
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 0 24px;
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
         }
-        .secondary-education h3::after {
-            content: '🎓';
-            margin-left: 10px;
-            font-size: 1.1em;
+        .strip-left { display: flex; align-items: center; gap: 12px; }
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--teal);
+            display: inline-block;
+            flex: none;
         }
-        .secondary-education .institution {
-            color: #00FFFF !important;
+        .strip .teal { color: var(--teal); }
+        .strip .muted { color: var(--steel-2); }
+        .rule-v { width: 1px; height: 12px; background: var(--border-2); display: inline-block; }
+        .back-link {
+            color: var(--steel-2);
+            text-decoration: none;
+            transition: color .2s ease;
         }
-        .secondary-details {
-            margin-top: 12px;
-            padding: 12px 15px;
-            background: rgba(196, 255, 0, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(196, 255, 0, 0.2);
+        .back-link:hover { color: var(--orange); }
+
+        /* ── Masthead ──────────────────────────────────────────────────────── */
+        .masthead { padding: 44px 0 32px; }
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 18px;
         }
-        .secondary-details p {
-            margin: 0;
-            color: #B2BABB;
-            font-size: 0.95em;
-            font-style: italic;
-        }
-        /* Print Styles */
-        @media print {
-            body {
-                background: white !important;
-                color: #333 !important;
-                margin: 0;
-                padding: 15px;
-            }
-            .header {
-                page-break-after: avoid;
-                background: white !important;
-                border: 2px solid #333 !important;
-                box-shadow: none !important;
-            }
-            .header h1 {
-                color: #333 !important;
-                -webkit-text-fill-color: #333 !important;
-            }
-            .header .title {
-                color: #666 !important;
-            }
-            .section {
-                page-break-inside: avoid;
-                background: white !important;
-                border: 1px solid #ddd !important;
-                box-shadow: none !important;
-            }
-            .section h2 {
-                color: #333 !important;
-            }
-            .skill-category, .project, .education, .achievement {
-                background: #f8f9fa !important;
-                border: 1px solid #ddd !important;
-                box-shadow: none !important;
-            }
-            .secondary-education {
-                background: #f0f8f0 !important;
-                border: 1px solid #90c695 !important;
-            }
-            .secondary-education h3 {
-                color: #2d5a32 !important;
-            }
-            .secondary-education .institution {
-                color: #1a472a !important;
-            }
-            .secondary-details {
-                background: #e8f5e8 !important;
-                border: 1px solid #c3d9c6 !important;
-            }
-            .contact-info span {
-                background: #f0f0f0 !important;
-                border: 1px solid #ddd !important;
-                color: #333 !important;
-            }
-            .skill-list li {
-                background: white !important;
-                border: 1px solid #ddd !important;
-                color: #333 !important;
-            }
+        .eyebrow .rule-h { width: 44px; height: 1px; background: var(--border-2); flex: none; }
+        .eyebrow .sub { color: var(--steel); font-weight: 500; }
+
+        .masthead h1 {
+            color: var(--bone);
+            font-size: clamp(2.4rem, 6vw, 3.4rem);
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            margin: 0 0 22px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 14px;
+            font-size: 0.92em;
+        }
+        .contact-info a,
+        .contact-info span.item { color: var(--steel); text-decoration: none; }
+        .contact-info a {
+            border-bottom: 1px solid transparent;
+            transition: color .2s ease, border-color .2s ease;
+        }
+        .contact-info a:hover { color: var(--orange); border-bottom-color: var(--orange); }
+        .contact-info .sep { width: 3px; height: 3px; background: var(--border-2); flex: none; }
+
+        /* ── Layout ────────────────────────────────────────────────────────── */
+        .layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 300px;
+            gap: 44px;
+            align-items: start;
+            padding-top: 40px;
+        }
+        .col-main { grid-column: 1; grid-row: 1; min-width: 0; }
+        .col-side { grid-column: 2; grid-row: 1; min-width: 0; }
+
+        /* ── Bracketed panel ───────────────────────────────────────────────── */
+        .panel {
+            position: relative;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            padding: 18px;
+        }
+        .panel + .panel { margin-top: 20px; }
+        .br { position: absolute; width: 16px; height: 16px; z-index: 1; }
+        .br.tl { top: -1px; left: -1px; border-top: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+        .br.tr { top: -1px; right: -1px; border-top: 2px solid var(--orange); border-right: 2px solid var(--orange); }
+        .br.bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--orange); border-left: 2px solid var(--orange); }
+        .br.rb { bottom: -1px; right: -1px; border-bottom: 2px solid var(--orange); border-right: 2px solid var(--orange); }
+
+        .panel-label {
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--steel);
+            margin-bottom: 10px;
+        }
+
+        /* ID rows — label left, value right, hairline between */
+        .id-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-dim);
+        }
+        .id-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .id-row .k {
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--steel);
+            flex: none;
+        }
+        .id-row .v { font-size: 0.86em; font-weight: 500; color: var(--bone); text-align: right; }
+        .id-row .v.teal { color: var(--teal); }
+
+        /* Chip stacks */
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .chips span {
+            border: 1px solid var(--border-2);
+            color: var(--steel-3);
+            padding: 3px 9px;
+        }
+        .chip-group + .chip-group {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-dim);
+        }
+
+        /* ── Sections ──────────────────────────────────────────────────────── */
+        .section { margin-bottom: 38px; }
+        .section:last-child { margin-bottom: 0; }
+        .section > h2 {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--bone);
+            font-size: 1.28em;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin: 0 0 20px;
+        }
+        .section > h2::before {
+            content: "";
+            width: 3px;
+            height: 20px;
+            background: var(--orange);
+            flex: none;
+        }
+
+        p { margin: 0 0 12px; }
+        p:last-child { margin-bottom: 0; }
+        .summary p { max-width: 68ch; }
+        .lede { color: var(--steel-3); }
+        strong { color: var(--bone); font-weight: 500; }
+
+        /* ── Entries — left rail with an orange node ───────────────────────── */
+        .entry {
+            position: relative;
+            padding: 0 0 24px 22px;
+            border-left: 1px solid var(--border);
+        }
+        .entry:last-child { padding-bottom: 0; border-left-color: transparent; }
+        .entry:last-child::after {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 0;
+            bottom: 24px;
+            width: 1px;
+            background: var(--border);
+        }
+        .entry::before {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: 7px;
+            width: 7px;
+            height: 7px;
+            background: var(--orange);
+        }
+        .entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 16px;
+            margin-bottom: 3px;
+        }
+        .entry h3 {
+            color: var(--bone);
+            margin: 0;
+            font-size: 1.16em;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+        }
+        .entry .period {
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            color: var(--steel);
+            font-size: 0.84em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            white-space: nowrap;
+        }
+        .entry .institution {
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 12px;
+        }
+        .entry ul { margin: 0; padding-left: 0; list-style: none; }
+        .entry li {
+            position: relative;
+            font-size: 0.94em;
+            padding-left: 16px;
+            margin-bottom: 7px;
+        }
+        .entry li:last-child { margin-bottom: 0; }
+        .entry li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.62em;
+            width: 5px;
+            height: 1px;
+            background: var(--steel);
+        }
+        .entry p { font-size: 0.94em; }
+
+        .current-tag {
+            display: inline-block;
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            font-size: 0.66em;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--teal);
+            border: 1px solid #1E4A52;
+            background: #0C1F24;
+            padding: 1px 8px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* ── Objective callout ─────────────────────────────────────────────── */
+        .callout {
+            background: var(--strip);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--orange);
+            padding: 18px 20px;
+        }
+        .callout p { font-size: 0.96em; max-width: 68ch; }
+
+        /* ── Footer ────────────────────────────────────────────────────────── */
+        .doc-footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 44px;
+            padding-top: 18px;
+            border-top: 1px solid var(--border-dim);
+            font-family: 'Barlow Condensed', system-ui, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--steel);
+        }
+        .doc-footer a { color: var(--steel-2); text-decoration: none; transition: color .2s ease; }
+        .doc-footer a:hover { color: var(--orange); }
+
+        /* ── Responsive ────────────────────────────────────────────────────── */
+        @media (max-width: 860px) {
+            .layout { grid-template-columns: 1fr; gap: 32px; padding-top: 32px; }
+            .col-main, .col-side { grid-column: 1; grid-row: auto; }
+        }
+        @media (max-width: 640px) {
+            .wrap { padding: 0 16px; }
+            .masthead { padding: 32px 0 24px; }
+            .strip-inner { padding: 0 16px; font-size: 11px; letter-spacing: 0.1em; }
+            .strip .hazard-block { display: none; }
+            .hide-sm { display: none !important; }
+            .entry-head { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* ── Print — repaint the whole document on white ───────────────────── */
+        @media print {
+            :root {
+                --bg:         #ffffff;
+                --strip:      #f7f8fa;
+                --panel:      #f7f8fa;
+                --border:     #dde2ea;
+                --border-dim: #e5e9ef;
+                --border-2:   #cdd5e0;
+                --orange:     #C4501F;
+                --teal:       #12707C;
+                --bone:       #14202E;
+                --steel:      #5A6A80;
+                --steel-2:    #4A5A70;
+                --steel-3:    #3D4A5C;
+                --page: 100%;
             }
-            .header h1 {
-                font-size: 2.2em;
-            }
-            .contact-info {
-                gap: 15px;
-            }
-            .contact-info span {
-                font-size: 0.85em;
-                padding: 6px 12px;
-            }
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            .section {
-                padding: 20px;
-            }
+            @page { size: A4; margin: 14mm 12mm; }
+            body { font-size: 10.5pt; padding: 0; }
+            .wrap { padding: 0; }
+            .strip, .hazard, .no-print { display: none !important; }
+            .masthead { padding: 0 0 18px; border-bottom: 2px solid var(--orange); }
+            .masthead h1 { font-size: 25pt; margin-bottom: 12px; }
+            .layout { grid-template-columns: 1fr; gap: 20px; padding-top: 20px; }
+            .col-main, .col-side { grid-column: 1; grid-row: auto; }
+            .br { display: none; }
+            .panel { padding: 12px 14px; }
+            .panel + .panel { margin-top: 12px; }
+            /* Identity rows pair up so the panel costs 3 lines, not 5 */
+            .id-panel { display: grid; grid-template-columns: 1fr 1fr; column-gap: 28px; }
+            .chips { font-size: 12px; gap: 4px; }
+            .chips span { padding: 2px 7px; }
+            .chip-group + .chip-group { margin-top: 10px; padding-top: 10px; }
+            .section { margin-bottom: 20px; page-break-inside: avoid; }
+            .entry { page-break-inside: avoid; padding-bottom: 14px; }
+            .current-tag { background: transparent; border-color: var(--teal); }
+            .callout { background: transparent; }
+            a { color: inherit; text-decoration: none; }
+            .doc-footer { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>NHLAKANIPHO QUINTON MASILELA</h1>
-        <div class="title">GRADUATE SOFTWARE ENGINEER @ BOXFUSION</div>
-        <div class="contact-info">
-            <span>📧 nqmasilela777@gmail.com</span>
-            <span>📍 Johannesburg, South Africa</span>
-            <span>👤 Male</span>
+    <!-- Status strip — the same "operational" signal the site carries on every page -->
+    <div class="strip no-print">
+        <div class="hazard-block" aria-hidden="true"></div>
+        <div class="strip-inner">
+            <div class="strip-left">
+                <span class="dot" aria-hidden="true"></span>
+                <span class="teal">Operational</span>
+                <span class="rule-v hide-sm" aria-hidden="true"></span>
+                <span class="muted hide-sm">Johannesburg &middot; UTC+2</span>
+            </div>
+            <a class="back-link" href="/">&larr; Back to portfolio</a>
         </div>
     </div>
 
-    <div class="section">
-        <h2>PROFESSIONAL SUMMARY</h2>
-        <p>Graduate Software Engineer at Boxfusion, working on Shesha — an open-source low-code framework used to build production line-of-business applications. Backend-focused, with a background in physics and mathematics that shaped a first-principles approach to problem-solving. Recent work: rebuilding canvas sizing and zoom behaviour in Shesha's Form Designer, a ticket that had been reassigned twice and slipped three sprints before it reached me. Comfortable moving between individual contribution and mentoring — I've run structured project reviews and study sessions for bootcamp teams at WeThinkCode_.</p>
+    <div class="wrap">
+        <header class="masthead">
+            <div class="eyebrow">
+                <span>Résumé</span>
+                <span class="rule-h" aria-hidden="true"></span>
+                <span class="sub">Graduate Software Engineer @ Boxfusion</span>
+            </div>
+            <h1>Nhlakanipho Quinton Masilela</h1>
+            <div class="contact-info">
+                <a href="mailto:nqmasilela777@gmail.com">nqmasilela777@gmail.com</a>
+                <span class="sep" aria-hidden="true"></span>
+                <span class="item">Johannesburg, South Africa</span>
+                <span class="sep" aria-hidden="true"></span>
+                <a href="https://github.com/micanipho" target="_blank" rel="noopener noreferrer">github.com/micanipho</a>
+                <span class="sep" aria-hidden="true"></span>
+                <a href="https://linkedin.com/in/nqmasilela" target="_blank" rel="noopener noreferrer">linkedin.com/in/nqmasilela</a>
+            </div>
+        </header>
     </div>
 
-    <div class="section">
-        <h2>TECHNICAL SKILLS</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Programming Languages</h3>
-                <ul class="skill-list">
-                    <li>Python (Advanced)</li>
-                    <li>Java (Intermediate)</li>
-                    <li>JavaScript (Intermediate)</li>
-                    <li>HTML/CSS (Advanced)</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Frameworks & Libraries</h3>
-                <ul class="skill-list">
-                    <li>React</li>
-                    <li>Flask</li>
-                    <li>Spring Boot</li>
-                    <li>Tailwind CSS</li>
-                    <li>Bootstrap</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Core Skills</h3>
-                <ul class="skill-list">
-                    <li>Object-Relational Mapping (ORM)</li>
-                    <li>JSON</li>
-                    <li>Object-Oriented Programming (OOP)</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Databases & Tools</h3>
-                <ul class="skill-list">
-                    <li>MySQL</li>
-                    <li>PostgreSQL</li>
-                    <li>Git & GitHub</li>
-                    <li>VS Code</li>
-                    <li>Docker (Basic)</li>
-                </ul>
-            </div>
+    <div class="hazard no-print" aria-hidden="true"></div>
+
+    <div class="wrap">
+        <div class="layout">
+            <!-- Identification + skills panels — mirrors the homepage ID panel -->
+            <aside class="col-side">
+                <div class="panel id-panel">
+                    <span class="br tl" aria-hidden="true"></span>
+                    <span class="br tr" aria-hidden="true"></span>
+                    <span class="br bl" aria-hidden="true"></span>
+                    <span class="br rb" aria-hidden="true"></span>
+
+                    <div class="id-row"><span class="k">Role</span><span class="v">Graduate Software Engineer</span></div>
+                    <div class="id-row"><span class="k">Employer</span><span class="v">Boxfusion</span></div>
+                    <div class="id-row"><span class="k">Focus</span><span class="v">Backend &amp; Platform</span></div>
+                    <div class="id-row"><span class="k">Base</span><span class="v">Johannesburg, ZA</span></div>
+                    <div class="id-row"><span class="k">Status</span><span class="v teal">Open to opportunities</span></div>
+                </div>
+
+                <div class="panel">
+                    <span class="br tl" aria-hidden="true"></span>
+                    <span class="br tr" aria-hidden="true"></span>
+                    <span class="br bl" aria-hidden="true"></span>
+                    <span class="br rb" aria-hidden="true"></span>
+
+                    <div class="chip-group">
+                        <div class="panel-label">Languages</div>
+                        <div class="chips">
+                            <span>Python</span><span>TypeScript</span><span>Java</span><span>C#</span><span>JavaScript</span><span>SQL</span>
+                        </div>
+                    </div>
+
+                    <div class="chip-group">
+                        <div class="panel-label">Frameworks &amp; Libraries</div>
+                        <div class="chips">
+                            <span>React / Next.js</span><span>Spring Boot</span><span>.NET</span><span>Flask</span>
+                        </div>
+                    </div>
+
+                    <div class="chip-group">
+                        <div class="panel-label">Data &amp; Infrastructure</div>
+                        <div class="chips">
+                            <span>PostgreSQL / MySQL</span><span>Docker</span><span>AWS</span><span>Git &amp; GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="col-main">
+                <section class="section summary">
+                    <h2>Professional Summary</h2>
+                    <p class="lede">Graduate Software Engineer at <strong>Boxfusion</strong>, working on Shesha — an open-source low-code framework used to build production line-of-business applications. Backend-focused, with a background in physics and mathematics that shaped a first-principles approach to problem-solving. Recent work: rebuilding canvas sizing and zoom behaviour in Shesha's Form Designer, a ticket that had been reassigned twice and slipped three sprints before it reached me. Comfortable moving between individual contribution and mentoring — I've run structured project reviews and study sessions for bootcamp teams at WeThinkCode_.</p>
+                </section>
+
+                <section class="section">
+                    <h2>Professional Experience</h2>
+
+                    <div class="entry">
+                        <div class="entry-head">
+                            <h3>Graduate Software Engineer<span class="current-tag">Current</span></h3>
+                            <span class="period">February 2026 — Present</span>
+                        </div>
+                        <div class="institution">Boxfusion</div>
+                        <ul>
+                            <li>Contribute to Shesha, an open-source low-code framework used to build production line-of-business applications</li>
+                            <li>Rebuilt canvas sizing and zoom behaviour in the Form Designer: auto-fit default, predefined zoom steps, an editable zoom field, and component wrapping that survives a zoom change</li>
+                            <li>Took on a ticket that had been reassigned twice and was three sprints late, and shipped it after requirements changed mid-way through</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-head">
+                            <h3>Peer &amp; Bootcamp Mentor</h3>
+                            <span class="period">March 2025 — August 2025</span>
+                        </div>
+                        <div class="institution">WeThinkCode_</div>
+                        <ul>
+                            <li>Coached students on study methods and coursework, running group study sessions across the cohort</li>
+                            <li>Reviewed bootcamp teams' projects against structured evaluation criteria across multiple project cycles</li>
+                            <li>Gave feedback teams could act on immediately, not just a pass/fail grade</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Education</h2>
+
+                    <div class="entry">
+                        <div class="entry-head">
+                            <h3>Diploma in Computer Software Engineering</h3>
+                            <span class="period">2024 — 2025</span>
+                        </div>
+                        <div class="institution">WeThinkCode_</div>
+                        <ul>
+                            <li>Intensive software development program covering Python, Java, and modern development practices</li>
+                            <li>Built through coding challenges, hackathons, and collaborative projects rather than lectures alone</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-head">
+                            <h3>Computer Science</h3>
+                            <span class="period">February 2018 — December 2021</span>
+                        </div>
+                        <div class="institution">University of the Witwatersrand</div>
+                        <p>Three years toward a Computer Science degree before leaving to pursue software development directly. Built a foundation in algorithms, software design, and analytical thinking from first principles that still shapes how I approach a system today.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Career Objective</h2>
+                    <div class="callout">
+                        <p>Looking to grow further into backend and platform engineering — deeper ownership of production systems, building on current work in Java, Spring Boot, and distributed systems within an open-source codebase.</p>
+                    </div>
+                </section>
+            </main>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>EDUCATION</h2>
-
-        <div class="education" style="margin-bottom: 20px;">
-            <h3>Diploma in Computer Software Engineering</h3>
-            <div class="institution">WeThinkCode_</div>
-            <div class="period">2024 - 2025</div>
-            <ul style="margin-top: 10px;">
-                <li>Intensive software development program</li>
-                <li>Focus on practical coding skills and modern development practices</li>
-                <li>Collaborative learning environment with coding challenges and hackathons</li>
-            </ul>
+        <div class="doc-footer">
+            <span>Last updated: August 2026 &middot; Open to opportunities</span>
+            <a class="no-print" href="mailto:nqmasilela777@gmail.com">nqmasilela777@gmail.com</a>
         </div>
-
-        <div class="education">
-            <h3>Bachelor's Degree in Computer Science (Incomplete - Final Year)</h3>
-            <div class="institution">University of the Witwatersrand</div>
-            <div class="period">February 2018 - December 2021</div>
-            <ul style="margin-top: 10px;">
-                <li>Strong foundation in computer science principles and analytical thinking</li>
-                <li>Specialized in algorithms and software design</li>
-                <li>Mathematical background providing first-principles problem-solving approach</li>
-                <li>Completed coursework through final year level</li>
-            </ul>
-        </div>
-
-        <div class="education secondary-education">
-            <h3>Secondary Education</h3>
-            <div class="institution">Khaliphani Senior Secondary School</div>
-            <div class="period">Completed 2016</div>
-            <div class="secondary-details">
-                <p>Foundation education providing strong academic base for higher learning in Computer Science and Mathematics.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>PROFESSIONAL EXPERIENCE</h2>
-
-        <div class="education" style="margin-bottom: 20px;">
-            <h3>Graduate Software Engineer</h3>
-            <div class="institution">Boxfusion</div>
-            <div class="period">February 2026 - Present</div>
-            <ul style="margin-top: 10px;">
-                <li>Contribute to Shesha, an open-source low-code framework used to build production line-of-business applications</li>
-                <li>Rebuilt canvas sizing and zoom behaviour in the Form Designer: auto-fit default, predefined zoom steps, an editable zoom field, and component wrapping that survives a zoom change</li>
-                <li>Took on a ticket that had been reassigned twice and was three sprints late, and shipped it after requirements changed mid-way through</li>
-            </ul>
-        </div>
-
-        <div class="education" style="margin-bottom: 20px;">
-            <h3>Bootcamp Mentor</h3>
-            <div class="institution">WeThinkCode_</div>
-            <div class="period">May 2025 - August 2025</div>
-            <ul style="margin-top: 10px;">
-                <li>Lead and mentor diverse bootcamp teams, fostering collaborative environments that drive project success</li>
-                <li>Communicate complex technical concepts clearly to team members with varying skill levels and backgrounds</li>
-                <li>Facilitate strategic planning sessions, helping teams align technical solutions with project objectives</li>
-                <li>Conduct comprehensive project reviews, providing constructive feedback that promotes growth and learning</li>
-                <li>Demonstrate servant leadership by prioritizing team development and knowledge transfer over individual recognition</li>
-            </ul>
-        </div>
-    </div>
-
-
-    <div class="section">
-        <h2>ACADEMIC ACHIEVEMENTS & AWARDS</h2>
-        <div class="achievement">🏆 Certificate of First Class - Introduction to Algorithms and Programming I (2018)</div>
-        <div class="achievement">🏆 Certificate of First Class - Linear Algebra II (2019)</div>
-        <div class="achievement">🏆 Certificate of First Class - Software Design Project III (2021)</div>
-        <div class="achievement">✅ Consistent academic excellence in computer science subjects</div>
-        <div class="achievement">✅ Strong mathematical and algorithmic problem-solving skills</div>
-        <div class="achievement">✅ Demonstrated proficiency in software design and development</div>
-    </div>
-
-    <div class="section">
-        <h2>CORE COMPETENCIES</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Academic Excellence</h3>
-                <ul class="skill-list">
-                    <li>Algorithms & Programming</li>
-                    <li>Linear Algebra</li>
-                    <li>Software Design</li>
-                    <li>Computer Science Theory</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Technical Skills</h3>
-                <ul class="skill-list">
-                    <li>Programming Languages</li>
-                    <li>Software Development</li>
-                    <li>Problem Solving</li>
-                    <li>Mathematical Analysis</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Leadership & Soft Skills</h3>
-                <ul class="skill-list">
-                    <li>Team Leadership & Mentorship</li>
-                    <li>Strategic Communication</li>
-                    <li>Cross-functional Collaboration</li>
-                    <li>Big Picture Thinking</li>
-                    <li>Stakeholder Engagement</li>
-                    <li>Knowledge Sharing</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>CAREER OBJECTIVE</h2>
-        <p>Looking to grow further into backend and platform engineering — deeper ownership of production systems, building on current work in Java, Spring Boot, and distributed systems within an open-source codebase.</p>
-    </div>
-
-    <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 0.9em;">
-        <p>Last updated: August 2026 | Open to opportunities</p>
-        <p><em>References available upon request</em></p>
     </div>
 </body>
 </html>

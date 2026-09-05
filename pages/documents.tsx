@@ -4,8 +4,12 @@ import React from 'react';
 interface DocEntry {
   title: string;
   description: string;
-  fileName: string;
-  url: string;
+  /** Styled web version, opened in a tab. */
+  viewUrl: string;
+  /** Print-ready A4 PDF — regenerate with `npm run resume:pdf` after editing the HTML. */
+  downloadUrl: string;
+  /** Filename the browser saves the download as. */
+  downloadName: string;
 }
 
 const DOCUMENTS: DocEntry[] = [
@@ -13,8 +17,9 @@ const DOCUMENTS: DocEntry[] = [
     title: 'Résumé / CV',
     description:
       'Graduate Software Engineer at Boxfusion, working on Shesha. Full experience, education, and skills.',
-    fileName: 'resume.html',
-    url: '/documents/resume.html',
+    viewUrl: '/documents/resume.html',
+    downloadUrl: '/documents/resume.pdf',
+    downloadName: 'Nhlakanipho-Masilela-CV.pdf',
   },
 ];
 
@@ -37,7 +42,7 @@ export default function Documents() {
         <div className="flex flex-col gap-4">
           {DOCUMENTS.map((doc) => (
             <div
-              key={doc.fileName}
+              key={doc.downloadName}
               className="border border-unit-border bg-unit-panel p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-5"
             >
               <div>
@@ -46,7 +51,7 @@ export default function Documents() {
               </div>
               <div className="flex gap-3 shrink-0">
                 <a
-                  href={doc.url}
+                  href={doc.viewUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-display text-sm font-semibold tracking-[0.12em] uppercase border border-unit-border-2 text-unit-bone px-5 py-2.5 hover:border-unit-orange transition-colors duration-200"
@@ -54,11 +59,11 @@ export default function Documents() {
                   View
                 </a>
                 <a
-                  href={doc.url}
-                  download
+                  href={doc.downloadUrl}
+                  download={doc.downloadName}
                   className="font-display text-sm font-semibold tracking-[0.12em] uppercase bg-unit-orange text-unit-bg px-5 py-2.5 hover:bg-unit-orange-hover transition-colors duration-200"
                 >
-                  Download
+                  Download PDF
                 </a>
               </div>
             </div>
