@@ -127,7 +127,7 @@ export default function Home() {
           </div>
           <a
             href="mailto:nqmasilela777@gmail.com"
-            className="font-display text-2xl sm:text-4xl font-semibold hover:text-unit-orange transition-colors duration-200"
+            className="block font-display text-2xl sm:text-4xl font-semibold leading-none hover:text-unit-orange transition-colors duration-200"
           >
             nqmasilela777@gmail.com
           </a>
